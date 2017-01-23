@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @Styles.Render("~/Content/css/Site.css")
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="icon" href="@Url.Content("~/Content/logo.png")" />
+    <link rel="stylesheet" type="text/css" href="http"
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - CJRSM</title>
+</head>
+<body>
+    <header>
+        <img class="logo_header" src="~/Content/logo.png"/>
+        <a href="@Url.Action(".", "Home/Index")" class="navbar-brand ">
+            <img src="~/Content/CJRSM.png" class="cjrsm_header"/>
+        </a>
+        @*@Html.ActionLink(".", "Index", "Home", new { area = "" }, new { @class = "navbar-brand cjrsm_header" })*@
+    </header>
+    <nav name="navigation_principal" class="navbar navbar-inverse navbar-fixed-top principal">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                @*<li>@Html.ActionLink("Possession", "Index", "Home")</li>*@
+                <li><h1>@Html.ActionLink("Acceuil", "Index", "Home")</h1></li>
+                <li><h1>@Html.ActionLink("Activité", "Index", "Activite")</h1></li>
+                <li><h1>@Html.ActionLink("Jeux", "Index", "Jeux")</h1></li>
+                <li><h1>@Html.ActionLink("Livres", "Index", "Livres")</h1></li>
+                <li><h1>@Html.ActionLink("Connexion", "Index", "Connexion")</h1></li>
+            </ul>
+        </div>
+    </nav>
+
+    @RenderBody()
+    <footer>
+        <hr />
+        <p class="date">&copy; @DateTime.Now.Year - CJRSM - Guillaume Barbier</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
