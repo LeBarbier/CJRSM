@@ -72,6 +72,7 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -121,26 +122,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Models\DAL\CjrsmBD.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CjrsmBD.Context.cs</LastGenOutput>
-      <DependentUpon>CjrsmBD.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\DAL\CjrsmBD.edmx.sql" />
-    <Content Include="Models\DAL\CjrsmBD.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CjrsmBD.cs</LastGenOutput>
-      <DependentUpon>CjrsmBD.edmx</DependentUpon>
-    </Content>
     <Content Include="packages.config" />
-    <EntityDeploy Include="Models\DAL\CjrsmBD.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CjrsmBD.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DAL\CjrsmBD.edmx.diagram">
-      <DependentUpon>CjrsmBD.edmx</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="ClassDiagram1.cd" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -152,6 +134,9 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\DAL\CjrsmBD.edmx">
+      <LastGenOutput>CjrsmBD - Copier.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -172,38 +157,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\DAL\Activite.cs">
-      <DependentUpon>CjrsmBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAL\CjrsmBD.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CjrsmBD.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAL\CjrsmBD.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CjrsmBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAL\CjrsmBD.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CjrsmBD.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Biz\Activite.cs" />
+    <Compile Include="Models\Biz\Document.cs" />
+    <Compile Include="Models\Biz\Jeu.cs" />
+    <Compile Include="Models\Biz\Membre.cs" />
+    <Compile Include="Models\Biz\Publication.cs" />
     <Compile Include="Models\DAL\IUnitOfWork.cs" />
-    <Compile Include="Models\DAL\Jeux.cs">
-      <DependentUpon>CjrsmBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAL\Livres.cs">
-      <DependentUpon>CjrsmBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAL\Membre.cs">
-      <DependentUpon>CjrsmBD.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Biz\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>

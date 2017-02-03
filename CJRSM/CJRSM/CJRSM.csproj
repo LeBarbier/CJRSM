@@ -150,7 +150,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ActiviteController.cs" />
-    <Compile Include="Controllers\LivresController.cs" />
+    <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\JeuxController.cs" />
     <Compile Include="Controllers\MembreController.cs" />
     <Compile Include="Global.asax.cs">
@@ -252,11 +252,12 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
-    <Content Include="Views\Jeux\Index.cshtml" />
+    <Content Include="Views\Jeu\Index.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="web.config" />
     <Content Include="Views\Activite\Index.cshtml" />
+    <Content Include="Views\Document\Index.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
