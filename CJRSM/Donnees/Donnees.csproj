@@ -172,6 +172,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Biz\Activite.cs" />
+    <Compile Include="Models\Biz\Document.cs" />
+    <Compile Include="Models\Biz\Jeu.cs" />
+    <Compile Include="Models\Biz\Membre.cs" />
+    <Compile Include="Models\Biz\Publication.cs" />
     <Compile Include="Models\DAL\Activite.cs">
       <DependentUpon>CjrsmBD.tt</DependentUpon>
     </Compile>
@@ -190,20 +195,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CjrsmBD.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\DAL\IUnitOfWork.cs" />
-    <Compile Include="Models\DAL\Jeux.cs">
+    <Compile Include="Models\DAL\Documents.cs">
       <DependentUpon>CjrsmBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DAL\Livres.cs">
+    <Compile Include="Models\DAL\IUnitOfWork.cs" />
+    <Compile Include="Models\DAL\Jeux.cs">
       <DependentUpon>CjrsmBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DAL\Membre.cs">
       <DependentUpon>CjrsmBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DAL\Publication.cs">
+      <DependentUpon>CjrsmBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Biz\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>

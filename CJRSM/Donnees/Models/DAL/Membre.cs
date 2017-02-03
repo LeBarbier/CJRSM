@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CJRSM.Models.DAL
+namespace Donnees.Models.DAL
 {
     using System;
     using System.Collections.Generic;
@@ -19,17 +19,24 @@ namespace CJRSM.Models.DAL
         {
             this.Activite = new HashSet<Activite>();
             this.Jeux = new HashSet<Jeux>();
-            this.Livres = new HashSet<Livres>();
+            this.Livres = new HashSet<Documents>();
+            this.Publication = new HashSet<Publication>();
         }
     
         public int Id { get; set; }
         public string NoDossier { get; set; }
+        public string Prenom { get; set; }
+        public string Nom { get; set; }
+        public string Role { get; set; }
+        public string MDP { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activite> Activite { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Jeux> Jeux { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Livres> Livres { get; set; }
+        public virtual ICollection<Documents> Livres { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Publication> Publication { get; set; }
     }
 }

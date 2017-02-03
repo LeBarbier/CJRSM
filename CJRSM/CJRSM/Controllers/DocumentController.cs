@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace CJRSM.Controllers
 {
-    public class LivresController: Controller
+    public class DocumentController: Controller
     {
         public ActionResult Index()
         {

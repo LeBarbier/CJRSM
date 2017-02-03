@@ -7,19 +7,33 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CJRSM.Models.DAL
+namespace Donnees.Models.DAL
 {
     using System;
     using System.Collections.Generic;
     
     public partial class Jeux
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Jeux()
+        {
+            this.Activite = new HashSet<Activite>();
+        }
+    
         public int Id { get; set; }
         public string Titre { get; set; }
-        public string NbrJoueur { get; set; }
-        public string Temps { get; set; }
+        public string Difficulte { get; set; }
+        public string Type { get; set; }
+        public string NbrJoueurMin { get; set; }
+        public string NbrJoueurMax { get; set; }
+        public string TempsMin { get; set; }
+        public string TempsMax { get; set; }
+        public string Disponible { get; set; }
         public int MembreId { get; set; }
+        public string DateAjout { get; set; }
     
         public virtual Membre Membre { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Activite> Activite { get; set; }
     }
 }

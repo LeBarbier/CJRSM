@@ -7,15 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CJRSM.Models.DAL
+namespace Donnees.Models.DAL
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Livres
+    public partial class Documents
     {
         public int Id { get; set; }
         public string Titre { get; set; }
+        public string Auteur { get; set; }
+        public string Disponible { get; set; }
+        public string DateAjout { get; set; }
         public int MembreId { get; set; }
     
         public virtual Membre Membre { get; set; }

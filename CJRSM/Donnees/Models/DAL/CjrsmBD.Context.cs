@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CJRSM.Models.DAL
+namespace Donnees.Models.DAL
 {
     using System;
     using System.Data.Entity;
@@ -27,7 +27,8 @@ namespace CJRSM.Models.DAL
     
         public virtual DbSet<Membre> MembreSet { get; set; }
         public virtual DbSet<Jeux> JeuxSet { get; set; }
-        public virtual DbSet<Livres> LivresSet { get; set; }
+        public virtual DbSet<Documents> DocumentsSet { get; set; }
         public virtual DbSet<Activite> ActiviteSet { get; set; }
+        public virtual DbSet<Publication> PublicationSet { get; set; }
     }
 }
