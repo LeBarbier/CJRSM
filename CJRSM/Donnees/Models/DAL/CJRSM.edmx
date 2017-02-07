@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CJRSM.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="CJRSMStoreContainer">
+    <EntitySet Name="Membres" EntityType="CJRSM.Store.Membres" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Jeux" EntityType="CJRSM.Store.Jeux" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Documents" EntityType="CJRSM.Store.Documents" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Activites" EntityType="CJRSM.Store.Activites" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Types" EntityType="CJRSM.Store.Types" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Publications" EntityType="CJRSM.Store.Publications" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MembreActivite" EntityType="CJRSM.Store.MembreActivite" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TypeJeux" EntityType="CJRSM.Store.TypeJeux" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_MembreActivite_Membres" Association="CJRSM.Store.FK_MembreActivite_Membres">
+      <End Role="Membres" EntitySet="Membres" />
+      <End Role="MembreActivite" EntitySet="MembreActivite" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MembreActivite_Activites" Association="CJRSM.Store.FK_MembreActivite_Activites">
+      <End Role="Activites" EntitySet="Activites" />
+      <End Role="MembreActivite" EntitySet="MembreActivite" />
+    </AssociationSet>
+    <AssociationSet Name="MembreJeux" Association="CJRSM.Store.MembreJeux">
+      <End Role="Membres" EntitySet="Membres" />
+      <End Role="Jeux" EntitySet="Jeux" />
+    </AssociationSet>
+    <AssociationSet Name="MembreLivres" Association="CJRSM.Store.MembreLivres">
+      <End Role="Membres" EntitySet="Membres" />
+      <End Role="Documents" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="PublicationMembre" Association="CJRSM.Store.PublicationMembre">
+      <End Role="Publications" EntitySet="Publications" />
+      <End Role="Membres" EntitySet="Membres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TypeJeux_Types" Association="CJRSM.Store.FK_TypeJeux_Types">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="TypeJeux" EntitySet="TypeJeux" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TypeJeux_Jeux" Association="CJRSM.Store.FK_TypeJeux_Jeux">
+      <End Role="Jeux" EntitySet="Jeux" />
+      <End Role="TypeJeux" EntitySet="TypeJeux" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Membres">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NoDossier" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prenom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Role" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MDP" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Jeux">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Difficulte" Type="int" Nullable="false" />
+    <Property Name="NbrJoueurMin" Type="int" Nullable="false" />
+    <Property Name="NbrJoueurMax" Type="int" Nullable="false" />
+    <Property Name="TempsMin" Type="int" Nullable="false" />
+    <Property Name="TempsMax" Type="int" Nullable="false" />
+    <Property Name="Disponible" Type="bit" Nullable="false" />
+    <Property Name="MembreId" Type="int" Nullable="false" />
+    <Property Name="DateAjout" Type="datetime" Nullable="false" />
+    <Property Name="Membre_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Documents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Auteur" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Disponible" Type="bit" Nullable="false" />
+    <Property Name="DateAjout" Type="datetime" Nullable="false" />
+    <Property Name="MembreId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Activites">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MembreId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Titre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Jeu" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NbrMembreMin" Type="int" Nullable="false" />
+    <Property Name="NbrMembreMax" Type="int" Nullable="false" />
+    <Property Name="Jour" Type="int" Nullable="false" />
+    <Property Name="HeureDebut" Type="time" Nullable="false" />
+    <Property Name="Hebdomadaire" Type="bit" Nullable="false" />
+    <Property Name="DateDebut" Type="datetime" Nullable="false" />
+    <Property Name="NbrRepetition" Type="int" Nullable="false" />
+    <Property Name="Accepte" Type="bit" Nullable="false" />
+    <Property Name="Participant" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Types">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Etiquette" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Publications">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MembreId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Contenu" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Membre_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MembreActivite">
+    <Key>
+      <PropertyRef Name="Membre_Id" />
+      <PropertyRef Name="Activite_Id" />
+    </Key>
+    <Property Name="Membre_Id" Type="int" Nullable="false" />
+    <Property Name="Activite_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeJeux">
+    <Key>
+      <PropertyRef Name="Type_Id" />
+      <PropertyRef Name="Jeux_Id" />
+    </Key>
+    <Property Name="Type_Id" Type="int" Nullable="false" />
+    <Property Name="Jeux_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="MembreJeux">
+    <End Role="Membres" Type="CJRSM.Store.Membres" Multiplicity="1" />
+    <End Role="Jeux" Type="CJRSM.Store.Jeux" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Membres">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Jeux">
+        <PropertyRef Name="Membre_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MembreLivres">
+    <End Role="Membres" Type="CJRSM.Store.Membres" Multiplicity="1" />
+    <End Role="Documents" Type="CJRSM.Store.Documents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Membres">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Documents">
+        <PropertyRef Name="MembreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PublicationMembre">
+    <End Role="Publications" Type="CJRSM.Store.Publications" Multiplicity="*" />
+    <End Role="Membres" Type="CJRSM.Store.Membres" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Membres">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Publications">
+        <PropertyRef Name="Membre_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MembreActivite_Membres">
+    <End Role="Membres" Type="CJRSM.Store.Membres" Multiplicity="1" />
+    <End Role="MembreActivite" Type="CJRSM.Store.MembreActivite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Membres">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MembreActivite">
+        <PropertyRef Name="Membre_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MembreActivite_Activites">
+    <End Role="MembreActivite" Type="CJRSM.Store.MembreActivite" Multiplicity="*" />
+    <End Role="Activites" Type="CJRSM.Store.Activites" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Activites">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MembreActivite">
+        <PropertyRef Name="Activite_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TypeJeux_Types">
+    <End Role="Types" Type="CJRSM.Store.Types" Multiplicity="1" />
+    <End Role="TypeJeux" Type="CJRSM.Store.TypeJeux" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TypeJeux">
+        <PropertyRef Name="Type_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TypeJeux_Jeux">
+    <End Role="TypeJeux" Type="CJRSM.Store.TypeJeux" Multiplicity="*" />
+    <End Role="Jeux" Type="CJRSM.Store.Jeux" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Jeux">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TypeJeux">
+        <PropertyRef Name="Jeux_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CJRSM" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="CJRSMContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Membres" EntityType="CJRSM.Membres" />
+          <EntitySet Name="Jeux" EntityType="CJRSM.Jeux" />
+          <EntitySet Name="Documents" EntityType="CJRSM.Documents" />
+          <EntitySet Name="Activites" EntityType="CJRSM.Activites" />
+          <EntitySet Name="Types" EntityType="CJRSM.Types" />
+          <EntitySet Name="Publications" EntityType="CJRSM.Publications" />
+          <AssociationSet Name="MembreActivite" Association="CJRSM.MembreActivite">
+            <End Role="Membres" EntitySet="Membres" />
+            <End Role="Activites" EntitySet="Activites" />
+          </AssociationSet>
+          <AssociationSet Name="MembreJeux" Association="CJRSM.MembreJeux">
+            <End Role="Membres" EntitySet="Membres" />
+            <End Role="Jeux" EntitySet="Jeux" />
+          </AssociationSet>
+          <AssociationSet Name="MembreLivres" Association="CJRSM.MembreLivres">
+            <End Role="Membres" EntitySet="Membres" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="PublicationMembre" Association="CJRSM.PublicationMembre">
+            <End Role="Publications" EntitySet="Publications" />
+            <End Role="Membres" EntitySet="Membres" />
+          </AssociationSet>
+          <AssociationSet Name="TypeJeux" Association="CJRSM.TypeJeux">
+            <End Role="Types" EntitySet="Types" />
+            <End Role="Jeux" EntitySet="Jeux" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Membres">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoDossier" Type="String" Nullable="false" />
+          <Property Name="Prenom" Type="String" Nullable="false" />
+          <Property Name="Nom" Type="String" Nullable="false" />
+          <Property Name="Role" Type="String" Nullable="false" />
+          <Property Name="MDP" Type="String" Nullable="false" />
+          <NavigationProperty Name="Activite" Relationship="CJRSM.MembreActivite" FromRole="Membres" ToRole="Activites" />
+          <NavigationProperty Name="Jeux" Relationship="CJRSM.MembreJeux" FromRole="Membres" ToRole="Jeux" />
+          <NavigationProperty Name="Livres" Relationship="CJRSM.MembreLivres" FromRole="Membres" ToRole="Documents" />
+          <NavigationProperty Name="Publication" Relationship="CJRSM.PublicationMembre" FromRole="Membres" ToRole="Publications" />
+        </EntityType>
+        <EntityType Name="Jeux">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titre" Type="String" Nullable="false" />
+          <Property Name="Difficulte" Type="Int32" Nullable="false" />
+          <Property Name="NbrJoueurMin" Type="Int32" Nullable="false" />
+          <Property Name="NbrJoueurMax" Type="Int32" Nullable="false" />
+          <Property Name="TempsMin" Type="Int32" Nullable="false" />
+          <Property Name="TempsMax" Type="Int32" Nullable="false" />
+          <Property Name="Disponible" Type="Boolean" Nullable="false" />
+          <Property Name="MembreId" Type="Int32" Nullable="false" />
+          <Property Name="DateAjout" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Membre" Relationship="CJRSM.MembreJeux" FromRole="Jeux" ToRole="Membres" />
+          <NavigationProperty Name="Type" Relationship="CJRSM.TypeJeux" FromRole="Jeux" ToRole="Types" />
+        </EntityType>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titre" Type="String" Nullable="false" />
+          <Property Name="Auteur" Type="String" Nullable="false" />
+          <Property Name="Disponible" Type="Boolean" Nullable="false" />
+          <Property Name="DateAjout" Type="DateTime" Nullable="false" />
+          <Property Name="MembreId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Membre" Relationship="CJRSM.MembreLivres" FromRole="Documents" ToRole="Membres" />
+        </EntityType>
+        <EntityType Name="Activites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MembreId" Type="String" Nullable="false" />
+          <Property Name="Titre" Type="String" Nullable="false" />
+          <Property Name="Jeu" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="NbrMembreMin" Type="Int32" Nullable="false" />
+          <Property Name="NbrMembreMax" Type="Int32" Nullable="false" />
+          <Property Name="Jour" Type="Int32" Nullable="false" />
+          <Property Name="HeureDebut" Type="Time" Nullable="false" />
+          <Property Name="Hebdomadaire" Type="Boolean" Nullable="false" />
+          <Property Name="DateDebut" Type="DateTime" Nullable="false" />
+          <Property Name="NbrRepetition" Type="Int32" Nullable="false" />
+          <Property Name="Accepte" Type="Boolean" Nullable="false" />
+          <Property Name="Participant" Type="String" Nullable="false" />
+          <NavigationProperty Name="Membre" Relationship="CJRSM.MembreActivite" FromRole="Activites" ToRole="Membres" />
+        </EntityType>
+        <EntityType Name="Types">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <NavigationProperty Name="Jeux" Relationship="CJRSM.TypeJeux" FromRole="Types" ToRole="Jeux" />
+          <Property Name="Etiquette" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Publications">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titre" Type="String" Nullable="false" />
+          <Property Name="MembreId" Type="String" Nullable="false" />
+          <Property Name="Contenu" Type="String" Nullable="false" />
+          <NavigationProperty Name="Membre" Relationship="CJRSM.PublicationMembre" FromRole="Publications" ToRole="Membres" />
+        </EntityType>
+        <Association Name="MembreActivite">
+          <End Type="CJRSM.Membres" Role="Membres" Multiplicity="*" />
+          <End Type="CJRSM.Activites" Role="Activites" Multiplicity="*" />
+        </Association>
+        <Association Name="MembreJeux">
+          <End Type="CJRSM.Membres" Role="Membres" Multiplicity="1" />
+          <End Type="CJRSM.Jeux" Role="Jeux" Multiplicity="*" />
+        </Association>
+        <Association Name="MembreLivres">
+          <End Type="CJRSM.Membres" Role="Membres" Multiplicity="1" />
+          <End Type="CJRSM.Documents" Role="Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membres">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="MembreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PublicationMembre">
+          <End Type="CJRSM.Publications" Role="Publications" Multiplicity="*" />
+          <End Type="CJRSM.Membres" Role="Membres" Multiplicity="1" />
+        </Association>
+        <Association Name="TypeJeux">
+          <End Type="CJRSM.Types" Role="Types" Multiplicity="*" />
+          <End Type="CJRSM.Jeux" Role="Jeux" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CJRSMStoreContainer" CdmEntityContainer="CJRSMContainer">
+    <EntitySetMapping Name="Membres">
+      <EntityTypeMapping TypeName="IsTypeOf(CJRSM.Membres)">
+        <MappingFragment StoreEntitySet="Membres">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NoDossier" ColumnName="NoDossier" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="MDP" ColumnName="MDP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jeux">
+      <EntityTypeMapping TypeName="IsTypeOf(CJRSM.Jeux)">
+        <MappingFragment StoreEntitySet="Jeux">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="Difficulte" ColumnName="Difficulte" />
+          <ScalarProperty Name="NbrJoueurMin" ColumnName="NbrJoueurMin" />
+          <ScalarProperty Name="NbrJoueurMax" ColumnName="NbrJoueurMax" />
+          <ScalarProperty Name="TempsMin" ColumnName="TempsMin" />
+          <ScalarProperty Name="TempsMax" ColumnName="TempsMax" />
+          <ScalarProperty Name="Disponible" ColumnName="Disponible" />
+          <ScalarProperty Name="MembreId" ColumnName="MembreId" />
+          <ScalarProperty Name="DateAjout" ColumnName="DateAjout" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documents">
+      <EntityTypeMapping TypeName="IsTypeOf(CJRSM.Documents)">
+        <MappingFragment StoreEntitySet="Documents">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="Auteur" ColumnName="Auteur" />
+          <ScalarProperty Name="Disponible" ColumnName="Disponible" />
+          <ScalarProperty Name="DateAjout" ColumnName="DateAjout" />
+          <ScalarProperty Name="MembreId" ColumnName="MembreId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Activites">
+      <EntityTypeMapping TypeName="IsTypeOf(CJRSM.Activites)">
+        <MappingFragment StoreEntitySet="Activites">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MembreId" ColumnName="MembreId" />
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="Jeu" ColumnName="Jeu" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="NbrMembreMin" ColumnName="NbrMembreMin" />
+          <ScalarProperty Name="NbrMembreMax" ColumnName="NbrMembreMax" />
+          <ScalarProperty Name="Jour" ColumnName="Jour" />
+          <ScalarProperty Name="HeureDebut" ColumnName="HeureDebut" />
+          <ScalarProperty Name="Hebdomadaire" ColumnName="Hebdomadaire" />
+          <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
+          <ScalarProperty Name="NbrRepetition" ColumnName="NbrRepetition" />
+          <ScalarProperty Name="Accepte" ColumnName="Accepte" />
+          <ScalarProperty Name="Participant" ColumnName="Participant" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Types">
+      <EntityTypeMapping TypeName="IsTypeOf(CJRSM.Types)">
+        <MappingFragment StoreEntitySet="Types">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Etiquette" ColumnName="Etiquette" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Publications">
+      <EntityTypeMapping TypeName="IsTypeOf(CJRSM.Publications)">
+        <MappingFragment StoreEntitySet="Publications">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="MembreId" ColumnName="MembreId" />
+          <ScalarProperty Name="Contenu" ColumnName="Contenu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="MembreActivite" TypeName="CJRSM.MembreActivite" StoreEntitySet="MembreActivite">
+      <EndProperty Name="Membres">
+        <ScalarProperty Name="Id" ColumnName="Membre_Id" />
+      </EndProperty>
+      <EndProperty Name="Activites">
+        <ScalarProperty Name="Id" ColumnName="Activite_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MembreJeux" TypeName="CJRSM.MembreJeux" StoreEntitySet="Jeux">
+      <EndProperty Name="Membres">
+        <ScalarProperty Name="Id" ColumnName="Membre_Id" />
+      </EndProperty>
+      <EndProperty Name="Jeux">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PublicationMembre" TypeName="CJRSM.PublicationMembre" StoreEntitySet="Publications">
+      <EndProperty Name="Membres">
+        <ScalarProperty Name="Id" ColumnName="Membre_Id" />
+      </EndProperty>
+      <EndProperty Name="Publications">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TypeJeux" TypeName="CJRSM.TypeJeux" StoreEntitySet="TypeJeux">
+      <EndProperty Name="Types">
+        <ScalarProperty Name="Id" ColumnName="Type_Id" />
+      </EndProperty>
+      <EndProperty Name="Jeux">
+        <ScalarProperty Name="Id" ColumnName="Jeux_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CJRSM.Models.DAL.Activite>
+﻿@model IEnumerable<CJRSM.Models.DAL.Activites>
 
 @{
     ViewBag.Title = "Index";
@@ -11,6 +11,7 @@
             <li><h2>@*@Html.ActionLink("", "")*@</h2></li>
         </ul>
     </nav>
+</main>
 
     <div class="conteneur_Deux">
         <h2>Index</h2>
@@ -18,57 +19,94 @@
         <p>
             @Html.ActionLink("Create New", "Create")
         </p>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Titre)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MembreInscrit)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NbrMembreMaximum)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Jour)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DateDebut)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DateFin)
-                </th>
-                <th></th>
-            </tr>
+    </div>
 
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MembreId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Titre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Jeu)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NbrMembreMin)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NbrMembreMax)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Jour)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.HeureDebut)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Hebdomadaire)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateDebut)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NbrRepetition)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Accepte)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Participant)
+                    </th>
+                    <th></th>
+                </tr>
             @if (Model != null)
             {
                 foreach (var item in Model)
                 {
                     <tr>
                         <td>
+                            @Html.DisplayFor(modelItem => item.MembreId)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Titre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Jeu)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Description)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.MembreInscrit)
+                            @Html.DisplayFor(modelItem => item.NbrMembreMin)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.NbrMembreMaximum)
+                            @Html.DisplayFor(modelItem => item.NbrMembreMax)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Jour)
                         </td>
                         <td>
+                            @Html.DisplayFor(modelItem => item.HeureDebut)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hebdomadaire)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.DateDebut)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.DateFin)
+                            @Html.DisplayFor(modelItem => item.NbrRepetition)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Accepte)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Participant)
                         </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
@@ -78,7 +116,4 @@
                     </tr>
                 }
             }
-
-        </table>
-    </div>
-</main>
+            </table>

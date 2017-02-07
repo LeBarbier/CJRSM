@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace CJRSM.Models.DAL
 {
-    public class IUnitOfWork //: IDisposable
+    public interface IUnitOfWork : IDisposable
     {
-       // IGenericRepository<Membre> Membres { get; }
+        IGenericRepository<Activites> Activites { get; }
+        IGenericRepository<Documents> Documents { get; }
+        IGenericRepository<Jeux> Jeux { get; }
+        IGenericRepository<Membres> Membres { get; }
+        IGenericRepository<Publications> Publications { get; }
+        int Save();
     }
 }

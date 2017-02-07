@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Donnees.Models.Biz
+namespace CJRSM.Models.Biz
 {
     public class Publication
     {

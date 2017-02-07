@@ -77,7 +77,6 @@
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -117,44 +116,22 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="packages.config" />
-    <Content Include="ClassDiagram1.cd" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\DAL\CjrsmBD.edmx">
-      <LastGenOutput>CjrsmBD - Copier.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.1.1.js" />
-    <Content Include="Scripts\jquery-3.1.1.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.1.1.min.map" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
+    <Content Include="Models\DAL\CJRSM.Context.tt">
+      <DependentUpon>CJRSM.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CJRSM.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\DAL\CJRSM.edmx.diagram">
+      <DependentUpon>CJRSM.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\DAL\CJRSM.edmx.sql" />
+    <Content Include="Models\DAL\CJRSM.tt">
+      <DependentUpon>CJRSM.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CJRSM.cs</LastGenOutput>
+    </Content>
+    <Content Include="packages.config" />
+    <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Biz\Activite.cs" />
@@ -162,7 +139,41 @@
     <Compile Include="Models\Biz\Jeu.cs" />
     <Compile Include="Models\Biz\Membre.cs" />
     <Compile Include="Models\Biz\Publication.cs" />
+    <Compile Include="Models\DAL\Activites.cs">
+      <DependentUpon>CJRSM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAL\CJRSM.Context.cs">
+      <DependentUpon>CJRSM.Context.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Models\DAL\CJRSM.cs">
+      <DependentUpon>CJRSM.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Models\DAL\CJRSM.Designer.cs">
+      <DependentUpon>CJRSM.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Models\DAL\Documents.cs">
+      <DependentUpon>CJRSM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAL\GenericRepository.cs" />
+    <Compile Include="Models\DAL\IGenericRepository.cs" />
     <Compile Include="Models\DAL\IUnitOfWork.cs" />
+    <Compile Include="Models\DAL\Jeux.cs" />
+    <Compile Include="Models\DAL\Membres.cs">
+      <DependentUpon>CJRSM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAL\Publications.cs">
+      <DependentUpon>CJRSM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAL\Types.cs">
+      <DependentUpon>CJRSM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAL\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +181,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\DAL\CJRSM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CJRSM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
