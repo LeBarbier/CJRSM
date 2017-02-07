@@ -94,7 +94,7 @@ CREATE TABLE [dbo].[Jeux] (
     [TempsMax] int  NOT NULL,
     [Disponible] bit  NOT NULL,
     [MembreId] int,
-    [DateAjout] datetime,
+    [DateAjout] date,
     [Membre_Id] int
 );
 GO

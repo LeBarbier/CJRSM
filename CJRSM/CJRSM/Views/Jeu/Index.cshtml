@@ -1,51 +1,45 @@
 ﻿@model IEnumerable<CJRSM.Models.DAL.Jeux>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Listes des Jeux";
 }
 
 <main role="main">
     <nav name="nav_secondaire" class="nav nav_secondaire">
         <ul>
-            <li>@Html.ActionLink("Nouvelle Activité", "Create")</li>
             <li><h2>@*@Html.ActionLink("", "")*@</h2></li>
         </ul>
     </nav>
 </main>
 
 <div class="conteneur_Deux">
-    <h2>Index</h2>
-
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-
+    <h2>Listes des Jeux</h2>
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Titre)
+                <h4>Titre</h4>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Difficulte)
+                <h4>Difficulté</h4>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NbrJoueurMin)
+                <h4>Nombre de Joueur Minimum</h4>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NbrJoueurMax)
+                <h4>Nombre de Joueur Maximum</h4>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TempsMin)
+                <h4>Temps Minimum</h4>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TempsMax)
+                <h4>Temps Maximum</h4>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Disponible)
+                <h4>Disponible</h4>
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.MembreId)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.DateAjout)
             </th>
@@ -82,7 +76,7 @@
                         @Html.DisplayFor(modelItem => item.MembreId)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.DateAjout)
+                        @Html.DisplayFor(modelItem => item.DateAjout.Date)
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
