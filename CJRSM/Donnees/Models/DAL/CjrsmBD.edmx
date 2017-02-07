@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CjrsmBD.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="CjrsmBDStoreContainer">
+    <EntitySet Name="MembreSet" EntityType="CjrsmBD.Store.MembreSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JeuxSet" EntityType="CjrsmBD.Store.JeuxSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LivresSet" EntityType="CjrsmBD.Store.LivresSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ActiviteSet" EntityType="CjrsmBD.Store.ActiviteSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MembreActivite" EntityType="CjrsmBD.Store.MembreActivite" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_MembreActivite_Membre" Association="CjrsmBD.Store.FK_MembreActivite_Membre">
+      <End Role="Membre" EntitySet="MembreSet" />
+      <End Role="MembreActivite" EntitySet="MembreActivite" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MembreActivite_Activite" Association="CjrsmBD.Store.FK_MembreActivite_Activite">
+      <End Role="Activite" EntitySet="ActiviteSet" />
+      <End Role="MembreActivite" EntitySet="MembreActivite" />
+    </AssociationSet>
+    <AssociationSet Name="MembreJeux" Association="CjrsmBD.Store.MembreJeux">
+      <End Role="Membre" EntitySet="MembreSet" />
+      <End Role="Jeux" EntitySet="JeuxSet" />
+    </AssociationSet>
+    <AssociationSet Name="MembreLivres" Association="CjrsmBD.Store.MembreLivres">
+      <End Role="Membre" EntitySet="MembreSet" />
+      <End Role="Livres" EntitySet="LivresSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="MembreSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NoDossier" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JeuxSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NbrJoueur" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Temps" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MembreId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LivresSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MembreId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ActiviteSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MembreInscrit" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NbrMembreMaximum" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Jour" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateDebut" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateFin" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MembreActivite">
+    <Key>
+      <PropertyRef Name="Membre_Id" />
+      <PropertyRef Name="Activite_Id" />
+    </Key>
+    <Property Name="Membre_Id" Type="int" Nullable="false" />
+    <Property Name="Activite_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="MembreJeux">
+    <End Role="Membre" Type="CjrsmBD.Store.MembreSet" Multiplicity="1" />
+    <End Role="Jeux" Type="CjrsmBD.Store.JeuxSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Membre">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Jeux">
+        <PropertyRef Name="MembreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MembreLivres">
+    <End Role="Membre" Type="CjrsmBD.Store.MembreSet" Multiplicity="1" />
+    <End Role="Livres" Type="CjrsmBD.Store.LivresSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Membre">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Livres">
+        <PropertyRef Name="MembreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MembreActivite_Membre">
+    <End Role="Membre" Type="CjrsmBD.Store.MembreSet" Multiplicity="1" />
+    <End Role="MembreActivite" Type="CjrsmBD.Store.MembreActivite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Membre">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MembreActivite">
+        <PropertyRef Name="Membre_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MembreActivite_Activite">
+    <End Role="MembreActivite" Type="CjrsmBD.Store.MembreActivite" Multiplicity="*" />
+    <End Role="Activite" Type="CjrsmBD.Store.ActiviteSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Activite">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MembreActivite">
+        <PropertyRef Name="Activite_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CjrsmBD" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="CjrsmBDContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MembreSet" EntityType="CjrsmBD.Membre" />
+          <EntitySet Name="JeuxSet" EntityType="CjrsmBD.Jeux" />
+          <EntitySet Name="DocumentsSet" EntityType="CjrsmBD.Documents" />
+          <EntitySet Name="ActiviteSet" EntityType="CjrsmBD.Activite" />
+          <AssociationSet Name="MembreActivite" Association="CjrsmBD.MembreActivite">
+            <End Role="Membre" EntitySet="MembreSet" />
+            <End Role="Activite" EntitySet="ActiviteSet" />
+          </AssociationSet>
+          <AssociationSet Name="MembreJeux" Association="CjrsmBD.MembreJeux">
+            <End Role="Membre" EntitySet="MembreSet" />
+            <End Role="Jeux" EntitySet="JeuxSet" />
+          </AssociationSet>
+          <AssociationSet Name="MembreLivres" Association="CjrsmBD.MembreLivres">
+            <End Role="Membre" EntitySet="MembreSet" />
+            <End Role="Livres" EntitySet="DocumentsSet" />
+          </AssociationSet>
+          <EntitySet Name="PublicationSet" EntityType="CjrsmBD.Publication" />
+          <AssociationSet Name="PublicationMembre" Association="CjrsmBD.PublicationMembre">
+            <End Role="Publication" EntitySet="PublicationSet" />
+            <End Role="Membre" EntitySet="MembreSet" />
+          </AssociationSet>
+          <AssociationSet Name="ActiviteJeux" Association="CjrsmBD.ActiviteJeux">
+            <End Role="Activite" EntitySet="ActiviteSet" />
+            <End Role="Jeux" EntitySet="JeuxSet" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Membre">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoDossier" Type="String" Nullable="false" />
+          <NavigationProperty Name="Activite" Relationship="CjrsmBD.MembreActivite" FromRole="Membre" ToRole="Activite" />
+          <NavigationProperty Name="Jeux" Relationship="CjrsmBD.MembreJeux" FromRole="Membre" ToRole="Jeux" />
+          <NavigationProperty Name="Livres" Relationship="CjrsmBD.MembreLivres" FromRole="Membre" ToRole="Livres" />
+          <Property Name="Prenom" Type="String" Nullable="false" />
+          <Property Name="Nom" Type="String" Nullable="false" />
+          <Property Name="Role" Type="String" Nullable="false" />
+          <Property Name="MDP" Type="String" Nullable="false" />
+          <NavigationProperty Name="Publication" Relationship="CjrsmBD.PublicationMembre" FromRole="Membre" ToRole="Publication" />
+        </EntityType>
+        <EntityType Name="Jeux">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titre" Type="String" Nullable="false" />
+          <Property Name="Difficulte" Type="String" Nullable="false" />
+          <Property Name="Type" Type="String" Nullable="false" />
+          <Property Name="NbrJoueurMin" Type="String" Nullable="false" />
+          <Property Name="NbrJoueurMax" Type="String" Nullable="false" />
+          <Property Name="TempsMin" Type="String" Nullable="false" />
+          <Property Name="TempsMax" Type="String" Nullable="false" />
+          <NavigationProperty Name="Membre" Relationship="CjrsmBD.MembreJeux" FromRole="Jeux" ToRole="Membre" />
+          <Property Name="Disponible" Type="String" Nullable="false" />
+          <Property Name="MembreId" Type="Int32" Nullable="false" />
+          <Property Name="DateAjout" Type="String" Nullable="false" />
+          <NavigationProperty Name="Activite" Relationship="CjrsmBD.ActiviteJeux" FromRole="Jeux" ToRole="Activite" />
+        </EntityType>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titre" Type="String" Nullable="false" />
+          <Property Name="Auteur" Type="String" Nullable="false" />
+          <NavigationProperty Name="Membre" Relationship="CjrsmBD.MembreLivres" FromRole="Livres" ToRole="Membre" />
+          <Property Name="Disponible" Type="String" Nullable="false" />
+          <Property Name="DateAjout" Type="String" Nullable="false" />
+          <Property Name="MembreId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Activite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MembreId" Type="String" Nullable="false" />
+          <Property Name="Titre" Type="String" Nullable="false" />
+          <Property Name="Jeu" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="NbrMembreMin" Type="String" Nullable="false" />
+          <Property Name="NbrMembreMax" Type="String" Nullable="false" />
+          <Property Name="Jour" Type="String" Nullable="false" />
+          <Property Name="HeureDebut" Type="String" Nullable="false" />
+          <Property Name="Hebdomadaire" Type="String" Nullable="false" />
+          <NavigationProperty Name="Membre" Relationship="CjrsmBD.MembreActivite" FromRole="Activite" ToRole="Membre" />
+          <Property Name="DateDebut" Type="String" Nullable="false" />
+          <Property Name="NbrRepetition" Type="String" Nullable="false" />
+          <Property Name="Accepte" Type="String" Nullable="false" />
+          <Property Name="Participant" Type="String" Nullable="false" />
+          <NavigationProperty Name="Jeux" Relationship="CjrsmBD.ActiviteJeux" FromRole="Activite" ToRole="Jeux" />
+        </EntityType>
+        <Association Name="MembreActivite">
+          <End Type="CjrsmBD.Membre" Role="Membre" Multiplicity="*" />
+          <End Type="CjrsmBD.Activite" Role="Activite" Multiplicity="*" />
+        </Association>
+        <Association Name="MembreJeux">
+          <End Type="CjrsmBD.Membre" Role="Membre" Multiplicity="1" />
+          <End Type="CjrsmBD.Jeux" Role="Jeux" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membre">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Jeux">
+              <PropertyRef Name="MembreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MembreLivres">
+          <End Type="CjrsmBD.Membre" Role="Membre" Multiplicity="1" />
+          <End Type="CjrsmBD.Documents" Role="Livres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membre">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Livres">
+              <PropertyRef Name="MembreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Publication">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titre" Type="String" Nullable="false" />
+          <Property Name="MembreId" Type="String" Nullable="false" />
+          <Property Name="Contenu" Type="String" Nullable="false" />
+          <NavigationProperty Name="Membre" Relationship="CjrsmBD.PublicationMembre" FromRole="Publication" ToRole="Membre" />
+        </EntityType>
+        <Association Name="PublicationMembre">
+          <End Type="CjrsmBD.Publication" Role="Publication" Multiplicity="*" />
+          <End Type="CjrsmBD.Membre" Role="Membre" Multiplicity="1" />
+        </Association>
+        <Association Name="ActiviteJeux">
+          <End Type="CjrsmBD.Activite" Role="Activite" Multiplicity="*" />
+          <End Type="CjrsmBD.Jeux" Role="Jeux" Multiplicity="0..1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CjrsmBDStoreContainer" CdmEntityContainer="CjrsmBDContainer">
+    <EntitySetMapping Name="MembreSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CjrsmBD.Membre)">
+        <MappingFragment StoreEntitySet="MembreSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NoDossier" ColumnName="NoDossier" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JeuxSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CjrsmBD.Jeux)">
+        <MappingFragment StoreEntitySet="JeuxSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="NbrJoueurMin" ColumnName="NbrJoueur" />
+          <ScalarProperty Name="TempsMin" ColumnName="Temps" />
+          <ScalarProperty Name="MembreId" ColumnName="MembreId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CjrsmBD.Documents)">
+        <MappingFragment StoreEntitySet="LivresSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="MembreId" ColumnName="MembreId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActiviteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CjrsmBD.Activite)">
+        <MappingFragment StoreEntitySet="ActiviteSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MembreId" ColumnName="MembreInscrit" />
+          <ScalarProperty Name="NbrMembreMax" ColumnName="NbrMembreMaximum" />
+          <ScalarProperty Name="Jour" ColumnName="Jour" />
+          <ScalarProperty Name="HeureDebut" ColumnName="DateDebut" />
+          <ScalarProperty Name="Hebdomadaire" ColumnName="DateFin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="MembreActivite" TypeName="CjrsmBD.MembreActivite" StoreEntitySet="MembreActivite">
+      <EndProperty Name="Membre">
+        <ScalarProperty Name="Id" ColumnName="Membre_Id" />
+      </EndProperty>
+      <EndProperty Name="Activite">
+        <ScalarProperty Name="Id" ColumnName="Activite_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

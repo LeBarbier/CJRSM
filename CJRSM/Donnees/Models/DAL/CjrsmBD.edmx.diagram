@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6cf254f2e5a145219978ea1a716e63bc" Name="Diagram1" ZoomLevel="67" >
+        <EntityTypeShape EntityType="CjrsmBD.Membre" Width="1.5" PointX="3.375" PointY="1.25" />
+        <EntityTypeShape EntityType="CjrsmBD.Jeux" Width="1.5" PointX="3.375" PointY="4.875" />
+        <EntityTypeShape EntityType="CjrsmBD.Documents" Width="1.5" PointX="7.875" PointY="1.75" />
+        <EntityTypeShape EntityType="CjrsmBD.Activite" Width="1.5" PointX="5.75" PointY="3.5" />
+        <AssociationConnector Association="CjrsmBD.MembreActivite" />
+        <AssociationConnector Association="CjrsmBD.MembreJeux" ></AssociationConnector>
+        <AssociationConnector Association="CjrsmBD.MembreLivres" />
+        <EntityTypeShape EntityType="CjrsmBD.Publication" Width="1.5" PointX="5.75" PointY="0.5" />
+        <AssociationConnector Association="CjrsmBD.PublicationMembre" />
+        <AssociationConnector Association="CjrsmBD.ActiviteJeux" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -7,32 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-<<<<<<< HEAD
-namespace CJRSM.Models.DAL
-=======
 namespace Donnees.Models.DAL
->>>>>>> defb080538b62100585d77ff091871497249917d
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Documents
+    public partial class Publication
     {
         public int Id { get; set; }
         public string Titre { get; set; }
-        public string Auteur { get; set; }
-<<<<<<< HEAD
-        public bool Disponible { get; set; }
-        public System.DateTime DateAjout { get; set; }
-        public int MembreId { get; set; }
-    
-        public virtual Membres Membre { get; set; }
-=======
-        public string Disponible { get; set; }
-        public string DateAjout { get; set; }
-        public int MembreId { get; set; }
+        public string MembreId { get; set; }
+        public string Contenu { get; set; }
     
         public virtual Membre Membre { get; set; }
->>>>>>> defb080538b62100585d77ff091871497249917d
     }
 }

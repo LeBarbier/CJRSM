@@ -151,7 +151,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ActiviteController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
+<<<<<<< HEAD
     <Compile Include="Controllers\JeuController.cs" />
+=======
+    <Compile Include="Controllers\JeuxController.cs" />
+>>>>>>> defb080538b62100585d77ff091871497249917d
     <Compile Include="Controllers\MembreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -460,6 +464,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
+<<<<<<< HEAD
+=======
+    <Content Include="Views\Jeu\Index.cshtml" />
+>>>>>>> defb080538b62100585d77ff091871497249917d
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="web.config">

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CJRSM.Models.DAL
+namespace Donnees.Models.DAL
 {
     using System;
     using System.Collections.Generic;
@@ -20,7 +20,11 @@ namespace CJRSM.Models.DAL
             this.Activite = new HashSet<Activites>();
             this.Jeux = new HashSet<Jeux>();
             this.Livres = new HashSet<Documents>();
+<<<<<<< HEAD:CJRSM/Donnees/Models/DAL/Membres.cs
             this.Publication = new HashSet<Publications>();
+=======
+            this.Publication = new HashSet<Publication>();
+>>>>>>> defb080538b62100585d77ff091871497249917d:CJRSM/Donnees/Models/DAL/Membre.cs
         }
     
         public int Id { get; set; }
@@ -37,6 +41,10 @@ namespace CJRSM.Models.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Documents> Livres { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+<<<<<<< HEAD:CJRSM/Donnees/Models/DAL/Membres.cs
         public virtual ICollection<Publications> Publication { get; set; }
+=======
+        public virtual ICollection<Publication> Publication { get; set; }
+>>>>>>> defb080538b62100585d77ff091871497249917d:CJRSM/Donnees/Models/DAL/Membre.cs
     }
 }
