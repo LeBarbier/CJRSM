@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Donnees.Models.DAL
+namespace CJRSM.Models.DAL
 {
     using System;
     using System.Collections.Generic;

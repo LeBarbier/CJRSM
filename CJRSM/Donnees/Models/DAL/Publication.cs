@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Donnees.Models.DAL
+namespace CJRSM.Models.DAL
 {
     using System;
     using System.Collections.Generic;
@@ -19,6 +19,6 @@ namespace Donnees.Models.DAL
         public string MembreId { get; set; }
         public string Contenu { get; set; }
     
-        public virtual Membre Membre { get; set; }
+        public virtual Membres Membre { get; set; }
     }
 }

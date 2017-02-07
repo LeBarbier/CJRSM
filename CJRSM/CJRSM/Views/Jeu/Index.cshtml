@@ -1,67 +1,97 @@
 ﻿@model IEnumerable<CJRSM.Models.DAL.Jeux>
 
 @{
-    ViewBag.Title = "ListeJeux";
+    ViewBag.Title = "Index";
 }
 
 <main role="main">
     <nav name="nav_secondaire" class="nav nav_secondaire">
         <ul>
-            <li>@Html.ActionLink("Nouveaux Jeux", "Create")</li>
+            <li>@Html.ActionLink("Nouvelle Activité", "Create")</li>
             <li><h2>@*@Html.ActionLink("", "")*@</h2></li>
         </ul>
     </nav>
-
-    <div class="conteneur_Deux">
-        <h2>ListeJeux</h2>
-
-        <p>
-        </p>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Titre)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NbrJoueur)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Temps)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MembreId)
-                </th>
-                <th></th>
-            </tr>
-
-            @if (Model != null)
-            {
-                foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Titre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NbrJoueur)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Temps)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MembreId)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                        </td>
-                    </tr>
-                }
-            }
-
-        </table>
-    </div>
 </main>
 
+<div class="conteneur_Deux">
+    <h2>Index</h2>
 
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Difficulte)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NbrJoueurMin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NbrJoueurMax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempsMin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempsMax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Disponible)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MembreId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAjout)
+            </th>
+            <th></th>
+        </tr>
+
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Titre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Difficulte)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NbrJoueurMin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NbrJoueurMax)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TempsMin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TempsMax)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Disponible)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MembreId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateAjout)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>

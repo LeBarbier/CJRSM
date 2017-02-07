@@ -134,27 +134,12 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-=======
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
->>>>>>> defb080538b62100585d77ff091871497249917d
     <Compile Include="Models\Biz\Activite.cs" />
     <Compile Include="Models\Biz\Document.cs" />
     <Compile Include="Models\Biz\Jeu.cs" />
     <Compile Include="Models\Biz\Membre.cs" />
     <Compile Include="Models\Biz\Publication.cs" />
-<<<<<<< HEAD
-    <Compile Include="Models\DAL\Activites.cs">
-      <DependentUpon>CJRSM.tt</DependentUpon>
-=======
-    <Compile Include="Models\DAL\Activite.cs">
-      <DependentUpon>CjrsmBD.tt</DependentUpon>
->>>>>>> defb080538b62100585d77ff091871497249917d
-    </Compile>
+    <Compile Include="Models\DAL\Activites.cs" />
     <Compile Include="Models\DAL\CJRSM.Context.cs">
       <DependentUpon>CJRSM.Context.tt</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -170,35 +155,22 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Models\DAL\Documents.cs">
-      <DependentUpon>CJRSM.tt</DependentUpon>
-    </Compile>
-<<<<<<< HEAD
+    <Compile Include="Models\DAL\Documents.cs" />
     <Compile Include="Models\DAL\GenericRepository.cs" />
     <Compile Include="Models\DAL\IGenericRepository.cs" />
-=======
-    <Compile Include="Models\DAL\Documents.cs">
-      <DependentUpon>CjrsmBD.tt</DependentUpon>
-    </Compile>
->>>>>>> defb080538b62100585d77ff091871497249917d
     <Compile Include="Models\DAL\IUnitOfWork.cs" />
     <Compile Include="Models\DAL\Jeux.cs" />
     <Compile Include="Models\DAL\Membres.cs">
       <DependentUpon>CJRSM.tt</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Models\DAL\Publications.cs">
       <DependentUpon>CJRSM.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DAL\Types.cs">
       <DependentUpon>CJRSM.tt</DependentUpon>
-=======
-    <Compile Include="Models\DAL\Membre.cs">
-      <DependentUpon>CjrsmBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DAL\Publication.cs">
       <DependentUpon>CjrsmBD.tt</DependentUpon>
->>>>>>> defb080538b62100585d77ff091871497249917d
     </Compile>
     <Compile Include="Models\DAL\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

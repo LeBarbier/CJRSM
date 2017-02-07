@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Donnees.Models.DAL
+namespace CJRSM.Models.DAL
 {
     using System;
     using System.Collections.Generic;
@@ -21,29 +21,9 @@ namespace Donnees.Models.DAL
         }
     
         public int Id { get; set; }
-//<<<<<<< HEAD:CJRSM/Donnees/Models/DAL/Types.cs
         public string Etiquette { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Jeux> Jeux { get; set; }
-//=======
-        public string MembreId { get; set; }
-        public string Titre { get; set; }
-        public string Jeu { get; set; }
-        public string Description { get; set; }
-        public string NbrMembreMin { get; set; }
-        public string NbrMembreMax { get; set; }
-        public string Jour { get; set; }
-        public string HeureDebut { get; set; }
-        public string Hebdomadaire { get; set; }
-        public string DateDebut { get; set; }
-        public string NbrRepetition { get; set; }
-        public string Accepte { get; set; }
-        public string Participant { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Membre> Membre { get; set; }
-        public virtual Jeux Jeux { get; set; }
-//>>>>>>> defb080538b62100585d77ff091871497249917d:CJRSM/Donnees/Models/DAL/Activite.cs
     }
 }
