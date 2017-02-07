@@ -21,12 +21,12 @@ namespace Donnees.Models.DAL
         }
     
         public int Id { get; set; }
-<<<<<<< HEAD:CJRSM/Donnees/Models/DAL/Types.cs
+//<<<<<<< HEAD:CJRSM/Donnees/Models/DAL/Types.cs
         public string Etiquette { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Jeux> Jeux { get; set; }
-=======
+//=======
         public string MembreId { get; set; }
         public string Titre { get; set; }
         public string Jeu { get; set; }
@@ -44,6 +44,6 @@ namespace Donnees.Models.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Membre> Membre { get; set; }
         public virtual Jeux Jeux { get; set; }
->>>>>>> defb080538b62100585d77ff091871497249917d:CJRSM/Donnees/Models/DAL/Activite.cs
+//>>>>>>> defb080538b62100585d77ff091871497249917d:CJRSM/Donnees/Models/DAL/Activite.cs
     }
 }

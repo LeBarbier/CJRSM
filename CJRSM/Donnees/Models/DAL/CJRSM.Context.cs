@@ -25,19 +25,11 @@ namespace Donnees.Models.DAL
             throw new UnintentionalCodeFirstException();
         }
     
-<<<<<<< HEAD:CJRSM/Donnees/Models/DAL/CJRSM.Context.cs
         public virtual DbSet<Membres> Membres { get; set; }
         public virtual DbSet<Jeux> Jeux { get; set; }
         public virtual DbSet<Documents> Documents { get; set; }
         public virtual DbSet<Activites> Activites { get; set; }
         public virtual DbSet<Types> Types { get; set; }
         public virtual DbSet<Publications> Publications { get; set; }
-=======
-        public virtual DbSet<Membre> MembreSet { get; set; }
-        public virtual DbSet<Jeux> JeuxSet { get; set; }
-        public virtual DbSet<Documents> DocumentsSet { get; set; }
-        public virtual DbSet<Activite> ActiviteSet { get; set; }
-        public virtual DbSet<Publication> PublicationSet { get; set; }
->>>>>>> defb080538b62100585d77ff091871497249917d:CJRSM/Donnees/Models/DAL/CjrsmBD.Context.cs
     }
 }

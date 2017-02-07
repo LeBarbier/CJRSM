@@ -17,17 +17,12 @@ namespace Donnees.Models.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Jeux()
         {
-<<<<<<< HEAD
             this.Activite = new HashSet<Activites>();
             this.Type = new HashSet<Type>();
-=======
-            this.Activite = new HashSet<Activite>();
->>>>>>> defb080538b62100585d77ff091871497249917d
         }
     
         public int Id { get; set; }
         public string Titre { get; set; }
-<<<<<<< HEAD
         public int Difficulte { get; set; }
         public int NbrJoueurMin { get; set; }
         public int NbrJoueurMax { get; set; }
@@ -42,20 +37,5 @@ namespace Donnees.Models.DAL
         public virtual ICollection<Activites> Activite { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Type> Type { get; set; }
-=======
-        public string Difficulte { get; set; }
-        public string Type { get; set; }
-        public string NbrJoueurMin { get; set; }
-        public string NbrJoueurMax { get; set; }
-        public string TempsMin { get; set; }
-        public string TempsMax { get; set; }
-        public string Disponible { get; set; }
-        public int MembreId { get; set; }
-        public string DateAjout { get; set; }
-    
-        public virtual Membre Membre { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Activite> Activite { get; set; }
->>>>>>> defb080538b62100585d77ff091871497249917d
     }
 }
