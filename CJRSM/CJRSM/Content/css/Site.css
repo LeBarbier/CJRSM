@@ -7,12 +7,52 @@ ul, li{
     padding:0;
 }
 
+table{
+    margin-left: 15px;
+    background-color:#000000;
+    border-radius:5px;
+    width:95%;
+}
+
+tr:nth-child(even) td{
+    background-color:rgb(181, 181, 181);
+}
+
+tr:hover td{
+    background-color:#9bbdd5;
+}
+
+tr a:hover{
+    transition: color 0.5s;
+    color:rgba(255, 255, 255, 0.81);
+}
+
+th{
+    max-height:35px;
+    border:3px #585858 solid;
+    border-radius:5px;
+    background-color:rgb(212, 212, 212);
+}
+
+th h4{
+    margin:7px;
+    font-weight:800;
+    letter-spacing:0.5px;
+}
+
 td{
-    margin:0;
-    padding:0;
-    text-align:center;
-    height:15px;
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+    height: 15px;
+    width: 150px;
     border: 1px grey solid;
+    border-radius:5px;
+    background-color:rgb(212, 212, 212);
+}
+
+h2{
+    margin-left:50px;
 }
 
 /* Set padding to keep content from hitting the edges */

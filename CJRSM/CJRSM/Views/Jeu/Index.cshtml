@@ -4,15 +4,15 @@
     ViewBag.Title = "Listes des Jeux";
 }
 
-<main role="main">
+@*<main role="main">
     <nav name="nav_secondaire" class="nav nav_secondaire">
         <ul>
-            <li><h2>@*@Html.ActionLink("", "")*@</h2></li>
+            <li><h2>@Html.ActionLink("", "")</h2></li>
         </ul>
     </nav>
-</main>
+</main>*@
 
-<div class="conteneur_Deux">
+<div class="conteneur_Unique">
     <h2>Listes des Jeux</h2>
     <table class="table">
         <tr>
@@ -39,10 +39,10 @@
             </th>
             @*<th>
                 @Html.DisplayNameFor(model => model.MembreId)
-            </th>*@
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateAjout)
-            </th>
+            </th>*@
             <th></th>
         </tr>
 
@@ -52,7 +52,7 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Titre)
+                        @Html.ActionLink(Html.DisplayFor(modelItem => item.Titre).ToString(), "Details", new { id = item.Id })
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Difficulte)
@@ -72,15 +72,14 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Disponible)
                     </td>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.MembreId)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.DateAjout.Date)
-                    </td>
+                        @Html.DisplayFor(modelItem => item.DateAjout.Date.ToString("dd/MM/yyyy"))
+                    </td>*@
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                     </td>
                 </tr>
