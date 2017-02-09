@@ -136,8 +136,9 @@
   <ItemGroup>
     <Compile Include="Models\Biz\Activite.cs" />
     <Compile Include="Models\Biz\Document.cs" />
+    <Compile Include="Models\Biz\IEntite.cs" />
     <Compile Include="Models\Biz\Jeu.cs" />
-    <Compile Include="Models\Biz\Membre.cs" />
+    <Compile Include="Models\Biz\IMembre.cs" />
     <Compile Include="Models\Biz\Publication.cs" />
     <Compile Include="Models\DAL\Activites.cs" />
     <Compile Include="Models\DAL\CJRSM.Context.cs">
@@ -156,6 +157,7 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Models\DAL\Documents.cs" />
+    <Compile Include="Models\DAL\FabriqueMembre.cs" />
     <Compile Include="Models\DAL\GenericRepository.cs" />
     <Compile Include="Models\DAL\IGenericRepository.cs" />
     <Compile Include="Models\DAL\IUnitOfWork.cs" />
@@ -173,6 +175,8 @@
       <DependentUpon>CjrsmBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DAL\UnitOfWork.cs" />
+    <Compile Include="Models\View\Membre\Connexion.cs" />
+    <Compile Include="Models\View\Membre\PremiereConnexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

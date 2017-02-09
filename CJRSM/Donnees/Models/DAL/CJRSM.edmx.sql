@@ -76,10 +76,10 @@ GO
 CREATE TABLE [dbo].[Membres] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [NoDossier] nvarchar(max)  NOT NULL,
-    [Prenom] nvarchar(max)  NOT NULL,
-    [Nom] nvarchar(max)  NOT NULL,
+    [Prenom] nvarchar(max),
+    [Nom] nvarchar(max),
     [Role] nvarchar(max),
-    [MDP] nvarchar(max)  NOT NULL
+    [MDP] nvarchar(max)
 );
 GO
 

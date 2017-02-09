@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace CJRSM.Models.Biz
+namespace CJRSM.Models.DAL
 {
     public class Activite
     {

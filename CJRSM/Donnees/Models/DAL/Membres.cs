@@ -11,8 +11,9 @@ namespace CJRSM.Models.DAL
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Membres
+    using System.Linq;
+
+    public partial class Membres :IEntite, IMembre
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Membres()
@@ -38,5 +39,36 @@ namespace CJRSM.Models.DAL
         public virtual ICollection<Documents> Livres { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Publications> Publication { get; set; }
+
+        public void Modifier(IMembre membre, IUnitOfWork contexte)
+        {
+            Membres modifier = contexte.Membres.Find(membre.Id);
+            modifier.MDP = membre.MDP;
+            modifier.Nom = membre.Nom;
+            modifier.Prenom = membre.Prenom;
+            modifier.Role = membre.Role;
+            contexte.Membres.Update(modifier);
+            contexte.Membres.Save();
+        }
+
+        public IMembre Trouver(string NoDossier, IUnitOfWork contexte)
+        {
+            return contexte.Membres.Get(m => m.NoDossier.Contains(NoDossier)).First();
+        }
+
+        public Document AjouterDocument()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Jeu AjouterJeu()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Publication AjouterPublication()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
