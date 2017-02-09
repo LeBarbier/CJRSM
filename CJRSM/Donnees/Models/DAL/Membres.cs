@@ -51,6 +51,20 @@ namespace CJRSM.Models.DAL
             contexte.Membres.Save();
         }
 
+        public void ModifierPremiereConnexion(IMembre membre, IUnitOfWork contexte){
+            Membres modifier = contexte.Membres.Find(membre.Id);
+            modifier.Activite = null;
+            modifier.Jeux = null;
+            modifier.Livres = null;
+            modifier.Publication = null;
+            modifier.MDP = membre.MDP;
+            modifier.Nom = membre.Nom;
+            modifier.Prenom = membre.Prenom;
+            modifier.Role = membre.Role;
+            contexte.Membres.Update(modifier);
+            contexte.Membres.Save();
+        }
+
         public IMembre Trouver(string NoDossier, IUnitOfWork contexte)
         {
             return contexte.Membres.Get(m => m.NoDossier.Contains(NoDossier)).First();

@@ -47,7 +47,8 @@ namespace CJRSM.Controllers
                     membre.Nom = NewMembre.Nom;
                     membre.Prenom = NewMembre.Prenom;
                     membre.MDP = FaireHashage(NewMembre.MDP, 5);
-                    membre.Modifier(membre, contexte);
+                    membre.Role = "Membre";
+                    membre.ModifierPremiereConnexion(membre, contexte);
                     if (returnUrl != null)
                         return Redirect(returnUrl);
                     else

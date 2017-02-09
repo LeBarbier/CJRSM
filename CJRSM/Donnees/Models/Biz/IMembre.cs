@@ -12,6 +12,7 @@ namespace CJRSM.Models.DAL
         string MDP { get; set; }
 
         void Modifier(IMembre membre, IUnitOfWork contexte);
+        void ModifierPremiereConnexion(IMembre membre, IUnitOfWork contexte);
         IMembre Trouver(string NoDossier, IUnitOfWork contexte);
         [Authorize(Roles = "trésorier, interne, externe, bibliothécaire, publiciste")]
         Document AjouterDocument();
