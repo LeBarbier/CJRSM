@@ -27,6 +27,7 @@
         <EntityTypeShape EntityType="CJRSM.LocationDocument" Width="1.5" PointX="2.875" PointY="6.875" />
         <AssociationConnector Association="CJRSM.DocumentsLocationDocument" />
         <AssociationConnector Association="CJRSM.MembresLocationDocument" />
+        <AssociationConnector Association="CJRSM.FK_MembreLivres" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
