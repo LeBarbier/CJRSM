@@ -11,7 +11,8 @@ namespace CJRSM.Models.DAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class Membre : IMembre
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -41,17 +42,33 @@ namespace CJRSM.Models.DAL
 
         public void Modifier(IMembre membre, IUnitOfWork contexte)
         {
-            throw new NotImplementedException();
+            Membre modifier = contexte.Membre.Find(membre.Id);
+            modifier.MDP = membre.MDP;
+            modifier.Nom = membre.Nom;
+            modifier.Prenom = membre.Prenom;
+            modifier.Role = membre.Role;
+            contexte.Membre.Update(modifier);
+            contexte.Membre.Save();
         }
 
         public void ModifierPremiereConnexion(IMembre membre, IUnitOfWork contexte)
         {
-            throw new NotImplementedException();
+            Membre modifier = contexte.Membre.Find(membre.Id);
+            //modifier.Activite = null;
+            //modifier.Jeux = null;
+            //modifier.Livres = null;
+            //modifier.Publication = null;
+            modifier.MDP = membre.MDP;
+            modifier.Nom = membre.Nom;
+            modifier.Prenom = membre.Prenom;
+            modifier.Role = membre.Role;
+            contexte.Membre.Update(modifier);
+            contexte.Membre.Save();
         }
 
         public IMembre Trouver(string NoDossier, IUnitOfWork contexte)
         {
-            throw new NotImplementedException();
+            return contexte.Membre.Get(m => m.NoDossier.Contains(NoDossier)).First();
         }
 
         public Document AjouterDocument()

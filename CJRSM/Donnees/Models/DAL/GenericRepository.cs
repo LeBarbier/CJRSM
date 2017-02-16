@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
@@ -63,7 +64,16 @@ namespace CJRSM.Models.DAL
             if (ordre != null)
                 return ordre(query).ToList();
             else
-                return query.ToList();
+            {
+                try
+                {
+                    return query.ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception();
+                }
+            }
         }
 
         public int Save()

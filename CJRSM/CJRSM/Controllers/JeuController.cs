@@ -33,9 +33,5 @@ namespace CJRSM.Controllers
             listeJeu = listeJeu.Select(j => j);
             return View(listeJeu);
         }
-        public ActionResult ListeJeux()
-        {
-            return View();
-        }
     }
 }

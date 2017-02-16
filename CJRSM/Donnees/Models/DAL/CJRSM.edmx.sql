@@ -99,7 +99,7 @@ CREATE TABLE [dbo].[Membre] (
     [NoDossier] nvarchar(max)  NOT NULL,
     [Prenom] nvarchar(max)  NOT NULL,
     [Nom] nvarchar(max)  NOT NULL,
-    [Role] nvarchar(max)  NOT NULL,
+    [Role] nvarchar(max),
     [MDP] nvarchar(max)  NOT NULL
 );
 GO
@@ -110,7 +110,7 @@ CREATE TABLE [dbo].[Publication] (
     [Titre] nvarchar(max)  NOT NULL,
     [Contenu] nvarchar(max)  NOT NULL,
     [NoDossier] nvarchar(max)  NOT NULL,
-    [membre_Id] int  NOT NULL
+    [membre_Id] int
 );
 GO
 
@@ -119,10 +119,10 @@ CREATE TABLE [dbo].[LocationDocument] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [DateEmprunt] datetime  NOT NULL,
     [DateRetour] datetime  NOT NULL,
-    [DateEffective] datetime  NOT NULL,
-    [NoDossier] nvarchar(max)  NOT NULL,
+    [DateEffective] datetime,
+	[NoDossier] nvarchar(max)  NOT NULL,
     [IdDocument] nvarchar(max)  NOT NULL,
-    [membre_Id] int  NOT NULL
+    [membre_Id] int
 );
 GO
 
@@ -132,8 +132,8 @@ CREATE TABLE [dbo].[Document] (
     [Titre] nvarchar(max)  NOT NULL,
     [Auteur] nvarchar(max)  NOT NULL,
     [DateAjout] datetime  NOT NULL,
-    [IdLocationDocument] nvarchar(max)  NOT NULL,
-    [LocationDocumentId_Id] int  NOT NULL
+    [IdLocationDocument] nvarchar(max),
+    [LocationDocumentId_Id] int
 );
 GO
 
@@ -142,10 +142,10 @@ CREATE TABLE [dbo].[LocationJeu] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [DateEmprunt] datetime  NOT NULL,
     [DateRetour] datetime  NOT NULL,
-    [DateEffective] datetime  NOT NULL,
+    [DateEffective] datetime,
     [NoDossier] nvarchar(max)  NOT NULL,
     [IdJeu] nvarchar(max)  NOT NULL,
-    [membre_Id] int  NOT NULL
+    [membre_Id] int
 );
 GO
 
@@ -162,7 +162,7 @@ CREATE TABLE [dbo].[Types] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Nom] nvarchar(max)  NOT NULL,
     [IdTypesJeu] nvarchar(max)  NOT NULL,
-    [TypesJeu_Id] int  NOT NULL
+    [TypesJeu_Id] int
 );
 GO
 
@@ -181,14 +181,14 @@ CREATE TABLE [dbo].[Activite] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Titre] nvarchar(max)  NOT NULL,
     [Description] nvarchar(max)  NOT NULL,
-    [NbrMembreMin] int  NOT NULL,
-    [NbrMembreMax] int  NOT NULL,
+    [NbrMembreMin] int,
+    [NbrMembreMax] int,
     [Jour] int  NOT NULL,
     [HeureDebut] time  NOT NULL,
     [DateDebut] datetime  NOT NULL,
-    [NbrRepetion] int  NOT NULL,
+    [NbrRepetion] int,
     [Accepte] bit  NOT NULL,
-    [IdActiviteJeu] nvarchar(max)  NOT NULL
+    [IdActiviteJeu] nvarchar(max)
 );
 GO
 
@@ -210,12 +210,12 @@ CREATE TABLE [dbo].[Jeu] (
     [NbrJoueurMin] int  NOT NULL,
     [NbrJoueurMax] int  NOT NULL,
     [TempsMin] int  NOT NULL,
-    [TempsMax] int  NOT NULL,
+    [TempsMax] int,
     [DateAjout] datetime  NOT NULL,
     [IdTypesJeu] nvarchar(max)  NOT NULL,
-    [IdLocationJeu] nvarchar(max)  NOT NULL,
+    [IdLocationJeu] nvarchar(max),
     [TypesJeuId_Id] int  NOT NULL,
-    [LocationJeuId_Id] int  NOT NULL
+    [LocationJeuId_Id] int
 );
 GO
 
