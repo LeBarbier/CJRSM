@@ -14,14 +14,22 @@ namespace CJRSM.Models.DAL
     
     public partial class LocationJeu
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LocationJeu()
+        {
+            this.Jeus = new HashSet<Jeu>();
+        }
+    
         public int Id { get; set; }
         public System.DateTime DateEmprunt { get; set; }
         public System.DateTime DateRetour { get; set; }
-        public System.DateTime DateEffective { get; set; }
+        public Nullable<System.DateTime> DateEffective { get; set; }
         public string NoDossier { get; set; }
         public string IdJeu { get; set; }
+        public Nullable<int> membre_Id { get; set; }
     
-        public virtual Membre membre { get; set; }
-        public virtual Jeu JeuId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Jeu> Jeus { get; set; }
+        public virtual Membre Membre { get; set; }
     }
 }

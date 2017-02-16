@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
@@ -11,11 +12,11 @@ namespace CJRSM.Models.DAL
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        private CJRSMContainer contexte;
+        private D75E5Entities contexte;
         private bool disposed = false;
         private DbSet<TEntity> dbSet;
 
-        public GenericRepository(CJRSMContainer context)
+        public GenericRepository(D75E5Entities context)
         {
             contexte = context;
             dbSet = contexte.Set<TEntity>();
@@ -69,9 +70,10 @@ namespace CJRSM.Models.DAL
                 {
                     return query.ToList();
                 }
-                catch (Exception ex)
+                catch (InvalidOperationException ex)
                 {
-                    throw new Exception();
+                    var errorMessage = ex.InnerException;
+                    throw new Exception(errorMessage.ToString());
                 }
             }
         }

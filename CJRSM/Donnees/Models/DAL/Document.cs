@@ -8,7 +8,10 @@
 //------------------------------------------------------------------------------
 
 namespace CJRSM.Models.DAL
-{    
+{
+    using System;
+    using System.Collections.Generic;
+    
     public partial class Document
     {
         public int Id { get; set; }
@@ -16,7 +19,8 @@ namespace CJRSM.Models.DAL
         public string Auteur { get; set; }
         public System.DateTime DateAjout { get; set; }
         public string IdLocationDocument { get; set; }
+        public Nullable<int> LocationDocumentId_Id { get; set; }
     
-        public virtual LocationDocument LocationDocumentId { get; set; }
+        public virtual LocationDocument LocationDocument { get; set; }
     }
 }

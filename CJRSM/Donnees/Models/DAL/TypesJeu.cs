@@ -14,11 +14,17 @@ namespace CJRSM.Models.DAL
     
     public partial class TypesJeu
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TypesJeu()
+        {
+            this.Jeus = new HashSet<Jeu>();
+        }
+    
         public int Id { get; set; }
         public string IdTypes { get; set; }
         public string IdJeu { get; set; }
     
-        public virtual Types TypesId { get; set; }
-        public virtual Jeu JeuId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Jeu> Jeus { get; set; }
     }
 }

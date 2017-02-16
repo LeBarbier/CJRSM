@@ -8,7 +8,7 @@ namespace CJRSM.Models.DAL
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private CJRSMContainer contexte;
+        private D75E5Entities contexte;
         private GenericRepository<Activite> activite;
         private GenericRepository<ActiviteJeu> activiteJeu;
         private GenericRepository<Document> document;
@@ -16,15 +16,15 @@ namespace CJRSM.Models.DAL
         private GenericRepository<LocationDocument> locationDocument;
         private GenericRepository<LocationJeu> locationJeu;
         private GenericRepository<Membre> membre;
-        private GenericRepository<Participants> participants;
+        private GenericRepository<Participant> participants;
         private GenericRepository<Publication> publication;
-        private GenericRepository<Types> types;
+        private GenericRepository<Type> types;
         private GenericRepository<TypesJeu> typesJeu;
         private bool disposed = false;
 
         public UnitOfWork()
         {
-            contexte = new CJRSMContainer();
+            contexte = new D75E5Entities();
         }
 
         public IGenericRepository<Activite> Activite
@@ -119,14 +119,14 @@ namespace CJRSM.Models.DAL
             }
         }
 
-        public IGenericRepository<Participants> Participants
+        public IGenericRepository<Participant> Participants
         {
             get
             {
 
                 if (participants == null)
                 {
-                    participants = new GenericRepository<Participants>(contexte);
+                    participants = new GenericRepository<Participant>(contexte);
                 }
                 return participants;
             }
@@ -145,14 +145,14 @@ namespace CJRSM.Models.DAL
             }
         }
 
-        public IGenericRepository<Types> Types
+        public IGenericRepository<Type> Types
         {
             get
             {
 
                 if (types == null)
                 {
-                    types = new GenericRepository<Types>(contexte);
+                    types = new GenericRepository<Type>(contexte);
                 }
                 return types;
             }

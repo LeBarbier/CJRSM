@@ -12,12 +12,11 @@ namespace CJRSM.Models.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Types
+    public partial class Type
     {
         public int Id { get; set; }
         public string Nom { get; set; }
         public string IdTypesJeu { get; set; }
-    
-        public virtual TypesJeu TypesJeu { get; set; }
+        public Nullable<int> TypesJeu_Id { get; set; }
     }
 }

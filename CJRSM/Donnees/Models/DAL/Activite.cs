@@ -17,25 +17,25 @@ namespace CJRSM.Models.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Activite()
         {
-            this.ActiviteJeuId = new HashSet<ActiviteJeu>();
-            this.Participants = new HashSet<Participants>();
+            this.ActiviteJeus = new HashSet<ActiviteJeu>();
+            this.Participants = new HashSet<Participant>();
         }
     
         public int Id { get; set; }
         public string Titre { get; set; }
         public string Description { get; set; }
-        public int NbrMembreMin { get; set; }
-        public int NbrMembreMax { get; set; }
+        public Nullable<int> NbrMembreMin { get; set; }
+        public Nullable<int> NbrMembreMax { get; set; }
         public int Jour { get; set; }
         public System.TimeSpan HeureDebut { get; set; }
         public System.DateTime DateDebut { get; set; }
-        public int NbrRepetion { get; set; }
+        public Nullable<int> NbrRepetion { get; set; }
         public bool Accepte { get; set; }
         public string IdActiviteJeu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ActiviteJeu> ActiviteJeuId { get; set; }
+        public virtual ICollection<ActiviteJeu> ActiviteJeus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Participants> Participants { get; set; }
+        public virtual ICollection<Participant> Participants { get; set; }
     }
 }

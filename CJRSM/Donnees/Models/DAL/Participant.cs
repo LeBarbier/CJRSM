@@ -12,13 +12,15 @@ namespace CJRSM.Models.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Participants
+    public partial class Participant
     {
         public int Id { get; set; }
         public string NoDossier { get; set; }
         public string IdActivite { get; set; }
+        public int membre_Id { get; set; }
+        public int Activite_Id { get; set; }
     
-        public virtual Membre membre { get; set; }
         public virtual Activite Activite { get; set; }
+        public virtual Membre Membre { get; set; }
     }
 }

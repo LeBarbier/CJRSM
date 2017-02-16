@@ -17,8 +17,10 @@ namespace CJRSM.Models.DAL
         public int Id { get; set; }
         public string IdJeu { get; set; }
         public string IdActivite { get; set; }
+        public int JeuId_Id { get; set; }
+        public int ActiviteId_Id { get; set; }
     
-        public virtual Jeu JeuId { get; set; }
-        public virtual Activite ActiviteId { get; set; }
+        public virtual Activite Activite { get; set; }
+        public virtual Jeu Jeu { get; set; }
     }
 }

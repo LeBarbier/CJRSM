@@ -13,7 +13,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Donnees</RootNamespace>
+    <RootNamespace>CJRSM</RootNamespace>
     <AssemblyName>Donnees</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
@@ -124,14 +124,14 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Models\DAL\CJRSM.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CJRSM.Context.cs</LastGenOutput>
       <DependentUpon>CJRSM.edmx</DependentUpon>
+      <LastGenOutput>CJRSM.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\DAL\CJRSM.edmx.sql" />
     <Content Include="Models\DAL\CJRSM.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CJRSM.cs</LastGenOutput>
       <DependentUpon>CJRSM.edmx</DependentUpon>
+      <LastGenOutput>CJRSM.cs</LastGenOutput>
     </Content>
     <Content Include="packages.config" />
     <Content Include="App.config" />
@@ -144,6 +144,7 @@
     <Compile Include="Models\Biz\IEntite.cs" />
     <Compile Include="Models\Biz\Jeux.cs" />
     <Compile Include="Models\Biz\IMembre.cs" />
+    <Compile Include="Models\Biz\Membre.cs" />
     <Compile Include="Models\Biz\Publications.cs" />
     <Compile Include="Models\DAL\Activite.cs">
       <DependentUpon>CJRSM.tt</DependentUpon>
@@ -185,13 +186,13 @@
     <Compile Include="Models\DAL\Membre.cs">
       <DependentUpon>CJRSM.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DAL\Participants.cs">
+    <Compile Include="Models\DAL\Participant.cs">
       <DependentUpon>CJRSM.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DAL\Publication.cs">
       <DependentUpon>CJRSM.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DAL\Types.cs">
+    <Compile Include="Models\DAL\Type.cs">
       <DependentUpon>CJRSM.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DAL\TypesJeu.cs">

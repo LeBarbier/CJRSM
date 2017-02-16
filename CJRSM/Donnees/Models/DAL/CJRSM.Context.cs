@@ -9,13 +9,14 @@
 
 namespace CJRSM.Models.DAL
 {
+    using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
-    public partial class CJRSMContainer : DbContext
+    
+    public partial class D75E5Entities : DbContext
     {
-        public CJRSMContainer()
-            : base("name=CJRSMContainer")
+        public D75E5Entities()
+            : base("name=D75E5Entities")
         {
         }
     
@@ -24,16 +25,16 @@ namespace CJRSM.Models.DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Membre> Membre { get; set; }
-        public virtual DbSet<Publication> Publication { get; set; }
-        public virtual DbSet<LocationDocument> LocationDocument { get; set; }
-        public virtual DbSet<Document> Document { get; set; }
-        public virtual DbSet<LocationJeu> LocationJeu { get; set; }
-        public virtual DbSet<TypesJeu> TypesJeu { get; set; }
-        public virtual DbSet<Types> Types { get; set; }
-        public virtual DbSet<ActiviteJeu> ActiviteJeu { get; set; }
-        public virtual DbSet<Activite> Activite { get; set; }
-        public virtual DbSet<Participants> Participants { get; set; }
-        public virtual DbSet<Jeu> Jeu { get; set; }
+        public virtual DbSet<Activite> Activites { get; set; }
+        public virtual DbSet<ActiviteJeu> ActiviteJeus { get; set; }
+        public virtual DbSet<Document> Documents { get; set; }
+        public virtual DbSet<Jeu> Jeus { get; set; }
+        public virtual DbSet<LocationDocument> LocationDocuments { get; set; }
+        public virtual DbSet<LocationJeu> LocationJeus { get; set; }
+        public virtual DbSet<Membre> Membres { get; set; }
+        public virtual DbSet<Participant> Participants { get; set; }
+        public virtual DbSet<Publication> Publications { get; set; }
+        public virtual DbSet<Type> Types { get; set; }
+        public virtual DbSet<TypesJeu> TypesJeus { get; set; }
     }
 }

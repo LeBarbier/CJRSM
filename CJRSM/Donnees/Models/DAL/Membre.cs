@@ -11,17 +11,16 @@ namespace CJRSM.Models.DAL
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-
-    public partial class Membre : IMembre
+    
+    public partial class Membre
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Membre()
         {
-            this.PublicationId = new HashSet<Publication>();
-            this.LocationDocumentId = new HashSet<LocationDocument>();
-            this.LocationJeuId = new HashSet<LocationJeu>();
-            this.ParticipantsId = new HashSet<Participants>();
+            this.LocationDocuments = new HashSet<LocationDocument>();
+            this.LocationJeus = new HashSet<LocationJeu>();
+            this.Publications = new HashSet<Publication>();
+            this.Participants = new HashSet<Participant>();
         }
     
         public int Id { get; set; }
@@ -32,58 +31,12 @@ namespace CJRSM.Models.DAL
         public string MDP { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Publication> PublicationId { get; set; }
+        public virtual ICollection<LocationDocument> LocationDocuments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LocationDocument> LocationDocumentId { get; set; }
+        public virtual ICollection<LocationJeu> LocationJeus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LocationJeu> LocationJeuId { get; set; }
+        public virtual ICollection<Publication> Publications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Participants> ParticipantsId { get; set; }
-
-        public void Modifier(IMembre membre, IUnitOfWork contexte)
-        {
-            Membre modifier = contexte.Membre.Find(membre.Id);
-            modifier.MDP = membre.MDP;
-            modifier.Nom = membre.Nom;
-            modifier.Prenom = membre.Prenom;
-            modifier.Role = membre.Role;
-            contexte.Membre.Update(modifier);
-            contexte.Membre.Save();
-        }
-
-        public void ModifierPremiereConnexion(IMembre membre, IUnitOfWork contexte)
-        {
-            Membre modifier = contexte.Membre.Find(membre.Id);
-            //modifier.Activite = null;
-            //modifier.Jeux = null;
-            //modifier.Livres = null;
-            //modifier.Publication = null;
-            modifier.MDP = membre.MDP;
-            modifier.Nom = membre.Nom;
-            modifier.Prenom = membre.Prenom;
-            modifier.Role = membre.Role;
-            contexte.Membre.Update(modifier);
-            contexte.Membre.Save();
-        }
-
-        public IMembre Trouver(string NoDossier, IUnitOfWork contexte)
-        {
-            return contexte.Membre.Get(m => m.NoDossier.Contains(NoDossier)).First();
-        }
-
-        public Document AjouterDocument()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Jeu AjouterJeu()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Publication AjouterPublication()
-        {
-            throw new NotImplementedException();
-        }
+        public virtual ICollection<Participant> Participants { get; set; }
     }
 }
