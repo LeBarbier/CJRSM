@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/05/2017 11:44:33
+-- Date Created: 02/15/2017 18:01:07
 -- Generated from EDMX file: L:\CJRSM\CJRSM\Donnees\Models\DAL\CJRSM.edmx
 -- --------------------------------------------------
 
@@ -17,74 +17,193 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_MembreActivite_Membres]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MembreActivite] DROP CONSTRAINT [FK_MembreActivite_Membres];
+IF OBJECT_ID(N'[dbo].[FK_MembrePublication]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Publication] DROP CONSTRAINT [FK_MembrePublication];
 GO
-IF OBJECT_ID(N'[dbo].[FK_MembreActivite_Activites]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MembreActivite] DROP CONSTRAINT [FK_MembreActivite_Activites];
+IF OBJECT_ID(N'[dbo].[FK_MembreLocationDocument]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[LocationDocument] DROP CONSTRAINT [FK_MembreLocationDocument];
 GO
-IF OBJECT_ID(N'[dbo].[FK_MembreJeux]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Jeux] DROP CONSTRAINT [FK_MembreJeux];
+IF OBJECT_ID(N'[dbo].[FK_MembreLocationJeu]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[LocationJeu] DROP CONSTRAINT [FK_MembreLocationJeu];
 GO
-IF OBJECT_ID(N'[dbo].[FK_MembreLivres]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Documents] DROP CONSTRAINT [FK_MembreLivres];
+IF OBJECT_ID(N'[dbo].[FK_ParticipantsMembre]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Participants] DROP CONSTRAINT [FK_ParticipantsMembre];
 GO
-IF OBJECT_ID(N'[dbo].[FK_PublicationMembre]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Publications] DROP CONSTRAINT [FK_PublicationMembre];
+IF OBJECT_ID(N'[dbo].[FK_DocumentLocationDocument]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Document] DROP CONSTRAINT [FK_DocumentLocationDocument];
 GO
-IF OBJECT_ID(N'[dbo].[FK_TypeJeux_Types]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[TypeJeux] DROP CONSTRAINT [FK_TypeJeux_Types];
+--IF OBJECT_ID(N'[dbo].[FK_TypesTypesJeu]', 'F') IS NOT NULL
+--    ALTER TABLE [dbo].[Types] DROP CONSTRAINT [FK_TypesTypesJeu];
+--GO
+IF OBJECT_ID(N'[dbo].[FK_JeuTypesJeu]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Jeu] DROP CONSTRAINT [FK_JeuTypesJeu];
 GO
-IF OBJECT_ID(N'[dbo].[FK_TypeJeux_Jeux]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[TypeJeux] DROP CONSTRAINT [FK_TypeJeux_Jeux];
+IF OBJECT_ID(N'[dbo].[FK_ActiviteJeuJeu]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ActiviteJeu] DROP CONSTRAINT [FK_ActiviteJeuJeu];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ActiviteActiviteJeu]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ActiviteJeu] DROP CONSTRAINT [FK_ActiviteActiviteJeu];
+GO
+IF OBJECT_ID(N'[dbo].[FK_JeuLocationJeu]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Jeu] DROP CONSTRAINT [FK_JeuLocationJeu];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ParticipantsActivite]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Participants] DROP CONSTRAINT [FK_ParticipantsActivite];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Membres]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Membres];
+IF OBJECT_ID(N'[dbo].[Membre]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Membre];
 GO
-IF OBJECT_ID(N'[dbo].[Jeux]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Jeux];
+IF OBJECT_ID(N'[dbo].[Publication]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Publication];
 GO
-IF OBJECT_ID(N'[dbo].[Documents]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Documents];
+IF OBJECT_ID(N'[dbo].[LocationDocument]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[LocationDocument];
 GO
-IF OBJECT_ID(N'[dbo].[Activites]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Activites];
+IF OBJECT_ID(N'[dbo].[Document]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Document];
+GO
+IF OBJECT_ID(N'[dbo].[LocationJeu]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[LocationJeu];
+GO
+IF OBJECT_ID(N'[dbo].[TypesJeu]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TypesJeu];
 GO
 IF OBJECT_ID(N'[dbo].[Types]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Types];
 GO
-IF OBJECT_ID(N'[dbo].[Publications]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Publications];
+IF OBJECT_ID(N'[dbo].[ActiviteJeu]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ActiviteJeu];
 GO
-IF OBJECT_ID(N'[dbo].[MembreActivite]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[MembreActivite];
+IF OBJECT_ID(N'[dbo].[Activite]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Activite];
 GO
-IF OBJECT_ID(N'[dbo].[TypeJeux]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[TypeJeux];
+IF OBJECT_ID(N'[dbo].[Participants]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Participants];
+GO
+IF OBJECT_ID(N'[dbo].[Jeu]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Jeu];
 GO
 
 -- --------------------------------------------------
 -- Creating all tables
 -- --------------------------------------------------
 
--- Creating table 'Membres'
-CREATE TABLE [dbo].[Membres] (
+-- Creating table 'Membre'
+CREATE TABLE [dbo].[Membre] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [NoDossier] nvarchar(max)  NOT NULL,
-    [Prenom] nvarchar(max),
-    [Nom] nvarchar(max),
-    [Role] nvarchar(max),
-    [MDP] nvarchar(max)
+    [Prenom] nvarchar(max)  NOT NULL,
+    [Nom] nvarchar(max)  NOT NULL,
+    [Role] nvarchar(max)  NOT NULL,
+    [MDP] nvarchar(max)  NOT NULL
 );
 GO
 
--- Creating table 'Jeux'
-CREATE TABLE [dbo].[Jeux] (
+-- Creating table 'Publication'
+CREATE TABLE [dbo].[Publication] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Titre] nvarchar(max)  NOT NULL,
+    [Contenu] nvarchar(max)  NOT NULL,
+    [NoDossier] nvarchar(max)  NOT NULL,
+    [membre_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'LocationDocument'
+CREATE TABLE [dbo].[LocationDocument] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [DateEmprunt] datetime  NOT NULL,
+    [DateRetour] datetime  NOT NULL,
+    [DateEffective] datetime  NOT NULL,
+    [NoDossier] nvarchar(max)  NOT NULL,
+    [IdDocument] nvarchar(max)  NOT NULL,
+    [membre_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'Document'
+CREATE TABLE [dbo].[Document] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Titre] nvarchar(max)  NOT NULL,
+    [Auteur] nvarchar(max)  NOT NULL,
+    [DateAjout] datetime  NOT NULL,
+    [IdLocationDocument] nvarchar(max)  NOT NULL,
+    [LocationDocumentId_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'LocationJeu'
+CREATE TABLE [dbo].[LocationJeu] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [DateEmprunt] datetime  NOT NULL,
+    [DateRetour] datetime  NOT NULL,
+    [DateEffective] datetime  NOT NULL,
+    [NoDossier] nvarchar(max)  NOT NULL,
+    [IdJeu] nvarchar(max)  NOT NULL,
+    [membre_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'TypesJeu'
+CREATE TABLE [dbo].[TypesJeu] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [IdTypes] nvarchar(max)  NOT NULL,
+    [IdJeu] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Types'
+CREATE TABLE [dbo].[Types] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Nom] nvarchar(max)  NOT NULL,
+    [IdTypesJeu] nvarchar(max)  NOT NULL,
+    [TypesJeu_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'ActiviteJeu'
+CREATE TABLE [dbo].[ActiviteJeu] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [IdJeu] nvarchar(max)  NOT NULL,
+    [IdActivite] nvarchar(max)  NOT NULL,
+    [JeuId_Id] int  NOT NULL,
+    [ActiviteId_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'Activite'
+CREATE TABLE [dbo].[Activite] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Titre] nvarchar(max)  NOT NULL,
+    [Description] nvarchar(max)  NOT NULL,
+    [NbrMembreMin] int  NOT NULL,
+    [NbrMembreMax] int  NOT NULL,
+    [Jour] int  NOT NULL,
+    [HeureDebut] time  NOT NULL,
+    [DateDebut] datetime  NOT NULL,
+    [NbrRepetion] int  NOT NULL,
+    [Accepte] bit  NOT NULL,
+    [IdActiviteJeu] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Participants'
+CREATE TABLE [dbo].[Participants] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [NoDossier] nvarchar(max)  NOT NULL,
+    [IdActivite] nvarchar(max)  NOT NULL,
+    [membre_Id] int  NOT NULL,
+    [Activite_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'Jeu'
+CREATE TABLE [dbo].[Jeu] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Titre] nvarchar(max)  NOT NULL,
     [Difficulte] int  NOT NULL,
@@ -92,71 +211,11 @@ CREATE TABLE [dbo].[Jeux] (
     [NbrJoueurMax] int  NOT NULL,
     [TempsMin] int  NOT NULL,
     [TempsMax] int  NOT NULL,
-    [Disponible] bit  NOT NULL,
-    [MembreId] int,
-    [DateAjout] date,
-    [Membre_Id] int
-);
-GO
-
--- Creating table 'Documents'
-CREATE TABLE [dbo].[Documents] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Titre] nvarchar(max)  NOT NULL,
-    [Auteur] nvarchar(max)  NOT NULL,
-    [Disponible] bit  NOT NULL,
     [DateAjout] datetime  NOT NULL,
-    [MembreId] int
-);
-GO
-
--- Creating table 'Activites'
-CREATE TABLE [dbo].[Activites] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [MembreId] nvarchar(max)  NOT NULL,
-    [Titre] nvarchar(max)  NOT NULL,
-    [Jeu] nvarchar(max),
-    [Description] nvarchar(max)  NOT NULL,
-    [NbrMembreMin] int,
-    [NbrMembreMax] int,
-    [Jour] int  NOT NULL,
-    [HeureDebut] time  NOT NULL,
-    [Hebdomadaire] bit  NOT NULL,
-    [DateDebut] datetime  NOT NULL,
-    [NbrRepetition] int  NOT NULL,
-    [Accepte] bit  NOT NULL,
-    [Participant] nvarchar(max)
-);
-GO
-
--- Creating table 'Types'
-CREATE TABLE [dbo].[Types] (
-    [Id] int  NOT NULL,
-    [Etiquette] nvarchar(max)  NOT NULL
-);
-GO
-
--- Creating table 'Publications'
-CREATE TABLE [dbo].[Publications] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Titre] nvarchar(max)  NOT NULL,
-    [MembreId] nvarchar(max)  NOT NULL,
-    [Contenu] nvarchar(max)  NOT NULL,
-    [Membre_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'MembreActivite'
-CREATE TABLE [dbo].[MembreActivite] (
-    [Membre_Id] int  NOT NULL,
-    [Activite_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'TypeJeux'
-CREATE TABLE [dbo].[TypeJeux] (
-    [Type_Id] int  NOT NULL,
-    [Jeux_Id] int  NOT NULL
+    [IdTypesJeu] nvarchar(max)  NOT NULL,
+    [IdLocationJeu] nvarchar(max)  NOT NULL,
+    [TypesJeuId_Id] int  NOT NULL,
+    [LocationJeuId_Id] int  NOT NULL
 );
 GO
 
@@ -164,27 +223,39 @@ GO
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
 
--- Creating primary key on [Id] in table 'Membres'
-ALTER TABLE [dbo].[Membres]
-ADD CONSTRAINT [PK_Membres]
+-- Creating primary key on [Id] in table 'Membre'
+ALTER TABLE [dbo].[Membre]
+ADD CONSTRAINT [PK_Membre]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Jeux'
-ALTER TABLE [dbo].[Jeux]
-ADD CONSTRAINT [PK_Jeux]
+-- Creating primary key on [Id] in table 'Publication'
+ALTER TABLE [dbo].[Publication]
+ADD CONSTRAINT [PK_Publication]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Documents'
-ALTER TABLE [dbo].[Documents]
-ADD CONSTRAINT [PK_Documents]
+-- Creating primary key on [Id] in table 'LocationDocument'
+ALTER TABLE [dbo].[LocationDocument]
+ADD CONSTRAINT [PK_LocationDocument]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Activites'
-ALTER TABLE [dbo].[Activites]
-ADD CONSTRAINT [PK_Activites]
+-- Creating primary key on [Id] in table 'Document'
+ALTER TABLE [dbo].[Document]
+ADD CONSTRAINT [PK_Document]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'LocationJeu'
+ALTER TABLE [dbo].[LocationJeu]
+ADD CONSTRAINT [PK_LocationJeu]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'TypesJeu'
+ALTER TABLE [dbo].[TypesJeu]
+ADD CONSTRAINT [PK_TypesJeu]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -194,119 +265,197 @@ ADD CONSTRAINT [PK_Types]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Publications'
-ALTER TABLE [dbo].[Publications]
-ADD CONSTRAINT [PK_Publications]
+-- Creating primary key on [Id] in table 'ActiviteJeu'
+ALTER TABLE [dbo].[ActiviteJeu]
+ADD CONSTRAINT [PK_ActiviteJeu]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Membre_Id], [Activite_Id] in table 'MembreActivite'
-ALTER TABLE [dbo].[MembreActivite]
-ADD CONSTRAINT [PK_MembreActivite]
-    PRIMARY KEY CLUSTERED ([Membre_Id], [Activite_Id] ASC);
+-- Creating primary key on [Id] in table 'Activite'
+ALTER TABLE [dbo].[Activite]
+ADD CONSTRAINT [PK_Activite]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Type_Id], [Jeux_Id] in table 'TypeJeux'
-ALTER TABLE [dbo].[TypeJeux]
-ADD CONSTRAINT [PK_TypeJeux]
-    PRIMARY KEY CLUSTERED ([Type_Id], [Jeux_Id] ASC);
+-- Creating primary key on [Id] in table 'Participants'
+ALTER TABLE [dbo].[Participants]
+ADD CONSTRAINT [PK_Participants]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Jeu'
+ALTER TABLE [dbo].[Jeu]
+ADD CONSTRAINT [PK_Jeu]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [Membre_Id] in table 'MembreActivite'
-ALTER TABLE [dbo].[MembreActivite]
-ADD CONSTRAINT [FK_MembreActivite_Membres]
-    FOREIGN KEY ([Membre_Id])
-    REFERENCES [dbo].[Membres]
+-- Creating foreign key on [membre_Id] in table 'Publication'
+ALTER TABLE [dbo].[Publication]
+ADD CONSTRAINT [FK_MembrePublication]
+    FOREIGN KEY ([membre_Id])
+    REFERENCES [dbo].[Membre]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [Activite_Id] in table 'MembreActivite'
-ALTER TABLE [dbo].[MembreActivite]
-ADD CONSTRAINT [FK_MembreActivite_Activites]
+-- Creating non-clustered index for FOREIGN KEY 'FK_MembrePublication'
+CREATE INDEX [IX_FK_MembrePublication]
+ON [dbo].[Publication]
+    ([membre_Id]);
+GO
+
+-- Creating foreign key on [membre_Id] in table 'LocationDocument'
+ALTER TABLE [dbo].[LocationDocument]
+ADD CONSTRAINT [FK_MembreLocationDocument]
+    FOREIGN KEY ([membre_Id])
+    REFERENCES [dbo].[Membre]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_MembreLocationDocument'
+CREATE INDEX [IX_FK_MembreLocationDocument]
+ON [dbo].[LocationDocument]
+    ([membre_Id]);
+GO
+
+-- Creating foreign key on [membre_Id] in table 'LocationJeu'
+ALTER TABLE [dbo].[LocationJeu]
+ADD CONSTRAINT [FK_MembreLocationJeu]
+    FOREIGN KEY ([membre_Id])
+    REFERENCES [dbo].[Membre]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_MembreLocationJeu'
+CREATE INDEX [IX_FK_MembreLocationJeu]
+ON [dbo].[LocationJeu]
+    ([membre_Id]);
+GO
+
+-- Creating foreign key on [membre_Id] in table 'Participants'
+ALTER TABLE [dbo].[Participants]
+ADD CONSTRAINT [FK_ParticipantsMembre]
+    FOREIGN KEY ([membre_Id])
+    REFERENCES [dbo].[Membre]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ParticipantsMembre'
+CREATE INDEX [IX_FK_ParticipantsMembre]
+ON [dbo].[Participants]
+    ([membre_Id]);
+GO
+
+-- Creating foreign key on [LocationDocumentId_Id] in table 'Document'
+ALTER TABLE [dbo].[Document]
+ADD CONSTRAINT [FK_DocumentLocationDocument]
+    FOREIGN KEY ([LocationDocumentId_Id])
+    REFERENCES [dbo].[LocationDocument]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_DocumentLocationDocument'
+CREATE INDEX [IX_FK_DocumentLocationDocument]
+ON [dbo].[Document]
+    ([LocationDocumentId_Id]);
+GO
+
+-- Creating foreign key on [TypesJeu_Id] in table 'Types'
+--ALTER TABLE [dbo].[Types]
+--ADD CONSTRAINT [FK_TypesTypesJeu]
+--    FOREIGN KEY ([TypesJeu_Id])
+--    REFERENCES [dbo].[TypesJeu]
+--        ([Id])
+--    ON DELETE NO ACTION ON UPDATE NO ACTION;
+--GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TypesTypesJeu'
+CREATE INDEX [IX_FK_TypesTypesJeu]
+ON [dbo].[Types]
+    ([TypesJeu_Id]);
+GO
+
+-- Creating foreign key on [TypesJeuId_Id] in table 'Jeu'
+ALTER TABLE [dbo].[Jeu]
+ADD CONSTRAINT [FK_JeuTypesJeu]
+    FOREIGN KEY ([TypesJeuId_Id])
+    REFERENCES [dbo].[TypesJeu]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_JeuTypesJeu'
+CREATE INDEX [IX_FK_JeuTypesJeu]
+ON [dbo].[Jeu]
+    ([TypesJeuId_Id]);
+GO
+
+-- Creating foreign key on [JeuId_Id] in table 'ActiviteJeu'
+ALTER TABLE [dbo].[ActiviteJeu]
+ADD CONSTRAINT [FK_ActiviteJeuJeu]
+    FOREIGN KEY ([JeuId_Id])
+    REFERENCES [dbo].[Jeu]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ActiviteJeuJeu'
+CREATE INDEX [IX_FK_ActiviteJeuJeu]
+ON [dbo].[ActiviteJeu]
+    ([JeuId_Id]);
+GO
+
+-- Creating foreign key on [ActiviteId_Id] in table 'ActiviteJeu'
+ALTER TABLE [dbo].[ActiviteJeu]
+ADD CONSTRAINT [FK_ActiviteActiviteJeu]
+    FOREIGN KEY ([ActiviteId_Id])
+    REFERENCES [dbo].[Activite]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ActiviteActiviteJeu'
+CREATE INDEX [IX_FK_ActiviteActiviteJeu]
+ON [dbo].[ActiviteJeu]
+    ([ActiviteId_Id]);
+GO
+
+-- Creating foreign key on [LocationJeuId_Id] in table 'Jeu'
+ALTER TABLE [dbo].[Jeu]
+ADD CONSTRAINT [FK_JeuLocationJeu]
+    FOREIGN KEY ([LocationJeuId_Id])
+    REFERENCES [dbo].[LocationJeu]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_JeuLocationJeu'
+CREATE INDEX [IX_FK_JeuLocationJeu]
+ON [dbo].[Jeu]
+    ([LocationJeuId_Id]);
+GO
+
+-- Creating foreign key on [Activite_Id] in table 'Participants'
+ALTER TABLE [dbo].[Participants]
+ADD CONSTRAINT [FK_ParticipantsActivite]
     FOREIGN KEY ([Activite_Id])
-    REFERENCES [dbo].[Activites]
+    REFERENCES [dbo].[Activite]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_MembreActivite_Activites'
-CREATE INDEX [IX_FK_MembreActivite_Activites]
-ON [dbo].[MembreActivite]
+-- Creating non-clustered index for FOREIGN KEY 'FK_ParticipantsActivite'
+CREATE INDEX [IX_FK_ParticipantsActivite]
+ON [dbo].[Participants]
     ([Activite_Id]);
-GO
-
--- Creating foreign key on [Membre_Id] in table 'Jeux'
-ALTER TABLE [dbo].[Jeux]
-ADD CONSTRAINT [FK_MembreJeux]
-    FOREIGN KEY ([Membre_Id])
-    REFERENCES [dbo].[Membres]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_MembreJeux'
-CREATE INDEX [IX_FK_MembreJeux]
-ON [dbo].[Jeux]
-    ([Membre_Id]);
-GO
-
--- Creating foreign key on [MembreId] in table 'Documents'
-ALTER TABLE [dbo].[Documents]
-ADD CONSTRAINT [FK_MembreLivres]
-    FOREIGN KEY ([MembreId])
-    REFERENCES [dbo].[Membres]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_MembreLivres'
-CREATE INDEX [IX_FK_MembreLivres]
-ON [dbo].[Documents]
-    ([MembreId]);
-GO
-
--- Creating foreign key on [Membre_Id] in table 'Publications'
-ALTER TABLE [dbo].[Publications]
-ADD CONSTRAINT [FK_PublicationMembre]
-    FOREIGN KEY ([Membre_Id])
-    REFERENCES [dbo].[Membres]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_PublicationMembre'
-CREATE INDEX [IX_FK_PublicationMembre]
-ON [dbo].[Publications]
-    ([Membre_Id]);
-GO
-
--- Creating foreign key on [Type_Id] in table 'TypeJeux'
-ALTER TABLE [dbo].[TypeJeux]
-ADD CONSTRAINT [FK_TypeJeux_Types]
-    FOREIGN KEY ([Type_Id])
-    REFERENCES [dbo].[Types]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating foreign key on [Jeux_Id] in table 'TypeJeux'
-ALTER TABLE [dbo].[TypeJeux]
-ADD CONSTRAINT [FK_TypeJeux_Jeux]
-    FOREIGN KEY ([Jeux_Id])
-    REFERENCES [dbo].[Jeux]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_TypeJeux_Jeux'
-CREATE INDEX [IX_FK_TypeJeux_Jeux]
-ON [dbo].[TypeJeux]
-    ([Jeux_Id]);
 GO
 
 -- --------------------------------------------------

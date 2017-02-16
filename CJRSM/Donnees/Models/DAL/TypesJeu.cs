@@ -8,14 +8,17 @@
 //------------------------------------------------------------------------------
 
 namespace CJRSM.Models.DAL
-{    
-    public partial class Publication
+{
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class TypesJeu
     {
         public int Id { get; set; }
-        public string Titre { get; set; }
-        public string Contenu { get; set; }
-        public string NoDossier { get; set; }
+        public string IdTypes { get; set; }
+        public string IdJeu { get; set; }
     
-        public virtual Membre membre { get; set; }
+        public virtual Types TypesId { get; set; }
+        public virtual Jeu JeuId { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace CJRSM.Models.Biz
 {
-    public class Publication
+    public class Publications
     {
         public int Id;
         public string Titre;

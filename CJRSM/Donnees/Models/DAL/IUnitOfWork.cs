@@ -4,11 +4,17 @@ namespace CJRSM.Models.DAL
 {
     public interface IUnitOfWork : IDisposable
     {
-        IGenericRepository<Activites> Activites { get; }
-        IGenericRepository<Documents> Documents { get; }
-        IGenericRepository<Jeux> Jeux { get; }
-        IGenericRepository<Membres> Membres { get; }
-        IGenericRepository<Publications> Publications { get; }
+        IGenericRepository<Activite> Activite { get; }
+        IGenericRepository<ActiviteJeu> ActiviteJeu { get; }
+        IGenericRepository<Document> Document { get; }
+        IGenericRepository<Jeu> Jeu { get; }
+        IGenericRepository<LocationDocument> LocationDocument { get; }
+        IGenericRepository<LocationJeu> LocationJeu { get; }
+        IGenericRepository<Membre> Membre { get; }
+        IGenericRepository<Participants> Participants { get; }
+        IGenericRepository<Publication> Publication { get; }
+        IGenericRepository<Types> Types { get; }
+        IGenericRepository<TypesJeu> TypesJeu { get; }
         int Save();
     }
 }

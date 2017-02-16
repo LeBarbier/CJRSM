@@ -9,77 +9,168 @@ namespace CJRSM.Models.DAL
     public class UnitOfWork : IUnitOfWork
     {
         private CJRSMContainer contexte;
-        private GenericRepository<Activites> activites;
-        private GenericRepository<Documents> documents;
-        private GenericRepository<Jeux> jeux;
-        private GenericRepository<Membres> membres;
-        private GenericRepository<Publications> publications;
+        private GenericRepository<Activite> activite;
+        private GenericRepository<ActiviteJeu> activiteJeu;
+        private GenericRepository<Document> document;
+        private GenericRepository<Jeu> jeu;
+        private GenericRepository<LocationDocument> locationDocument;
+        private GenericRepository<LocationJeu> locationJeu;
+        private GenericRepository<Membre> membre;
+        private GenericRepository<Participants> participants;
+        private GenericRepository<Publication> publication;
+        private GenericRepository<Types> types;
+        private GenericRepository<TypesJeu> typesJeu;
         private bool disposed = false;
 
         public UnitOfWork()
         {
             contexte = new CJRSMContainer();
         }
-        public IGenericRepository<Activites> Activites
+
+        public IGenericRepository<Activite> Activite
         {
             get
             {
 
-                if (activites == null)
+                if (activite == null)
                 {
-                    activites = new GenericRepository<Activites>(contexte);
+                    activite = new GenericRepository<Activite>(contexte);
                 }
-                return activites;
+                return activite;
             }
 
         }
 
-        public IGenericRepository<Documents> Documents
+        public IGenericRepository<ActiviteJeu> ActiviteJeu
         {
             get
             {
-                if (documents == null)
+
+                if (activiteJeu == null)
                 {
-                    documents = new GenericRepository<Documents>(contexte);
+                    activiteJeu = new GenericRepository<ActiviteJeu>(contexte);
                 }
-                return documents;
+                return activiteJeu;
+            }
+
+        }
+
+        public IGenericRepository<Document> Document
+        {
+            get
+            {
+                if (document == null)
+                {
+                    document = new GenericRepository<Document>(contexte);
+                }
+                return document;
             }
         }
 
-        public IGenericRepository<Jeux> Jeux
+        public IGenericRepository<Jeu> Jeu
         {
             get
             {
-                if (jeux == null)
+                if (jeu == null)
                 {
-                    jeux = new GenericRepository<Jeux>(contexte);
+                    jeu = new GenericRepository<Jeu>(contexte);
                 }
-                return jeux;
+                return jeu;
             }
         }
 
-        public IGenericRepository<Membres> Membres
+        public IGenericRepository<LocationDocument> LocationDocument
         {
             get
             {
-                if (membres == null)
+
+                if (locationDocument == null)
                 {
-                    membres = new GenericRepository<Membres>(contexte);
+                    locationDocument = new GenericRepository<LocationDocument>(contexte);
                 }
-                return membres;
+                return locationDocument;
+            }
+
+        }
+
+        public IGenericRepository<LocationJeu> LocationJeu
+        {
+            get
+            {
+
+                if (LocationJeu == null)
+                {
+                    locationJeu = new GenericRepository<LocationJeu>(contexte);
+                }
+                return locationJeu;
+            }
+
+        }
+
+        public IGenericRepository<Membre> Membre
+        {
+            get
+            {
+                if (membre == null)
+                {
+                    membre = new GenericRepository<Membre>(contexte);
+                }
+                return membre;
             }
         }
 
-        public IGenericRepository<Publications> Publications
+        public IGenericRepository<Participants> Participants
         {
             get
             {
-                if (publications == null)
+
+                if (participants == null)
                 {
-                    publications = new GenericRepository<Publications>(contexte);
+                    participants = new GenericRepository<Participants>(contexte);
                 }
-                return publications;
+                return participants;
             }
+
+        }
+
+        public IGenericRepository<Publication> Publication
+        {
+            get
+            {
+                if (publication == null)
+                {
+                    publication = new GenericRepository<Publication>(contexte);
+                }
+                return publication;
+            }
+        }
+
+        public IGenericRepository<Types> Types
+        {
+            get
+            {
+
+                if (types == null)
+                {
+                    types = new GenericRepository<Types>(contexte);
+                }
+                return types;
+            }
+
+        }
+
+        public IGenericRepository<TypesJeu> TypesJeu
+        {
+            get
+            {
+
+                if (typesJeu == null)
+                {
+                    typesJeu = new GenericRepository<TypesJeu>(contexte);
+                }
+                return typesJeu;
+            }
+
         }
 
         public int Save()

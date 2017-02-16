@@ -6,7 +6,7 @@ using System.Web;
 
 namespace CJRSM.Models.DAL
 {
-    public class Jeu
+    public class Jeux
     {
         public int Id;
         public string Titre;
@@ -20,7 +20,7 @@ namespace CJRSM.Models.DAL
         private string MembreId;
         public DateTime DateAjout;
 
-        Jeu()
+        Jeux()
         {
 
         }

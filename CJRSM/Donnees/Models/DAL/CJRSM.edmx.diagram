@@ -4,30 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="58a9e21dc8174108b57ac83b686a90d9" Name="Diagram1" ZoomLevel="84" >
-        <EntityTypeShape EntityType="CJRSM.Membres" Width="1.5" PointX="5.25" PointY="5.5" />
-        <EntityTypeShape EntityType="CJRSM.Jeux" Width="1.5" PointX="8" PointY="0.75" />
-        <EntityTypeShape EntityType="CJRSM.Documents" Width="1.5" PointX="0.5" PointY="7" />
-        <EntityTypeShape EntityType="CJRSM.Activites" Width="1.5" PointX="10.25" PointY="7" />
-        <EntityTypeShape EntityType="CJRSM.TypesJeu" Width="1.5" PointX="5.25" PointY="3.25" />
-        <EntityTypeShape EntityType="CJRSM.Publications" Width="1.5" PointX="3" PointY="4" />
-        <AssociationConnector Association="CJRSM.PublicationMembre" />
-        <EntityTypeShape EntityType="CJRSM.Participants" Width="1.5" PointX="7.5" PointY="7.5" />
-        <EntityTypeShape EntityType="CJRSM.ActiviteJeu" Width="1.5" PointX="10.625" PointY="4" />
-        <EntityTypeShape EntityType="CJRSM.Types" Width="1.5" PointX="5" PointY="1.375" />
+      <Diagram DiagramId="119da9943a5f4e6ebf1d9c9058fc7001" Name="Diagram1" ZoomLevel="89" DisplayType="true" >
+        <EntityTypeShape EntityType="CJRSM.Membre" Width="1.5" PointX="6.875" PointY="4.75" />
+        <EntityTypeShape EntityType="CJRSM.Publication" Width="1.5" PointX="9.25" PointY="5.25" />
+        <EntityTypeShape EntityType="CJRSM.LocationDocument" Width="1.5" PointX="6.75" PointY="2" />
+        <EntityTypeShape EntityType="CJRSM.Document" Width="1.875" PointX="9.25" PointY="2.375" />
+        <EntityTypeShape EntityType="CJRSM.LocationJeu" Width="1.875" PointX="9.125" PointY="7.875" />
+        <EntityTypeShape EntityType="CJRSM.TypesJeu" Width="1.5" PointX="4.625" PointY="9.25" />
+        <EntityTypeShape EntityType="CJRSM.Types" Width="1.5" PointX="2.625" PointY="8" />
+        <EntityTypeShape EntityType="CJRSM.ActiviteJeu" Width="1.5" PointX="4.375" PointY="5.5" />
+        <EntityTypeShape EntityType="CJRSM.Activite" Width="2.25" PointX="1.75" PointY="4.125" />
+        <EntityTypeShape EntityType="CJRSM.Participants" Width="1.5" PointX="4.5" PointY="3.25" />
+        <EntityTypeShape EntityType="CJRSM.Jeu" Width="1.875" PointX="6.625" PointY="8.25" />
+        <AssociationConnector Association="CJRSM.MembrePublication" />
+        <AssociationConnector Association="CJRSM.MembreLocationDocument" />
+        <AssociationConnector Association="CJRSM.MembreLocationJeu" />
+        <AssociationConnector Association="CJRSM.ParticipantsMembre" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="CJRSM.DocumentLocationDocument" />
         <AssociationConnector Association="CJRSM.TypesTypesJeu" />
-        <AssociationConnector Association="CJRSM.JeuxTypesJeu" />
-        <EntityTypeShape EntityType="CJRSM.LocationJeu" Width="1.5" PointX="7.5" PointY="4.375" />
-        <AssociationConnector Association="CJRSM.MembresLocationJeu" />
-        <AssociationConnector Association="CJRSM.LocationJeuJeux" />
-        <AssociationConnector Association="CJRSM.MembresParticipants" />
-        <AssociationConnector Association="CJRSM.ActivitesParticipants" />
-        <AssociationConnector Association="CJRSM.ActiviteJeuJeux" />
-        <AssociationConnector Association="CJRSM.ActiviteJeuActivites" />
-        <EntityTypeShape EntityType="CJRSM.LocationDocument" Width="1.5" PointX="2.875" PointY="6.875" />
-        <AssociationConnector Association="CJRSM.DocumentsLocationDocument" />
-        <AssociationConnector Association="CJRSM.MembresLocationDocument" />
-        <AssociationConnector Association="CJRSM.FK_MembreLivres" />
+        <AssociationConnector Association="CJRSM.JeuTypesJeu" />
+        <AssociationConnector Association="CJRSM.ActiviteJeuJeu" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="CJRSM.ActiviteActiviteJeu" />
+        <AssociationConnector Association="CJRSM.JeuLocationJeu" />
+        <AssociationConnector Association="CJRSM.ParticipantsActivite" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

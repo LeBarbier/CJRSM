@@ -8,14 +8,20 @@
 //------------------------------------------------------------------------------
 
 namespace CJRSM.Models.DAL
-{    
-    public partial class Publication
+{
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class LocationDocument
     {
         public int Id { get; set; }
-        public string Titre { get; set; }
-        public string Contenu { get; set; }
+        public System.DateTime DateEmprunt { get; set; }
+        public System.DateTime DateRetour { get; set; }
+        public System.DateTime DateEffective { get; set; }
         public string NoDossier { get; set; }
+        public string IdDocument { get; set; }
     
         public virtual Membre membre { get; set; }
+        public virtual Document DocumentId { get; set; }
     }
 }

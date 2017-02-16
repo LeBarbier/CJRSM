@@ -6,7 +6,7 @@ using System.Web;
 
 namespace CJRSM.Models.DAL
 {
-    public class Activite
+    public class Activites
     {
         public int Id;
         private string MembreId;
@@ -21,11 +21,10 @@ namespace CJRSM.Models.DAL
         public DateTime DateDebut;
         public int NbrRepetition;
         public bool Accepte;
-        private ArrayList Participant;
+        private ArrayList Participant; 
 
         /****/
-        Activite(string MembreId, string titre, string description, int jour, DateTime heureDebut, DateTime dateDebut)
-        {
+        Activites(string MembreId, string titre, string description, int jour, DateTime heureDebut, DateTime dateDebut){
             this.MembreId = MembreId;
             this.Titre = titre;
             this.Description = description;
@@ -37,10 +36,9 @@ namespace CJRSM.Models.DAL
             Participant = new ArrayList();
         }
 
-        Activite(string membreId, string titre, string jeu, string description,
+        Activites(string membreId, string titre, string jeu, string description,
                 int nbrMembreMin, int nbrMembreMax, int jour, DateTime heureDebut,
-                bool hebdomadaire, DateTime dateDebut, int nbrRepetition)
-        {
+                bool hebdomadaire, DateTime dateDebut, int nbrRepetition){
             this.MembreId = membreId;
             this.Titre = titre;
             this.Jeu = jeu;
@@ -54,7 +52,7 @@ namespace CJRSM.Models.DAL
             this.NbrRepetition = nbrRepetition;
             this.Accepte = false;
             Participant = new ArrayList();
-    }
+        }
 
         public string getMembreId()
         {

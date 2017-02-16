@@ -197,52 +197,83 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Models\DAL\CJRSM.Context.tt">
-      <DependentUpon>CJRSM.edmx</DependentUpon>
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CJRSM.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\DAL\CJRSM.edmx.diagram">
       <DependentUpon>CJRSM.edmx</DependentUpon>
     </Content>
     <Content Include="Models\DAL\CJRSM.edmx.sql" />
     <Content Include="Models\DAL\CJRSM.tt">
-      <DependentUpon>CJRSM.edmx</DependentUpon>
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CJRSM.cs</LastGenOutput>
+      <DependentUpon>CJRSM.edmx</DependentUpon>
     </Content>
+    <Content Include="obj\Debug\TempPE\Models.DAL.CJRSM.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.DAL.CJRSM.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.DAL.CJRSMBD.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.DAL.CJRSMBD.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.DAL.CJRSM_BD.Designer.cs.dll" />
+    <Content Include="obj\Release\Donnees.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\Donnees.dll" />
+    <Content Include="obj\Release\Donnees.pdb" />
+    <Content Include="obj\Release\TempPE\Models.DAL.CJRSM.cs.dll" />
     <Content Include="packages.config" />
     <Content Include="App.config" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Biz\Activite.cs" />
-    <Compile Include="Models\Biz\Document.cs" />
+    <Compile Include="Models\Biz\Activites.cs" />
+    <Compile Include="Models\Biz\Documents.cs" />
     <Compile Include="Models\Biz\IEntite.cs" />
-    <Compile Include="Models\Biz\Jeu.cs" />
+    <Compile Include="Models\Biz\Jeux.cs" />
     <Compile Include="Models\Biz\IMembre.cs" />
-    <Compile Include="Models\Biz\Publication.cs" />
+    <Compile Include="Models\Biz\Publications.cs" />
+    <Compile Include="Models\DAL\Activite.cs">
+      <DependentUpon>CJRSM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAL\ActiviteJeu.cs">
+      <DependentUpon>CJRSM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DAL\CJRSM.Context.cs">
-      <DependentUpon>CJRSM.Context.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CJRSM.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DAL\CJRSM.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>CJRSM.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Models\DAL\CJRSM.Designer.cs">
-      <DependentUpon>CJRSM.edmx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
+    <Compile Include="Models\DAL\Document.cs">
+      <DependentUpon>CJRSM.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DAL\FabriqueMembre.cs" />
     <Compile Include="Models\DAL\GenericRepository.cs" />
     <Compile Include="Models\DAL\IGenericRepository.cs" />
     <Compile Include="Models\DAL\IUnitOfWork.cs" />
+    <Compile Include="Models\DAL\Jeu.cs">
+      <DependentUpon>CJRSM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAL\LocationDocument.cs">
+      <DependentUpon>CJRSM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAL\LocationJeu.cs">
+      <DependentUpon>CJRSM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAL\Membre.cs">
+      <DependentUpon>CJRSM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAL\Participants.cs">
+      <DependentUpon>CJRSM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DAL\Publication.cs">
-      <DependentUpon>CjrsmBD.tt</DependentUpon>
+      <DependentUpon>CJRSM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAL\Types.cs">
+      <DependentUpon>CJRSM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAL\TypesJeu.cs">
+      <DependentUpon>CJRSM.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DAL\UnitOfWork.cs" />
     <Compile Include="Models\View\Membre\Connexion.cs" />
@@ -250,6 +281,9 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -257,12 +291,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Models\DAL\CJRSM.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CJRSM.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css.map" />
@@ -281,6 +309,18 @@
     <Content Include="bin\roslyn\vbc.exe.config" />
     <Content Include="bin\roslyn\vbc.rsp" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <EntityDeploy Include="Models\DAL\CJRSM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CJRSM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DAL\CJRSM.edmx.diagram">
+      <DependentUpon>CJRSM.edmx</DependentUpon>
+    </Content>
+    <Content Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Release\Donnees.csprojResolveAssemblyReference.cache" />
+    <Content Include="obj\Release\edmxResourcesToEmbed\Models\DAL\CJRSM.csdl" />
+    <Content Include="obj\Release\edmxResourcesToEmbed\Models\DAL\CJRSM.msl" />
+    <Content Include="obj\Release\edmxResourcesToEmbed\Models\DAL\CJRSM.ssdl" />
     <None Include="Properties\PublishProfiles\Default Settings %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <Content Include="web.config" />

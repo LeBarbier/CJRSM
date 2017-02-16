@@ -10,20 +10,20 @@ namespace CJRSM.Controllers
 {
     public class MembreController : Controller
     {
-        private IGenericRepository<Membres> repo;
+        private IGenericRepository<Membre> repo;
         private IUnitOfWork contexte;
         IMembre membre;
 
         public MembreController()
         {
             contexte = new UnitOfWork();
-            repo = contexte.Membres;
+            repo = contexte.Membre;
         }
 
         public MembreController(IUnitOfWork contexte)
         {
             this.contexte = contexte;
-            repo = contexte.Membres;
+            repo = contexte.Membre;
         }
 
         public ActionResult PremiereConnexion()
@@ -73,7 +73,7 @@ namespace CJRSM.Controllers
             {
                 if (identiteValide(modele.NoDossier, modele.MDP))
                 {
-                    membre = (IMembre) new Membres();
+                    membre = new Membre();
                     membre = membre.Trouver(modele.NoDossier, contexte);
                     FormsAuthentication.SetAuthCookie(modele.NoDossier, modele.Persistant);
                     if (returnUrl != null)
@@ -107,7 +107,7 @@ namespace CJRSM.Controllers
         {
             try
             {
-                membre = (IMembre)new Membres();
+                membre = new Membre();
                 membre = membre.Trouver(p1, contexte);
 
                 if (CompareMDP(membre.MDP, p2) == true)

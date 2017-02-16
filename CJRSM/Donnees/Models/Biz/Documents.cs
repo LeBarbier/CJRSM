@@ -6,7 +6,7 @@ using System.Web;
 
 namespace CJRSM.Models.DAL
 {
-    public class Document
+    public class Documents
     {
         public int Id;
         public string Titre;
@@ -15,7 +15,7 @@ namespace CJRSM.Models.DAL
         public DateTime DateAjout;
         public string MembreId;
 
-        Document(int id, string titre, string auteur)
+        Documents(int id, string titre, string auteur)
         {
             this.Id = id;
             this.Titre = titre;
