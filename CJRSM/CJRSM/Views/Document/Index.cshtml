@@ -1,36 +1,27 @@
-﻿@model IEnumerable<CJRSM.Models.DAL.Documents>
+﻿@model IEnumerable<CJRSM.Models.DAL.Document>
 
 @{
-    ViewBag.Title = "Documents";
+    ViewBag.Title = "Liste des Documents";
 }
-@*<main role="main">
-    <nav name="nav_secondaire" class="nav nav_secondaire">
-        <ul>
-            <li>@Html.ActionLink("Nouvelle Activité", "Create")</li>
-            <li><h2>@Html.ActionLink("", "")</h2></li>
-        </ul>
-    </nav>
-</main>*@
 
 <div class="conteneur_Unique">
-    <h2>Liste des documents écrits</h2>
-
+    <h2>Listes des Documents</h2>
     <table class="table">
         <tr>
             <th>
-                <h4>Titre</h4>
+                @Html.DisplayNameFor(model => model.Titre)
             </th>
             <th>
-                <h4>Auteur</h4>
+                @Html.DisplayNameFor(model => model.Auteur)
             </th>
             <th>
-                <h4>Disponible</h4>
-            </th>
-            <th>
-                <h4>Date d'achat</h4>
+                @Html.DisplayNameFor(model => model.DateAjout)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.MembreId)
+                @Html.DisplayNameFor(model => model.IdLocationDocument)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationDocumentId_Id)
             </th>*@
             <th></th>
         </tr>
@@ -39,28 +30,28 @@
         {
             foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Titre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Auteur)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Disponible)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateAjout)
-                    </td>
-                    @*<td>
-                        @Html.DisplayFor(modelItem => item.MembreId)
-                    </td>*@
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Auteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateAjout)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.IdLocationDocument)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationDocumentId_Id)
+                </td>*@
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
             }
         }
     </table>

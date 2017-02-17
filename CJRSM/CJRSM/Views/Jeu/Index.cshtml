@@ -1,47 +1,45 @@
-﻿@model IEnumerable<CJRSM.Models.DAL.Jeux>
+﻿@model IEnumerable<CJRSM.Models.DAL.Jeu>
 
 @{
-    ViewBag.Title = "Listes des Jeux";
+    ViewBag.Title = "Index";
 }
-
-@*<main role="main">
-    <nav name="nav_secondaire" class="nav nav_secondaire">
-        <ul>
-            <li><h2>@Html.ActionLink("", "")</h2></li>
-        </ul>
-    </nav>
-</main>*@
 
 <div class="conteneur_Unique">
     <h2>Listes des Jeux</h2>
     <table class="table">
         <tr>
             <th>
-                <h4>Titre</h4>
+                @Html.DisplayNameFor(model => model.Titre)
             </th>
             <th>
-                <h4>Difficulté</h4>
+                @Html.DisplayNameFor(model => model.Difficulte)
             </th>
             <th>
-                <h4>Nombre de Joueur Minimum</h4>
+                @Html.DisplayNameFor(model => model.NbrJoueurMin)
             </th>
             <th>
-                <h4>Nombre de Joueur Maximum</h4>
+                @Html.DisplayNameFor(model => model.NbrJoueurMax)
             </th>
             <th>
-                <h4>Temps Minimum</h4>
+                @Html.DisplayNameFor(model => model.TempsMin)
             </th>
             <th>
-                <h4>Temps Maximum</h4>
-            </th>
-            <th>
-                <h4>Disponible</h4>
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.MembreId)
+                @Html.DisplayNameFor(model => model.TempsMax)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateAjout)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTypesJeu)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.IdLocationJeu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypesJeuId_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationJeuId_Id)
             </th>*@
             <th></th>
         </tr>
@@ -50,39 +48,46 @@
         {
             foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.ActionLink(Html.DisplayFor(modelItem => item.Titre).ToString(), "Details", new { id = item.Id })
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Difficulte)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NbrJoueurMin)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NbrJoueurMax)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TempsMin)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TempsMax)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Disponible)
-                    </td>
-                    @*<td>
-                        @Html.DisplayFor(modelItem => item.MembreId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateAjout.Date.ToString("dd/MM/yyyy"))
-                    </td>*@
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Difficulte)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NbrJoueurMin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NbrJoueurMax)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TempsMin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TempsMax)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateAjout)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdTypesJeu)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.IdLocationJeu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypesJeuId_Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationJeuId_Id)
+                </td>*@
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
             }
         }
 

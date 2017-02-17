@@ -30,7 +30,6 @@ namespace CJRSM.Controllers
             if (ChercherTitre == null)
                 ChercherTitre = "";
             IEnumerable<Jeu> listeJeu = repo.Get(j => j.Titre.Contains("")).Select(j => j);
-            listeJeu = listeJeu.Select(j => j);
             return View(listeJeu);
         }
     }

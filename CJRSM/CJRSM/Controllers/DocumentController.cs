@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace CJRSM.Controllers
 {
-    public class DocumentController: Controller
+    public class DocumentController : Controller
     {
         private IGenericRepository<Document> repo;
         private IUnitOfWork contexte;
@@ -29,7 +29,6 @@ namespace CJRSM.Controllers
             if (ChercherTitre == null)
                 ChercherTitre = "";
             IEnumerable<Document> listeDocument = repo.Get(j => j.Titre.Contains(ChercherTitre)).Select(j => j);
-            listeDocument = listeDocument.Select(j => j);
             return View(listeDocument);
         }
     }

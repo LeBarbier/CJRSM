@@ -11,12 +11,15 @@ namespace CJRSM.Models.DAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Document
     {
         public int Id { get; set; }
+        [Display(Name = "Titre")]
         public string Titre { get; set; }
         public string Auteur { get; set; }
+        [Display(Name = "Date d'ajout")]
         public System.DateTime DateAjout { get; set; }
         public string IdLocationDocument { get; set; }
         public Nullable<int> LocationDocumentId_Id { get; set; }

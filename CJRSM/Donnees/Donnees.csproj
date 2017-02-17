@@ -199,6 +199,7 @@
       <DependentUpon>CJRSM.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DAL\UnitOfWork.cs" />
+    <Compile Include="Models\View\Document\Index.cs" />
     <Compile Include="Models\View\Membre\Connexion.cs" />
     <Compile Include="Models\View\Membre\PremiereConnexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

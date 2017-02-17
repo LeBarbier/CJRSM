@@ -66,15 +66,7 @@ namespace CJRSM.Models.DAL
                 return ordre(query).ToList();
             else
             {
-                try
-                {
-                    return query.ToList();
-                }
-                catch (InvalidOperationException ex)
-                {
-                    var errorMessage = ex.InnerException;
-                    throw new Exception(errorMessage.ToString());
-                }
+                return query.ToList();
             }
         }
 
