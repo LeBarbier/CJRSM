@@ -224,6 +224,7 @@
     <Content Include="Models\DAL\CJRSM.edmx.diagram">
       <DependentUpon>CJRSM.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\Barbier.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <Content Include="web.config" />
