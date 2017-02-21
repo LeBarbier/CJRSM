@@ -1,46 +1,95 @@
 ﻿html{
     background-image:url("../ecaillesX2.png");
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
 }
 
 ul, li{
     padding:0;
 }
 
-table{
+/* -- Option déroulante de la barre de recherche -- */
+.etat_Derouler {
+  display: none;
+}
+
+.cible_Deroulante {
+    opacity: 0;
+    max-height:0;
+    transform: scale(0);
+    transition: transform 0.60s ease;
+}
+
+.etat_Derouler:checked ~ .cible_Deroulante {
+    opacity: 1;
+    max-height: 999em;
+    transform: scale(1);
+    transition: transform 0.60s ease;
+}
+
+.etat_Derouler ~ .option_derouler:before {
+    content: 'Afficher la barre de recherche';
+}
+
+.etat_Derouler:checked ~ .option_derouler:before {
+    content: 'Cacher la barre de recherche';
+}
+
+.option_derouler {
+    cursor: pointer;
+    display: inline-block;
+    margin-left:5%;
+    margin-bottom: 10px;
+    color: #dbdbdb;
+    background-color:rgb(63, 86, 107);
+    font-size: .9em;
+    line-height: 2;
+    border: 2px solid #1d1d1d;
+    border-radius: .25em;
+    width:90%;
+    text-align:center;
+}
+
+/* -- CSS de la table contenant la liste des Jeux, des Documents et des Activitées -- */
+.table_Liste {
     margin-left: 15px;
     background-color:#000000;
     border-radius:5px;
     width:95%;
+    transition: .80s ease-in;
 }
 
-tr:nth-child(even) td{
+.table_transition{
+    transition:all .80s ease-in;
+}
+
+.table_Liste tr:nth-child(even) td{
     background-color:rgb(181, 181, 181);
 }
 
-tr:hover td{
+.table_Liste tr:hover td{
     background-color:#9bbdd5;
 }
 
-tr a:hover{
+.table_Liste tr a:hover{
     transition: color 0.5s;
     color:rgba(255, 255, 255, 0.81);
 }
 
-th{
+.table_Liste th{
     max-height:35px;
     border:3px #585858 solid;
     border-radius:5px;
     background-color:rgb(212, 212, 212);
 }
 
-th h4{
+.table_Liste th h4{
     margin:7px;
     font-weight:800;
     letter-spacing:0.5px;
 }
 
-td{
+.table_Liste td{
     margin: 0;
     padding: 5px;
     text-align: center;
@@ -51,24 +100,44 @@ td{
     background-color:rgb(212, 212, 212);
 }
 
+.table_Recherche{
+    margin-left: -10px;
+    padding:7px;
+    border:4px #151515;
+    border-radius: 3px;
+    background-color:rgb(63, 86, 107);
+    width:102%;
+    text-align:left;
+    box-shadow: 10px 10px 70px 0 #000000;
+}
+
+.table_Recherche th{
+    padding:5px;
+}
+
+.table_Recherche input {
+    border-radius:15px;
+}
+
 h2{
     margin-left:50px;
 }
 
-/* Set padding to keep content from hitting the edges */
+.table_Recherche h2{
+    margin:0px;
+    padding:0px;
+    margin-left:30px;
+}
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
 .dl-horizontal dt {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
@@ -90,6 +159,7 @@ header {
     border-radius:6px;
     margin-top:7px;
     margin-bottom:10px;
+    padding-top:10px;
     min-height:450px;
     border:ridge grey;
 }
