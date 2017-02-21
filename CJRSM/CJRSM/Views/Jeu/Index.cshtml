@@ -2,94 +2,135 @@
 
 @{
     ViewBag.Title = "Index";
+    var listeDifficulte = new List<SelectListItem>{
+        new SelectListItem { Text = "0", Value = "0" },
+        new SelectListItem { Text = "1", Value = "1" },
+        new SelectListItem { Text = "2", Value = "2" },
+        new SelectListItem { Text = "3", Value = "3" },
+        new SelectListItem { Text = "4", Value = "4" },
+        new SelectListItem { Text = "5", Value = "5" }
+    };
 }
 
 <div class="conteneur_Unique">
-    <h2>Listes des Jeux</h2>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Titre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Difficulte)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NbrJoueurMin)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NbrJoueurMax)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TempsMin)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TempsMax)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateAjout)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdTypesJeu)
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.IdLocationJeu)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TypesJeuId_Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LocationJeuId_Id)
-            </th>*@
-            <th></th>
-        </tr>
-
-        @if (Model != null)
+    <input type="checkbox" class="etat_Derouler" id="post-2" />
+    <label for="post-2" class="option_derouler"></label>
+    <div class="cible_Deroulante">
+        @using (Html.BeginForm())
         {
-            foreach (var item in Model)
-            {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Titre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Difficulte)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NbrJoueurMin)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NbrJoueurMax)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TempsMin)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TempsMax)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateAjout)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdTypesJeu)
-                </td>
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.IdLocationJeu)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TypesJeuId_Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LocationJeuId_Id)
-                </td>*@
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
-            }
-        }
+            <table class="table_Recherche">
+                <tr>
+                    <th>
+                        <h2>Rechercher un jeu</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Trouver un jeu par son titre :</th>
+                    <th>@Html.TextBox("ChercherTitre", "", new { onKeyup ="showResult(this.value)"})</th>
+                </tr>
+                <tr>
+                    <th>Trouver un jeu par sa difficulté</th>
+                    <th>@Html.DropDownList("Difficulte", listeDifficulte)</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>
+                        <input type="submit" value="Trouver un Jeu" />
+                    </th>
+                </tr>
+            </table>
 
-    </table>
+        }
+    </div>
+
+
+    <h2>Listes des Jeux</h2>
+    <div class="table_transition">
+        <table class="table_Liste sortable">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Titre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Difficulte)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NbrJoueurMin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NbrJoueurMax)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TempsMin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TempsMax)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateAjout)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdTypesJeu)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.IdLocationJeu)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TypesJeuId_Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LocationJeuId_Id)
+                    </th>*@
+                <th></th>
+            </tr>
+
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Titre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Difficulte)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NbrJoueurMin)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NbrJoueurMax)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TempsMin)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TempsMax)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateAjout)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdTypesJeu)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.IdLocationJeu)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TypesJeuId_Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LocationJeuId_Id)
+                            </td>*@
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
 </div>

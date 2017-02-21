@@ -11,8 +11,7 @@ namespace CJRSM.Models.DAL
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Jeu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,21 +21,13 @@ namespace CJRSM.Models.DAL
         }
     
         public int Id { get; set; }
-        [Display(Name = "Titre")]
         public string Titre { get; set; }
-        [Display(Name = "Difficulté")]
         public int Difficulte { get; set; }
-        [Display(Name = "Nombre de joueur Minimal")]
         public int NbrJoueurMin { get; set; }
-        [Display(Name = "Nombre de joueur Maximal")]
         public int NbrJoueurMax { get; set; }
-        [Display(Name = "Temps minimal")]
         public int TempsMin { get; set; }
-        [Display(Name = "Temps Maximal")]
         public Nullable<int> TempsMax { get; set; }
-        [Display(Name = "Date d'ajout")]
         public System.DateTime DateAjout { get; set; }
-        [Display(Name = "Type de jeu")]
         public string IdTypesJeu { get; set; }
         public string IdLocationJeu { get; set; }
         public int TypesJeuId_Id { get; set; }
