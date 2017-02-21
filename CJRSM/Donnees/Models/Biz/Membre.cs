@@ -25,7 +25,13 @@ namespace CJRSM.Models.DAL
 
         public void Modifier(IMembre membre, IUnitOfWork contexte)
         {
-            throw new NotImplementedException();
+            Membre modifier = contexte.Membre.Find(membre.Id);
+            modifier.Nom = membre.Nom;
+            modifier.Prenom = membre.Prenom;
+            modifier.MDP = membre.MDP;
+            modifier.Role = membre.Role;
+            contexte.Membre.Update(modifier);
+            contexte.Membre.Save();
         }
 
         public void ModifierPremiereConnexion(IMembre membre, IUnitOfWork contexte)
@@ -33,9 +39,9 @@ namespace CJRSM.Models.DAL
             throw new NotImplementedException();
         }
 
-        public IMembre Trouver(string NoDossier, IUnitOfWork contexte)
+        public IMembre Trouver(string noDossier, IUnitOfWork contexte)
         {
-            throw new NotImplementedException();
+            return contexte.Membre.Get(e => e.NoDossier.Contains(noDossier)).First();
         }
     }
 }

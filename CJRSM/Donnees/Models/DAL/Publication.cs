@@ -19,7 +19,5 @@ namespace CJRSM.Models.DAL
         public string Contenu { get; set; }
         public string NoDossier { get; set; }
         public Nullable<int> membre_Id { get; set; }
-    
-        public virtual Membre Membre { get; set; }
     }
 }

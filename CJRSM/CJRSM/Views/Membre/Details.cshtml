@@ -1,0 +1,47 @@
+﻿@model CJRSM.Models.DAL.Membre
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="conteneur_Unique">
+    <h2>Details</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NoDossier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoDossier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prenom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+    </dl>
+    <p>
+        @Html.ActionLink("Modifier", "Modifier", new { id = Model.Id }) |
+        @*@Html.ActionLink("Back to List", "Index")*@
+    </p>
+</div>

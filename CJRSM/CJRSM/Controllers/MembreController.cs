@@ -44,7 +44,7 @@ namespace CJRSM.Controllers
                     membre.Prenom = NewMembre.Prenom;
                     membre.MDP = FaireHashage(NewMembre.MDP, 5);
                     membre.Role = "Membre";
-                    membre.ModifierPremiereConnexion(membre, contexte);
+                    membre.Modifier(membre, contexte);
                     if (returnUrl != null)
                         return Redirect(returnUrl);
                     else
@@ -85,6 +85,54 @@ namespace CJRSM.Controllers
                 return View(modele);
             }
             return View(modele);
+        }
+
+        public ActionResult Details()
+        {
+            return View(InfoMembreModifier());
+        }
+
+        public ActionResult Modifier()
+        {
+            return View(InfoMembreModifier());
+        }
+
+        private IMembre InfoMembreModifier()
+        {
+            membre = FabriqueMembre.RetourneMembre(User.Identity.Name);
+            membre = membre.Trouver(User.Identity.Name, contexte);
+            IMembre membreModifier = new Membre();
+            membreModifier.Prenom = membre.Prenom;
+            membreModifier.Nom = membre.Nom;
+            membreModifier.Role = membre.Role;
+            membreModifier.MDP = membre.MDP;
+            //membre = FabriqueMembre.RetourneMembre(User.Identity.Name);
+            //membre = membre.Trouver(User.Identity.Name, contexte);
+            return membreModifier;
+        }
+
+        [HttpPost]
+        public ActionResult Modifier(IMembre membreModifier)
+        {
+            membre = FabriqueMembre.RetourneMembre(User.Identity.Name);
+            membre = membre.Trouver(User.Identity.Name, contexte);
+            if (ModelState.IsValid)
+            {
+                membre.Nom = membreModifier.Nom;
+                membre.Prenom = membreModifier.Prenom;
+                membre.Role = membreModifier.Role;
+                membre.MDP = membreModifier.Role;
+                membre.Modifier(membre, contexte);
+                return RedirectToAction("Details", "Membre");
+            }
+            else
+                return View(membre);
+        }
+        
+        public ActionResult Deconnexion()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
 
         private string FaireHashage(string MDP, int num)
@@ -134,8 +182,6 @@ namespace CJRSM.Controllers
             {
                 return false;
             }
-
-
         }
     }
 }

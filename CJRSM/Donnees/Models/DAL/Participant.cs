@@ -21,6 +21,5 @@ namespace CJRSM.Models.DAL
         public int Activite_Id { get; set; }
     
         public virtual Activite Activite { get; set; }
-        public virtual Membre Membre { get; set; }
     }
 }

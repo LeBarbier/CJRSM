@@ -17,17 +17,35 @@
         <a href="@Url.Action(".", "Home/Index")" class="navbar-brand ">
             <img src="~/Content/CJRSM.png" class="cjrsm_header"/>
         </a>
-        @*@Html.ActionLink(".", "Index", "Home", new { area = "" }, new { @class = "navbar-brand cjrsm_header" })*@
     </header>
     <nav name="navigation_principal" class="navbar navbar-inverse navbar-fixed-top principal">
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                @*<li>@Html.ActionLink("Possession", "Index", "Home")</li>*@
                 <li><h1>@Html.ActionLink("Acceuil", "Index", "Home")</h1></li>
                 <li><h1>@Html.ActionLink("Activité", "Index", "Activite")</h1></li>
                 <li><h1>@Html.ActionLink("Jeux", "Index", "Jeu")</h1></li>
                 <li><h1>@Html.ActionLink("Document", "Index", "Document")</h1></li>
-                <li><h1>@Html.ActionLink("Connexion", "Connexion", "Membre")</h1></li>
+                @{
+                    CJRSM.Models.DAL.IUnitOfWork contexte = new CJRSM.Models.DAL.UnitOfWork();
+                    CJRSM.Models.DAL.IMembre membre = new CJRSM.Models.DAL.Membre();
+
+                    membre = membre.Trouver(User.Identity.Name, contexte);
+                    if (membre.Role != "Membre" && User.Identity.Name != "")
+                    {
+                        <li><h1>@Html.ActionLink("Gestion Exécutif", "Gestion", "Utilisateur")</h1></li>
+                    }
+                }
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>
+                        <h1><a href="/Membre/Details">@User.Identity.Name</a>&nbsp; / &nbsp;
+                        @Html.ActionLink("Déconnexion", "Deconnexion", "Membre")</h1>
+                    </li>
+                }
+                else
+                {
+                    <li><h1>@Html.ActionLink("Connexion", "Connexion", "Membre")</h1></li>
+                }
             </ul>
         </div>
     </nav>

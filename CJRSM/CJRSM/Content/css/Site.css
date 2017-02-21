@@ -210,7 +210,7 @@ a, h1, li {
 }
 div ul li:last-child{
     float:right;
-    margin-right:75px;
+    margin-right:20px;
 }
 nav li{
     display:inline-block;
