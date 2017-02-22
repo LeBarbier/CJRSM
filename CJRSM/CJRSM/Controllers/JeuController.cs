@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Collections;
 
 namespace CJRSM.Controllers
 {
@@ -50,9 +51,24 @@ namespace CJRSM.Controllers
             //    DateAjout = "";
             if (Types == null)
                 Types = "";
-            IEnumerable<Jeu> listeJeu = repo.Get(j => j.Titre.Contains(ChercherTitre) && 
-                                                        j.Difficulte.Equals(Difficulte)).Select(j => j);
+
+            IEnumerable<Jeu> listeJeu = repo.Get(j => j.Titre.Contains(ChercherTitre));
+
+            if (Difficulte != 0)
+            {
+                //listeJeu = repo.Get(j => j.Titre.Contains(ChercherTitre) &&
+                                                            //j.Difficulte.Equals(Difficulte)).Select(j => j);
+            }
+            else
+            {
+            }
             return View(listeJeu);
+        }
+
+        public ArrayList getTypes(int TypesJeuId)
+        {
+            //IEnumerable<Models.DAL.Type> listeType = contexte.TypesJeu.Get(repo.Get(l => l.(TypesJeuId.ToString())));
+            return null;
         }
     }
 }

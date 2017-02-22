@@ -49,39 +49,15 @@
     <div class="table_transition">
         <table class="table_Liste sortable">
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Titre)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Difficulte)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NbrJoueurMin)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NbrJoueurMax)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TempsMin)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TempsMax)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DateAjout)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IdTypesJeu)
-                </th>
-                @*<th>
-                        @Html.DisplayNameFor(model => model.IdLocationJeu)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.TypesJeuId_Id)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LocationJeuId_Id)
-                    </th>*@
+                <th>Titre</th>
+                <th>Difficulté</th>
+                <th>Minimum de joueur</th>
+                <th>Maximum de joueur</th>
+                <th>Temps Minimal</th>
+                <th>Temps Maximal</th>
+                <th>Date d'ajout</th>
+                <th>Types de Jeu</th>
+                <th>Disponible</th>
                 <th></th>
             </tr>
 
@@ -103,26 +79,27 @@
                             @Html.DisplayFor(modelItem => item.NbrJoueurMax)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.TempsMin)
+                            @Html.DisplayFor(modelItem => item.TempsMin) minute-s
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.TempsMax)
+                            @Html.DisplayFor(modelItem => item.TempsMax) minute-s
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DateAjout)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.IdTypesJeu)
+                            @{
+//CJRSM.Models.DAL.TypesJeu.
+                            }
                         </td>
-                        @*<td>
-                                @Html.DisplayFor(modelItem => item.IdLocationJeu)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TypesJeuId_Id)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.LocationJeuId_Id)
-                            </td>*@
+                        <td>
+                            @if (item.LocationJeu != null)
+                            {
+                                <img src="~/Content/icon_false.png" style="height:20px;" />}
+                            else
+                            {
+                                <img src="~/Content/icon_true.png" style="height:20px;" />}
+                        </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                             @Html.ActionLink("Details", "Details", new { id = item.Id }) |

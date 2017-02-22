@@ -5,24 +5,41 @@
 }
 
 <div class="conteneur_Unique">
+    <input type="checkbox" class="etat_Derouler" id="post-2" />
+    <label for="post-2" class="option_derouler"></label>
+    <div class="cible_Deroulante">
+    @using (Html.BeginForm())
+    {
+        <table class="table_Recherche">
+            <tr>
+                <th>
+                    <h2>Rechercher un jeu</h2>
+                </th>
+            </tr>
+            <tr>
+                <th>Trouver un document par son titre :</th>
+                <th>@Html.TextBox("ChercherTitre", "", new { onKeyup = "showResult(this.value)" })</th>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>
+                    <input type="submit" value="Trouver un Jeu" />
+                </th>
+            </tr>
+        </table>
+        }
+    </div>
+
     <h2>Listes des Documents</h2>
-    <table class="table">
+    <table class="table_Liste sortable">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Titre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Auteur)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateAjout)
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.IdLocationDocument)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LocationDocumentId_Id)
-            </th>*@
+            <th>Titre</th>
+            <th>Auteur-e</th>
+            <th>Date d'ajout</th>
+            <th>Disponible</th>
             <th></th>
         </tr>
 
@@ -40,12 +57,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.DateAjout)
                 </td>
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.IdLocationDocument)
-                </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.LocationDocumentId_Id)
-                </td>*@
+                    @if (item.LocationDocument != null) { 
+                        <img src="~/Content/icon_false.png" style="height:20px;"/>}
+                    else {
+                        <img src="~/Content/icon_true.png" style="height:20px;"/>}
+                </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Id }) |
