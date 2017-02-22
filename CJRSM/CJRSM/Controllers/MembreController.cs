@@ -97,11 +97,11 @@ namespace CJRSM.Controllers
             return View(InfoMembreModifier());
         }
 
-        private IMembre InfoMembreModifier()
+        private Membre InfoMembreModifier()
         {
             membre = FabriqueMembre.RetourneMembre(User.Identity.Name);
             membre = membre.Trouver(User.Identity.Name, contexte);
-            IMembre membreModifier = new Membre();
+            Membre membreModifier = new Membre();
             membreModifier.Prenom = membre.Prenom;
             membreModifier.Nom = membre.Nom;
             membreModifier.Role = membre.Role;
@@ -112,7 +112,7 @@ namespace CJRSM.Controllers
         }
 
         [HttpPost]
-        public ActionResult Modifier(IMembre membreModifier)
+        public ActionResult Modifier(Membre membreModifier)
         {
             membre = FabriqueMembre.RetourneMembre(User.Identity.Name);
             membre = membre.Trouver(User.Identity.Name, contexte);
@@ -120,8 +120,7 @@ namespace CJRSM.Controllers
             {
                 membre.Nom = membreModifier.Nom;
                 membre.Prenom = membreModifier.Prenom;
-                membre.Role = membreModifier.Role;
-                membre.MDP = membreModifier.Role;
+                //membre.MDP = membreModifier.MDP;
                 membre.Modifier(membre, contexte);
                 return RedirectToAction("Details", "Membre");
             }
@@ -129,6 +128,28 @@ namespace CJRSM.Controllers
                 return View(membre);
         }
         
+        public ActionResult ModifierMotDePasse()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ModifierMotDePasse(ModifierMotDePasse mdp)
+        {
+            if (ModelState.IsValid)
+            {
+                membre = FabriqueMembre.RetourneMembre(User.Identity.Name);
+                membre = membre.Trouver(User.Identity.Name, contexte);
+                membre.MDP = FaireHashage(mdp.NouveauMDP, 5);
+                membre.Modifier(membre, contexte);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(mdp);
+            }
+        }
+
         public ActionResult Deconnexion()
         {
             FormsAuthentication.SignOut();

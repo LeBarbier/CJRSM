@@ -6,42 +6,39 @@
 
 <div class="conteneur_Unique">
     <h2>Details</h2>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NoDossier)
-        </dt>
+    <ul>
+        <li class="listeDetailMembre">
+            @Html.DisplayNameFor(model => model.NoDossier)&nbsp;
 
-        <dd>
-            @Html.DisplayFor(model => model.NoDossier)
-        </dd>
+            <strong>@User.Identity.Name</strong>
+        </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Prenom)
-        </dt>
+        <li class="listeDetailMembre">
+            @Html.DisplayNameFor(model => model.Prenom)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-        <dd>
-            @Html.DisplayFor(model => model.Prenom)
-        </dd>
+            <strong>@Html.DisplayFor(model => model.Prenom)</strong>
+        </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nom)
-        </dt>
+        <li class="listeDetailMembre">
+            @Html.DisplayNameFor(model => model.Nom)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-        <dd>
-            @Html.DisplayFor(model => model.Nom)
-        </dd>
+            <strong>@Html.DisplayFor(model => model.Nom)</strong>
+        </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Role)
-        </dt>
+        <li class="listeDetailMembre">
+            @Html.DisplayNameFor(model => model.Role)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-        <dd>
-            @Html.DisplayFor(model => model.Role)
-        </dd>
-    </dl>
+            <strong>@Html.DisplayFor(model => model.Role)</strong>
+        </li>
+
+        <li class="listeDetailMembre">
+            @Html.DisplayNameFor(model => model.MDP)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            @Html.ActionLink("Modifier le mot de passe", "ModifierMotDePasse", "Membre", new { @class = "lienCommeBouton" })
+        </li>
+    </ul>
     <p>
-        @Html.ActionLink("Modifier", "Modifier", new { id = Model.Id }) |
+        @Html.ActionLink("Modifier les informations", "Modifier", new { id = Model.Id }, new { @class = "lienCommeBouton" } )
         @*@Html.ActionLink("Back to List", "Index")*@
     </p>
 </div>

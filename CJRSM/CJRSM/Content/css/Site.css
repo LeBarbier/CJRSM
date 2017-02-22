@@ -101,22 +101,18 @@ ul, li{
 }
 
 .table_Recherche{
-    margin-left: -10px;
+    margin-left: -45px;
     padding:7px;
     border:4px #151515;
     border-radius: 3px;
     background-color:rgb(63, 86, 107);
-    width:102%;
+    width:104%;
     text-align:left;
     box-shadow: 10px 10px 70px 0 #000000;
 }
 
 .table_Recherche th{
     padding:5px;
-}
-
-.table_Recherche input {
-    border-radius:15px;
 }
 
 h2{
@@ -153,7 +149,6 @@ header {
     margin:0;
 }
 
-
 .conteneur_Unique{
     background-color:rgba(255, 255, 255, 0.70);
     border-radius:6px;
@@ -162,6 +157,7 @@ header {
     padding-top:10px;
     min-height:450px;
     border:ridge grey;
+    padding-left:35px;
 }
 
 .conteneur_Deux{
@@ -180,13 +176,6 @@ header {
 
 .Alignement-Connexion label{
     margin:0 0 0px 15px;
-}
-
-.Alignement-Connexion input{
-    border:0.5px black solid;
-    border-radius:3px;
-    padding:3px;
-    margin:8px 0 10px 0;
 }
 
 .Alignement-Connexion .btn{
@@ -208,7 +197,8 @@ a, h1, li {
     margin: 0;
     font-size: large;
 }
-div ul li:last-child{
+
+.navPrincipal li:last-child{
     float:right;
     margin-right:20px;
 }
@@ -261,15 +251,12 @@ nav li a:hover{
     left: 8px;
     background-color: white;
     visibility: hidden;
-    -webkit-transform: scaleX(0);
     transform: scaleX(0);
-    -webkit-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
 }
 
 .nav_secondaire a:hover:before {
   visibility: visible;
-  -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
 
@@ -288,4 +275,50 @@ nav.principal ul{
 }
 nav.principal li {
     padding-right: 45px;
+}
+
+label, .listeDetailMembre{
+    font-style:italic;
+    list-style:none;
+}
+
+.lienModifier{
+    margin-left:70px;
+    padding:5px;
+    border: 1px black solid;
+    background-color:white;
+    border-radius:5px;
+    font-weight:400;
+}
+.lienCommeBouton{
+    margin-left:25px;
+    font-style:normal;
+    font-size: small;
+    font: 13.3333px Arial;
+    background-color: white;
+    -webkit-appearance: push-button;
+    background-color: buttonface;
+    padding: 4px 8px 3px;
+    border-width: 2px;
+    cursor:pointer;
+    border-radius:5px;
+    box-shadow: 5px 5px 10px 0 #717171;
+}
+
+input[type=text], input[type=password]{
+    border: 0.5px black solid;
+    border-radius: 3px;
+    padding: 3px;
+    margin: 8px 0 10px 20px;
+    box-shadow: 5px 5px 10px 0 #3b3b3b;
+}
+
+input[type=submit], input[type=button]{
+    cursor:pointer;
+    border-radius:5px;
+    box-shadow: 5px 5px 10px 0 #3b3b3b;
+}
+
+input[type=submit]:hover, input[type=button]:hover, .lienModifierMDP:hover{
+    transform: scale(1.08);
 }
