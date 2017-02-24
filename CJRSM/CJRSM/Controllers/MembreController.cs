@@ -2,6 +2,8 @@
 using CJRSM.Models.View.Membre;
 using Scrypt;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -24,6 +26,52 @@ namespace CJRSM.Controllers
         {
             this.contexte = contexte;
             repo = contexte.Membre;
+        }
+
+        public ArrayList TrouverExecutif()
+        {
+            ArrayList listeExecutif = new ArrayList();
+            membre = new Membre();
+            membre = membre.TrouverExecutif("Bibliothecaire", contexte);
+            if (membre != null)
+                listeExecutif.Add(membre.Prenom+", "+membre.Nom);
+            else
+                listeExecutif.Add("Aucun bibliothécaire.");
+
+            membre = new Membre();
+            membre = membre.TrouverExecutif("Externe", contexte);
+            if (membre != null)
+                listeExecutif.Add(membre.Prenom + ", " + membre.Nom);
+            else
+                listeExecutif.Add("Aucun externe.");
+
+            membre = new Membre();
+            membre = membre.TrouverExecutif("Interne", contexte);
+            if (membre != null)
+                listeExecutif.Add(membre.Prenom + ", " + membre.Nom);
+            else
+                listeExecutif.Add("Aucun interne.");
+
+            membre = new Membre();
+            membre = membre.TrouverExecutif("Publiciste", contexte);
+            if (membre != null)
+                listeExecutif.Add(membre.Prenom + ", " + membre.Nom);
+            else
+                listeExecutif.Add("Aucun publiciste.");
+
+            membre = new Membre();
+            membre = membre.TrouverExecutif("Tresorier", contexte);
+            if (membre != null)
+                listeExecutif.Add(membre.Prenom + ", " + membre.Nom);
+            else
+                listeExecutif.Add("Aucun trésorier.");
+
+            return listeExecutif;
+        }
+
+        public ActionResult Executif()
+        {
+            return View();
         }
 
         public ActionResult PremiereConnexion()
@@ -203,6 +251,39 @@ namespace CJRSM.Controllers
             {
                 return false;
             }
+        }
+
+        public ActionResult AjoutDocument()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AjoutDocument(Document nouveauDocument)
+        {
+            if (ModelState.IsValid)
+            {
+                membre = new Membre();
+                return View("DocumentAjoute", membre.AjouterDocument(nouveauDocument, contexte));
+            } else
+                return View();
+        }
+
+        public ActionResult AjoutJeu()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AjoutJeu(Jeu nouveauJeu)
+        {
+            if (ModelState.IsValid)
+            {
+                membre = new Membre();
+                return View("JeuAjoute", membre.AjouterJeu(nouveauJeu, contexte));
+            }
+            else
+                return View();
         }
     }
 }

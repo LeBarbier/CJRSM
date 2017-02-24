@@ -14,29 +14,21 @@ namespace CJRSM.Models.DAL
         public string Auteur;
         public bool Disponible;
         public DateTime DateAjout;
-        public string MembreId;
+        public int IdLocationDocument;
 
         Documents(int id, string titre, string auteur)
         {
             this.Id = id;
             this.Titre = titre;
             this.Auteur = auteur;
-            this.Disponible = true;
+            //this.Disponible = true;
             this.DateAjout = DateTime.Today;
         }
 
-        public string getMembreId()
-        {
-            return MembreId;
-        }
-        public void setMembreId(string  MembreId)
-        {
-            this.MembreId = MembreId;
-        }
-        public void Emprunt(string membreId)
+        public void Emprunt(int IdLocationDocument)
         {
             this.Disponible = false;
-            this.MembreId = membreId;
+            this.IdLocationDocument = IdLocationDocument;
         }
         /*public ArrayList getDocument()
         {

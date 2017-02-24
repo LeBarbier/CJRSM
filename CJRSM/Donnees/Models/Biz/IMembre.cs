@@ -14,10 +14,11 @@ namespace CJRSM.Models.DAL
         void Modifier(IMembre membre, IUnitOfWork contexte);
         void ModifierPremiereConnexion(IMembre membre, IUnitOfWork contexte);
         IMembre Trouver(string NoDossier, IUnitOfWork contexte);
+        IMembre TrouverExecutif(string NoDossier, IUnitOfWork contexte);
         [Authorize(Roles = "trésorier, interne, externe, bibliothécaire, publiciste")]
-        Document AjouterDocument();
+        Document AjouterDocument(Document nouveauDocument, IUnitOfWork contexte);
         [Authorize(Roles = "trésorier, interne, externe, bibliothécaire, publiciste")]
-        Jeu AjouterJeu();
+        Jeu AjouterJeu(Jeu nouveauJeu, IUnitOfWork contexte);
         Publication AjouterPublication();
     }
 }

@@ -32,7 +32,7 @@
                     membre = membre.Trouver(User.Identity.Name, contexte);
                     if (membre.Role != "Membre" && User.Identity.Name != "")
                     {
-                        <li><h1>@Html.ActionLink("Gestion Exécutif", "Gestion", "Utilisateur")</h1></li>
+                        <li><h1>@Html.ActionLink("Gestion Exécutif", "Executif", "Membre")</h1></li>
                     }
                 }
                 @if (User.Identity.IsAuthenticated)

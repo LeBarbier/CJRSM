@@ -70,5 +70,10 @@ namespace CJRSM.Controllers
             //IEnumerable<Models.DAL.Type> listeType = contexte.TypesJeu.Get(repo.Get(l => l.(TypesJeuId.ToString())));
             return null;
         }
+
+        public ActionResult Ajout()
+        {
+            return View();
+        }
     }
 }

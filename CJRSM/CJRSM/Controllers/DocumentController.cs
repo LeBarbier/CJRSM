@@ -11,6 +11,7 @@ namespace CJRSM.Controllers
     {
         private IGenericRepository<Document> repo;
         private IUnitOfWork contexte;
+        Document document;
 
         public DocumentController()
         {
@@ -31,5 +32,24 @@ namespace CJRSM.Controllers
             IEnumerable<Document> listeDocument = repo.Get(j => j.Titre.Contains(ChercherTitre)).Select(j => j);
             return View(listeDocument);
         }
+
+        //public ActionResult Ajout()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public ActionResult Ajout(Document nouveauDocument)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        document = new Document();
+        //        document.Titre = nouveauDocument.Titre;
+        //        document.Auteur = nouveauDocument.Auteur;
+        //        document.DateAjout = DateTime.Today;
+        //        document.
+        //    }
+        //    return View();
+        //}
     }
 }

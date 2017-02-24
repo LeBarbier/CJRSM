@@ -17,7 +17,6 @@ namespace CJRSM.Models.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Activite()
         {
-            this.ActiviteJeus = new HashSet<ActiviteJeu>();
             this.Participants = new HashSet<Participant>();
         }
     
@@ -33,8 +32,6 @@ namespace CJRSM.Models.DAL
         public bool Accepte { get; set; }
         public string IdActiviteJeu { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ActiviteJeu> ActiviteJeus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Participant> Participants { get; set; }
     }

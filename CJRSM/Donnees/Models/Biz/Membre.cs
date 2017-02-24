@@ -8,14 +8,33 @@ namespace CJRSM.Models.DAL
 {
     public partial class Membre : IMembre
     {
-        public Document AjouterDocument()
+        public Document AjouterDocument(Document nouveauDocument, IUnitOfWork contexte)
         {
-            throw new NotImplementedException();
+            Document document = new Document();
+            document.Titre = nouveauDocument.Titre;
+            document.Auteur = nouveauDocument.Auteur;
+            document.DateAjout = DateTime.Today;
+            document.IdLocationDocument = null;
+            contexte.Document.Add(document);
+            contexte.Document.Save();
+            return document;
         }
 
-        public Jeu AjouterJeu()
+        public Jeu AjouterJeu(Jeu nouveauJeu, IUnitOfWork contexte)
         {
-            throw new NotImplementedException();
+            Jeu jeu = new Jeu();
+            jeu.Titre = nouveauJeu.Titre;
+            jeu.Difficulte = nouveauJeu.Difficulte;
+            jeu.NbrJoueurMin = nouveauJeu.NbrJoueurMin;
+            jeu.NbrJoueurMax = nouveauJeu.NbrJoueurMax;
+            jeu.TempsMin = nouveauJeu.TempsMin;
+            jeu.TempsMax = nouveauJeu.TempsMax;
+            jeu.DateAjout = DateTime.Today;
+            jeu.TypesJeu = null;
+            jeu.LocationJeu = null;
+            contexte.Jeu.Add(jeu);
+            contexte.Jeu.Save();
+            return jeu;
         }
 
         public Publication AjouterPublication()
@@ -42,6 +61,17 @@ namespace CJRSM.Models.DAL
         public IMembre Trouver(string noDossier, IUnitOfWork contexte)
         {
             return contexte.Membre.Get(e => e.NoDossier.Contains(noDossier)).First();
+        }
+        public IMembre TrouverExecutif(string role, IUnitOfWork contexte)
+        {
+            try
+            {
+                return contexte.Membre.Get(e => e.Role.Contains(role)).First();
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
     }
 }

@@ -18,8 +18,7 @@ namespace CJRSM.Models.DAL
         public string Titre { get; set; }
         public string Auteur { get; set; }
         public System.DateTime DateAjout { get; set; }
-        public string IdLocationDocument { get; set; }
-        public Nullable<int> LocationDocumentId_Id { get; set; }
+        public Nullable<int> IdLocationDocument { get; set; }
     
         public virtual LocationDocument LocationDocument { get; set; }
     }

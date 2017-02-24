@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CJRSM.Models.Biz;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace CJRSM.Models.DAL
         public DateTime DateDebut;
         public int NbrRepetition;
         public bool Accepte;
-        private ArrayList Participant; 
+        private ArrayList Participant;
 
         /****/
         Activites(string MembreId, string titre, string description, int jour, DateTime heureDebut, DateTime dateDebut){
@@ -74,9 +75,16 @@ namespace CJRSM.Models.DAL
         {
             this.Accepte = true;
         }
-        /*public ArrayList getActivite()
+        public IEnumerable<Activite> ActiviteNonAccepte(IUnitOfWork contexte)
         {
-            return this;
-        }*/
+            try
+            {
+                return contexte.Activite.Get(e => e.Accepte.Equals(false));
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
     }
 }

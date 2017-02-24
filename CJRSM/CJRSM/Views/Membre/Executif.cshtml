@@ -1,0 +1,112 @@
+﻿@model IEnumerable<CJRSM.Models.DAL.Activites>
+@{
+    CJRSM.Controllers.MembreController membreController = new CJRSM.Controllers.MembreController();
+    CJRSM.Controllers.ActiviteController activiteController = new CJRSM.Controllers.ActiviteController();
+
+    System.Collections.ArrayList listeMembreExecutif = membreController.TrouverExecutif();
+    ViewBag.Title = "Exécutif";
+}
+
+
+<div class="conteneur_Unique">
+    <h2>Executif</h2>
+    <h3>Ajouter un élément à une liste</h3>
+    <div class="div_lien_ajout">
+        @Html.ActionLink("Ajouter un document a la base de donnée", "AjoutDocument", "Membre")<br />
+        @Html.ActionLink("Ajouter un jeu a la base de donnée", "AjoutJeu", "Membre")
+    </div>
+
+
+    <h3>Activité non accepté proposé par les membres</h3>
+    <table class="table_Liste sortable">
+        <tr>
+            <th>
+                <h4>Titre de l'activité</h4>
+            </th>
+            <th>
+                <h4>Jeu proposé</h4>
+            </th>
+            <th>
+                <h4>Jour de l'activité</h4>
+            </th>
+            <th>
+                <h4>Heure du commencement</h4>
+            </th>
+            <th>
+                <h4>Date de l'activité</h4>
+            </th>
+            <th></th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                if (item.Accepte == false)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(Html.DisplayFor(modelItem => item.Titre).ToString(), "Details", new { id = item.Id })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Jeu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Jour)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HeureDebut)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateDebut)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+            }
+        }
+    </table>
+
+    <h3>Modifier le rôle d'un membre</h3>
+    <table class="table_Role">
+        <tr>
+            <td>Bibliothécaire</td>
+            <td>
+                @listeMembreExecutif[0]
+            </td>
+            <th>@Html.ActionLink("Modifier", "", "")</th>
+        </tr>
+        <tr>
+            <td>Externe</td>
+            <td>
+                @listeMembreExecutif[1]
+            </td>
+            <th><a href="#">Modifier</a></th>
+        </tr>
+        <tr>
+            <td>Interne</td>
+            <td>
+                @listeMembreExecutif[2]
+            </td>
+            <th><a href="#">Modifier</a></th>
+        </tr>
+        <tr>
+            <td>Publiciste</td>
+            <td>
+                @listeMembreExecutif[3]
+            </td>
+            <th><a href="#">Modifier</a></th>
+        </tr>
+        <tr>
+            <td>Trésorier</td>
+            <td>
+                @listeMembreExecutif[4]
+            </td>
+            <th><a href="#">Modifier</a></th>
+        </tr>
+    </table>
+
+</div>

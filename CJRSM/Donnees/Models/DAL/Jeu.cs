@@ -14,12 +14,6 @@ namespace CJRSM.Models.DAL
     
     public partial class Jeu
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Jeu()
-        {
-            this.ActiviteJeus = new HashSet<ActiviteJeu>();
-        }
-    
         public int Id { get; set; }
         public string Titre { get; set; }
         public int Difficulte { get; set; }
@@ -28,13 +22,9 @@ namespace CJRSM.Models.DAL
         public int TempsMin { get; set; }
         public Nullable<int> TempsMax { get; set; }
         public System.DateTime DateAjout { get; set; }
-        public string IdTypesJeu { get; set; }
-        public string IdLocationJeu { get; set; }
-        public int TypesJeuId_Id { get; set; }
-        public Nullable<int> LocationJeuId_Id { get; set; }
+        public int IdTypesJeu { get; set; }
+        public Nullable<int> IdLocationJeu { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ActiviteJeu> ActiviteJeus { get; set; }
         public virtual LocationJeu LocationJeu { get; set; }
         public virtual TypesJeu TypesJeu { get; set; }
     }
