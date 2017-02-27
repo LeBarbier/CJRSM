@@ -49,9 +49,8 @@
           <Property Name="NbrJoueurMin" Type="int" Nullable="false" />
           <Property Name="NbrJoueurMax" Type="int" Nullable="false" />
           <Property Name="TempsMin" Type="int" Nullable="false" />
-          <Property Name="TempsMax" Type="int" />
+          <Property Name="TempsMax" Type="int" Nullable="false" />
           <Property Name="DateAjout" Type="datetime" Nullable="false" />
-          <Property Name="IdTypesJeu" Type="int" Nullable="false" />
           <Property Name="IdLocationJeu" Type="int" />
         </EntityType>
         <EntityType Name="LocationDocument">
@@ -94,10 +93,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NoDossier" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="IdActivite" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="membre_Id" Type="int" Nullable="false" />
-          <Property Name="Activite_Id" Type="int" Nullable="false" />
+          <Property Name="NoDossier" Type="int" Nullable="false" />
+          <Property Name="IdActivite" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Publication">
           <Key>
@@ -106,8 +103,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Titre" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Contenu" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="NoDossier" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="membre_Id" Type="int" />
+          <Property Name="IdMembre" Type="int" />
         </EntityType>
         <EntityType Name="Types">
           <Key>
@@ -115,16 +111,14 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nom" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="IdTypesJeu" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="TypesJeu_Id" Type="int" />
         </EntityType>
         <EntityType Name="TypesJeu">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdTypes" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="IdJeu" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdTypes" Type="int" Nullable="false" />
+          <Property Name="IdJeu" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_DocumentLocationDocument">
           <End Role="LocationDocument" Type="Self.LocationDocument" Multiplicity="0..1" />
@@ -150,18 +144,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_JeuTypesJeu">
-          <End Role="TypesJeu" Type="Self.TypesJeu" Multiplicity="1" />
-          <End Role="Jeu" Type="Self.Jeu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TypesJeu">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Jeu">
-              <PropertyRef Name="IdTypesJeu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ParticipantsActivite">
           <End Role="Activite" Type="Self.Activite" Multiplicity="1" />
           <End Role="Participants" Type="Self.Participants" Multiplicity="*" />
@@ -170,7 +152,31 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Participants">
-              <PropertyRef Name="Activite_Id" />
+              <PropertyRef Name="IdActivite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParticipantsMembre">
+          <End Role="Membre" Type="Self.Membre" Multiplicity="1" />
+          <End Role="Participants" Type="Self.Participants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membre">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Participants">
+              <PropertyRef Name="NoDossier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PublicationMembre">
+          <End Role="Membre" Type="Self.Membre" Multiplicity="0..1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membre">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="IdMembre" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -194,13 +200,17 @@
             <End Role="LocationJeu" EntitySet="LocationJeu" />
             <End Role="Jeu" EntitySet="Jeu" />
           </AssociationSet>
-          <AssociationSet Name="FK_JeuTypesJeu" Association="Self.FK_JeuTypesJeu">
-            <End Role="TypesJeu" EntitySet="TypesJeu" />
-            <End Role="Jeu" EntitySet="Jeu" />
-          </AssociationSet>
           <AssociationSet Name="FK_ParticipantsActivite" Association="Self.FK_ParticipantsActivite">
             <End Role="Activite" EntitySet="Activite" />
             <End Role="Participants" EntitySet="Participants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParticipantsMembre" Association="Self.FK_ParticipantsMembre">
+            <End Role="Membre" EntitySet="Membre" />
+            <End Role="Participants" EntitySet="Participants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PublicationMembre" Association="Self.FK_PublicationMembre">
+            <End Role="Membre" EntitySet="Membre" />
+            <End Role="Publication" EntitySet="Publication" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -254,12 +264,10 @@
           <Property Name="NbrJoueurMin" Type="Int32" Nullable="false" />
           <Property Name="NbrJoueurMax" Type="Int32" Nullable="false" />
           <Property Name="TempsMin" Type="Int32" Nullable="false" />
-          <Property Name="TempsMax" Type="Int32" />
+          <Property Name="TempsMax" Type="Int32" Nullable="false" />
           <Property Name="DateAjout" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IdTypesJeu" Type="Int32" Nullable="false" />
           <Property Name="IdLocationJeu" Type="Int32" />
           <NavigationProperty Name="LocationJeu" Relationship="Self.FK_JeuLocationJeu" FromRole="Jeu" ToRole="LocationJeu" />
-          <NavigationProperty Name="TypesJeu" Relationship="Self.FK_JeuTypesJeu" FromRole="Jeu" ToRole="TypesJeu" />
         </EntityType>
         <EntityType Name="LocationDocument">
           <Key>
@@ -297,17 +305,18 @@
           <Property Name="Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MDP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Participants" Relationship="Self.FK_ParticipantsMembre" FromRole="Membre" ToRole="Participants" />
+          <NavigationProperty Name="Publications" Relationship="Self.FK_PublicationMembre" FromRole="Membre" ToRole="Publication" />
         </EntityType>
         <EntityType Name="Participant">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NoDossier" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdActivite" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="membre_Id" Type="Int32" Nullable="false" />
-          <Property Name="Activite_Id" Type="Int32" Nullable="false" />
+          <Property Name="NoDossier" Type="Int32" Nullable="false" />
+          <Property Name="IdActivite" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Activite" Relationship="Self.FK_ParticipantsActivite" FromRole="Participants" ToRole="Activite" />
+          <NavigationProperty Name="Membre" Relationship="Self.FK_ParticipantsMembre" FromRole="Participants" ToRole="Membre" />
         </EntityType>
         <EntityType Name="Publication">
           <Key>
@@ -316,8 +325,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Titre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Contenu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NoDossier" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="membre_Id" Type="Int32" />
+          <Property Name="IdMembre" Type="Int32" />
+          <NavigationProperty Name="Membre" Relationship="Self.FK_PublicationMembre" FromRole="Publication" ToRole="Membre" />
         </EntityType>
         <EntityType Name="Type">
           <Key>
@@ -325,17 +334,14 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdTypesJeu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TypesJeu_Id" Type="Int32" />
         </EntityType>
         <EntityType Name="TypesJeu">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdTypes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdJeu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Jeus" Relationship="Self.FK_JeuTypesJeu" FromRole="TypesJeu" ToRole="Jeu" />
+          <Property Name="IdTypes" Type="Int32" Nullable="false" />
+          <Property Name="IdJeu" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_ParticipantsActivite">
           <End Role="Activite" Type="Self.Activite" Multiplicity="1" />
@@ -345,7 +351,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Participants">
-              <PropertyRef Name="Activite_Id" />
+              <PropertyRef Name="IdActivite" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -373,15 +379,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_JeuTypesJeu">
-          <End Role="TypesJeu" Type="Self.TypesJeu" Multiplicity="1" />
-          <End Role="Jeu" Type="Self.Jeu" Multiplicity="*" />
+        <Association Name="FK_ParticipantsMembre">
+          <End Role="Membre" Type="Self.Membre" Multiplicity="1" />
+          <End Role="Participants" Type="Self.Participant" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TypesJeu">
+            <Principal Role="Membre">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Jeu">
-              <PropertyRef Name="IdTypesJeu" />
+            <Dependent Role="Participants">
+              <PropertyRef Name="NoDossier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PublicationMembre">
+          <End Role="Membre" Type="Self.Membre" Multiplicity="0..1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membre">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="IdMembre" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -409,9 +427,13 @@
             <End Role="LocationJeu" EntitySet="LocationJeus" />
             <End Role="Jeu" EntitySet="Jeus" />
           </AssociationSet>
-          <AssociationSet Name="FK_JeuTypesJeu" Association="Self.FK_JeuTypesJeu">
-            <End Role="TypesJeu" EntitySet="TypesJeus" />
-            <End Role="Jeu" EntitySet="Jeus" />
+          <AssociationSet Name="FK_ParticipantsMembre" Association="Self.FK_ParticipantsMembre">
+            <End Role="Membre" EntitySet="Membres" />
+            <End Role="Participants" EntitySet="Participants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PublicationMembre" Association="Self.FK_PublicationMembre">
+            <End Role="Membre" EntitySet="Membres" />
+            <End Role="Publication" EntitySet="Publications" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -468,7 +490,6 @@
                 <ScalarProperty Name="TempsMin" ColumnName="TempsMin" />
                 <ScalarProperty Name="TempsMax" ColumnName="TempsMax" />
                 <ScalarProperty Name="DateAjout" ColumnName="DateAjout" />
-                <ScalarProperty Name="IdTypesJeu" ColumnName="IdTypesJeu" />
                 <ScalarProperty Name="IdLocationJeu" ColumnName="IdLocationJeu" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -517,8 +538,6 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="NoDossier" ColumnName="NoDossier" />
                 <ScalarProperty Name="IdActivite" ColumnName="IdActivite" />
-                <ScalarProperty Name="membre_Id" ColumnName="membre_Id" />
-                <ScalarProperty Name="Activite_Id" ColumnName="Activite_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -528,8 +547,7 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Titre" ColumnName="Titre" />
                 <ScalarProperty Name="Contenu" ColumnName="Contenu" />
-                <ScalarProperty Name="NoDossier" ColumnName="NoDossier" />
-                <ScalarProperty Name="membre_Id" ColumnName="membre_Id" />
+                <ScalarProperty Name="IdMembre" ColumnName="IdMembre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -538,8 +556,6 @@
               <MappingFragment StoreEntitySet="Types">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nom" ColumnName="Nom" />
-                <ScalarProperty Name="IdTypesJeu" ColumnName="IdTypesJeu" />
-                <ScalarProperty Name="TypesJeu_Id" ColumnName="TypesJeu_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

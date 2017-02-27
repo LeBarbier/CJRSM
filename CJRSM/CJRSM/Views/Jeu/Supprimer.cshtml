@@ -1,0 +1,86 @@
+﻿@model CJRSM.Models.DAL.Jeu
+
+@{
+    ViewBag.Title = "Supprimer";
+}
+
+<div class="conteneur_Unique">
+    <h2>Supprimer un jeu</h2>
+    <h3>Voulez-vous vraiment supprimer ce jeu?</h3>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Difficulte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Difficulte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NbrJoueurMin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NbrJoueurMin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NbrJoueurMax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NbrJoueurMax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TempsMin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TempsMin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TempsMax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TempsMax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateAjout)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateAjout)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdLocationJeu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdLocationJeu)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer le jeu" class="btn btn-default" /> |
+            @Html.ActionLink("Retourner a la liste des jeux", "Index")
+        </div>
+    }
+</div>

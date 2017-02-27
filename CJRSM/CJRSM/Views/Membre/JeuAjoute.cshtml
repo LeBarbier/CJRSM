@@ -1,0 +1,76 @@
+﻿@model CJRSM.Models.DAL.Jeu
+
+@{
+    ViewBag.Title = "Jeu Ajouté";
+}
+<div class="conteneur_Unique">
+    <h2>Le jeu a bel et bien été ajouté</h2>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Difficulte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Difficulte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NbrJoueurMin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NbrJoueurMin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NbrJoueurMax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NbrJoueurMax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TempsMin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TempsMin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TempsMax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TempsMax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateAjout)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateAjout)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdLocationJeu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdLocationJeu)
+        </dd>
+
+    </dl>
+    @Html.ActionLink("Ajouter un nouveau Jeu", "AjoutJeu", "Membre")
+    @Html.ActionLink("Revenir a la page Executif", "Executif", "Membre")
+</div>

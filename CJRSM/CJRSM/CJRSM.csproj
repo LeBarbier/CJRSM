@@ -169,19 +169,23 @@
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\JeuController.cs" />
     <Compile Include="Controllers\MembreController.cs" />
+    <Compile Include="Controllers\TypesJeuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\CJRSM.dll" />
+    <Content Include="bin\CJRSM.pdb" />
     <Content Include="Content\CJRSM.png" />
     <Content Include="Content\css\bootstrap-theme.css" />
-    <Content Include="Content\css\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap.css" />
-    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\demo-page.css" />
     <Content Include="Content\css\font-awesome.css" />
-    <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\ecailles.png" />
     <Content Include="Content\ecaillesX2.png" />
@@ -196,16 +200,13 @@
     <Content Include="Content\js\trieDirect.js" />
     <Content Include="Content\logo.png" />
     <Content Include="Content\logo_texte.png" />
-    <Content Include="Content\js\rechercheDirecte.php" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\css\bootstrap-theme.css.map" />
-    <Content Include="Content\css\bootstrap-theme.min.css.map" />
     <Content Include="Content\css\bootstrap.css.map" />
-    <Content Include="Content\css\bootstrap.min.css.map" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -263,6 +264,8 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\tether\tether.js" />
+    <Content Include="Scripts\tether\tether.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -275,7 +278,6 @@
     <Content Include="web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Activite\Index.cshtml" />
     <Content Include="Views\Membre\Connexion.cshtml" />
     <Content Include="Views\Membre\PremiereConnexion.cshtml" />
     <Content Include="Views\Document\Index.cshtml" />
@@ -284,9 +286,27 @@
     <Content Include="Views\Membre\Details.cshtml" />
     <Content Include="Views\Membre\ModifierMotDePasse.cshtml" />
     <Content Include="Views\Membre\Executif.cshtml" />
-    <Content Include="Views\Membre\AjoutJeu.cshtml" />
     <Content Include="Views\Membre\AjoutDocument.cshtml" />
     <Content Include="Views\Membre\DocumentAjoute.cshtml" />
+    <Content Include="Views\Membre\AjoutType.cshtml" />
+    <Content Include="Views\Membre\TypeAjoute.cshtml" />
+    <Content Include="Views\Membre\JeuAjoute.cshtml" />
+    <Content Include="Views\Membre\AjoutJeu.cshtml" />
+    <Content Include="Views\Membre\LierType.cshtml" />
+    <Content Include="Views\Jeu\Modifier.cshtml" />
+    <Content Include="Views\Jeu\Supprimer.cshtml" />
+    <Content Include="Views\Document\Modifier.cshtml" />
+    <Content Include="Views\Document\Supprimer.cshtml" />
+    <Content Include="Views\TypesJeu\Ajout.cshtml" />
+    <Content Include="Views\TypesJeu\Delete.cshtml" />
+    <Content Include="Views\TypesJeu\Details.cshtml" />
+    <Content Include="Views\TypesJeu\Edit.cshtml" />
+    <Content Include="Views\TypesJeu\Index.cshtml" />
+    <Content Include="Views\Activite\Ajout.cshtml" />
+    <Content Include="Views\Activite\Details.cshtml" />
+    <Content Include="Views\Activite\Index.cshtml" />
+    <Content Include="Views\Home\AjoutPublication.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -297,6 +317,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Type\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

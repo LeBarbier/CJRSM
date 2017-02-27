@@ -1,0 +1,36 @@
+﻿@model CJRSM.Models.DAL.Publication
+
+@{
+    ViewBag.Title = "Détails";
+}
+
+<div class="conteneur_Unique">
+    <h2>Détails de la publication</h2>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contenu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contenu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdMembre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdMembre)
+        </dd>
+
+    </dl>
+    @Html.ActionLink("Retourner a la liste", "Index")
+</div>

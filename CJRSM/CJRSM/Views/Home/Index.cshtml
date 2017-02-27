@@ -1,15 +1,61 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<CJRSM.Models.DAL.Publication>
+
+@{
+    ViewBag.Title = "Accueil";
 }
 
-<main role="main" class="conteneur_Unique body-content">
-    <h2>Le Club de Jeux de Roles et de Stratégies de Maisonneuve</h2>
-    <p><h4>Le Club de Jeux de Rôles et de Stratégies du Collège de Maisonneuve vous prpopose plusieurs jeux:
-        jeux de guerre, de gestion, d'habileté ou encore de chance.
-        Notre objectif est d'offrir aux étudiant-e-s un local où il est possible de jouer, 
-        de découvrir des jeux de qualité, et même d'en emprunter!</h4></p>
-    <p><h4>Que vous recherchiez un joueur, une joueuse ou un-e maitre de jeux,
-        les membres du club sont toujours prêts et prêtes à essayer des nouveautés ou à renouer 
-        avec de vieux classiques. Mêmes les amateur-e-s de jeux de cartes y trouveront des adversaires de taille.
-         Peu importe votre jeu préféré, vous serez les bienvenu-e-s au club!</h4></p>
+<main role="main" class="conteneur_Unique body-content" style="padding:0 25px;">
+    <div class="presentation">
+        <h2>Le Club de Jeux de Roles et de Stratégies de Maisonneuve</h2>
+        <p>
+            <h4>
+                Le Club de Jeux de Rôles et de Stratégies du Collège de Maisonneuve vous prpopose plusieurs jeux:
+                jeux de guerre, de gestion, d'habileté ou encore de chance.
+                Notre objectif est d'offrir aux étudiant-e-s un local où il est possible de jouer,
+                de découvrir des jeux de qualité, et même d'en emprunter!
+            </h4>
+        </p>
+        <p>
+            <h4>
+                Que vous recherchiez un joueur, une joueuse ou un-e maitre de jeux,
+                les membres du club sont toujours prêts et prêtes à essayer des nouveautés ou à renouer
+                avec de vieux classiques. Mêmes les amateur-e-s de jeux de cartes y trouveront des adversaires de taille.
+                Peu importe votre jeu préféré, vous serez les bienvenu-e-s au club!
+            </h4>
+        </p>
+    </div>
+    <hr />
+    @if (User.Identity.Name != "")
+    {
+        <div style="margin:auto; width:50%;">
+            <label class="lblAjouterNouvelle">@Html.ActionLink("Ajouter une publication", "AjoutPublication", "Home")</label>
+        </div>
+    }
+
+    <div class="section_Blog">
+        <ul>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <li class="conteneurNouvelleSimple">
+                        <ul class="table table_Blog">
+                            <li style="font-size:large; margin-left:16px; font-style:italic;">
+                                @Html.DisplayFor(modelItem => item.Titre)<br />
+                            </li>
+                            <li>
+                                @Html.DisplayFor(modelItem => item.Contenu)
+                            </li>
+                            <li>
+                                @Html.ActionLink("Détails", "Details", new { id = item.Id })
+                            </li>
+                        </ul>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
 </main>
+
+@*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
+@*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@

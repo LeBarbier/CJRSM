@@ -1,0 +1,21 @@
+﻿@model CJRSM.Models.DAL.Type
+
+@{
+    ViewBag.Title = "Type Ajouté";
+}
+
+<div class="conteneur_Unique">
+    <h2>Le type a bel et bien été ajouté</h2>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+
+    </dl>
+    @Html.ActionLink("Ajouter un nouveau Type", "AjoutType", "Membre") <br />
+    @Html.ActionLink("Revenir a la page Executif", "Executif", "Membre")
+</div>

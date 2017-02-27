@@ -14,11 +14,23 @@ namespace CJRSM.Models.DAL
     
     public partial class Membre
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Membre()
+        {
+            this.Participants = new HashSet<Participant>();
+            this.Publications = new HashSet<Publication>();
+        }
+    
         public int Id { get; set; }
         public string NoDossier { get; set; }
         public string Prenom { get; set; }
         public string Nom { get; set; }
         public string Role { get; set; }
         public string MDP { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Participant> Participants { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Publication> Publications { get; set; }
     }
 }

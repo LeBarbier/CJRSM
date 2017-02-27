@@ -16,7 +16,7 @@
         <table class="table_Recherche">
             <tr>
                 <th>
-                    <h2>Rechercher un jeu</h2>
+                    <h2>Rechercher un Document</h2>
                 </th>
             </tr>
             <tr>
@@ -24,6 +24,8 @@
                 <th>@Html.TextBox("ChercherTitre", "", new { onKeyup = "showResult(this.value)" })</th>
             </tr>
             <tr>
+                <th>Trouver un document par son auteur-e :</th>
+                <th>@Html.TextBox("Auteur", "", new { onKeyup = "showResult(this.value)" })</th>
             </tr>
             <tr>
                 <th></th>
@@ -61,7 +63,7 @@
                         @Html.DisplayFor(modelItem => item.Auteur)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.DateAjout)
+                        @Html.DisplayFor(modelItem => item.DateAjout.Day)/@Html.DisplayFor(modelItem => item.DateAjout.Month)/@Html.DisplayFor(modelItem => item.DateAjout.Year)
                     </td>
                     <td>
                         @if (item.LocationDocument != null)
@@ -74,7 +76,8 @@
                     @if (membre.Role != "Membre" && User.Identity.Name != "")
                     {
                         <td>
-                            @Html.ActionLink("Supprimer", "Delete", new { id = item.Id })
+                            @Html.ActionLink("Modifier", "Modifier", new { id = item.Id })
+                            @Html.ActionLink("Supprimer", "Supprimer", new { id = item.Id })
                         </td>
                     }
                 </tr>

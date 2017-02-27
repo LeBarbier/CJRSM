@@ -1,0 +1,54 @@
+﻿@model CJRSM.Models.DAL.TypesJeu
+
+@{
+    ViewBag.Title = "Ajouter un type";
+    CJRSM.Models.DAL.IUnitOfWork contexte = new CJRSM.Models.DAL.UnitOfWork();
+    List<SelectListItem> listeType = new List<SelectListItem>();
+    List<SelectListItem> listeJeu = new List<SelectListItem>();
+
+    foreach (var i in contexte.Types.Get())
+    {
+        SelectListItem nouvelItem = new SelectListItem { Text = i.Nom, Value = i.Id.ToString() };
+        listeType.Add(nouvelItem);
+    }
+    foreach (var i in contexte.Jeu.Get())
+    {
+        SelectListItem nouvelItem = new SelectListItem { Text = i.Titre, Value = i.Id.ToString() };
+        listeJeu.Add(nouvelItem);
+    }
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="conteneur_Unique">
+        <h2>Ajouter un type</h2>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.IdTypes, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label class="control-label col-md-2">Type de Jeu</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.IdTypes, listeType, "Liste des types", new { htmlAttributes = new { @class = "form-control" } } )
+                @Html.ValidationMessageFor(model => model.IdTypes, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            @*@Html.LabelFor(model => model.IdJeu, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label class="control-label col-md-2">Jeu</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.IdJeu, listeJeu, "Liste des jeux", new { htmlAttributes = new { @class = "form-control" } } )
+                @Html.ValidationMessageFor(model => model.IdJeu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Ajouter le type au jeu" class="btn btn-default" />
+            </div>
+        </div>
+        @Html.ActionLink("Retourner a la liste des jeux", "Index", "Jeu")
+    </div>
+}

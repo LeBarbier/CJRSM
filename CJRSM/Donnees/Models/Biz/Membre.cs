@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace CJRSM.Models.DAL
 {
     public partial class Membre : IMembre
     {
+        [Authorize(Roles = "Trésorier, Interne, Externe, Bibliothécaire, Publiciste")]
         public Document AjouterDocument(Document nouveauDocument, IUnitOfWork contexte)
         {
             Document document = new Document();
@@ -20,6 +22,7 @@ namespace CJRSM.Models.DAL
             return document;
         }
 
+        [Authorize(Roles = "Trésorier, Interne, Externe, Bibliothécaire, Publiciste")]
         public Jeu AjouterJeu(Jeu nouveauJeu, IUnitOfWork contexte)
         {
             Jeu jeu = new Jeu();
@@ -30,16 +33,20 @@ namespace CJRSM.Models.DAL
             jeu.TempsMin = nouveauJeu.TempsMin;
             jeu.TempsMax = nouveauJeu.TempsMax;
             jeu.DateAjout = DateTime.Today;
-            jeu.TypesJeu = null;
             jeu.LocationJeu = null;
             contexte.Jeu.Add(jeu);
             contexte.Jeu.Save();
             return jeu;
         }
 
-        public Publication AjouterPublication()
+        [Authorize(Roles = "Trésorier, Interne, Externe, Bibliothécaire, Publiciste")]
+        public Type AjouterType(Type nouveauType, IUnitOfWork contexte)
         {
-            throw new NotImplementedException();
+            Type type = new Type();
+            type.Nom = nouveauType.Nom;
+            contexte.Types.Add(type);
+            contexte.Types.Save();
+            return type;
         }
 
         public void Modifier(IMembre membre, IUnitOfWork contexte)

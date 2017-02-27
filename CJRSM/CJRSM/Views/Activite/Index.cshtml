@@ -1,85 +1,132 @@
-﻿@model IEnumerable<CJRSM.Models.DAL.Activites>
+﻿@model IEnumerable<CJRSM.Models.DAL.Activite>
 
 @{
-    ViewBag.Title = "Activité";
+    ViewBag.Title = "Liste des activité";
+    CJRSM.Models.DAL.IMembre membre = new CJRSM.Models.DAL.Membre();
 }
 
-    <div class="conteneur_Unique">
-        <input type="checkbox" class="etat_Derouler" id="post-2" />
-        <label for="post-2" class="option_derouler"></label>
-        <div class="cible_Deroulante">
-            @using (Html.BeginForm())
+<div class="conteneur_Unique">
+    <input type="checkbox" class="etat_Derouler" id="post-2" />
+    <label for="post-2" class="option_derouler"></label>
+    <div class="cible_Deroulante">
+        @using (Html.BeginForm())
             {
-                <table class="table_Recherche">
-                    <tr>
-                        <th>
-                            <h2>Rechercher un jeu</h2>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>Trouver un document par son titre :</th>
-                        <th>@Html.TextBox("ChercherTitre", "", new { onKeyup = "showResult(this.value)" })</th>
-                    </tr>
-                    <tr></tr>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th>
-                            <input type="submit" value="Trouver un Jeu" />
-                        </th>
-                    </tr>
-                </table>
-            }
-        </div>
+            <table class="table_Recherche">
+                <tr>
+                    <th>
+                        <h2>Rechercher un jeu</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Trouver un document par son titre :</th>
+                    <th>@Html.TextBox("ChercherTitre", "", new { onKeyup = "showResult(this.value)" })</th>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>
+                        <input type="submit" value="Trouver un Jeu" />
+                    </th>
+                </tr>
+            </table>
+        }
+    </div>
 
-    <h2>Liste des Activité</h2>
-
+    <h2>Liste des Activités</h2>
+    @{
+        if (User.Identity.Name != "")
+        {
+            <h3>@Html.ActionLink("Ajouter une activité", "Ajout", "Activite")</h3>
+        }
+    }
     <table class="table_Liste sortable">
         <tr>
-            <th>
-                <h4>Titre de l'activité</h4>
-            </th>
-            <th>
-                <h4>Jeu proposé</h4>
-            </th>
-            <th>
-                <h4>Jour de l'activité</h4>
-            </th>
-            <th>
-                <h4>Heure du commencement</h4>
-            </th>
-            <th>
-                <h4>Date de l'activité</h4>
-            </th>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Nombre de membre minimal</th>
+            <th>Nombre de membre maximal</th>
+            <th>Journée</th>
+            <th>Heure de début</th>
+            <th>Date de début</th>
+            <th>Nombre de semaine consécutive</th>
+            <th>Accepté</th>
             <th></th>
+            @*@if (membre.Role != "Membre" && User.Identity.Name != "")*@
+                <th></th>
         </tr>
-        @if (Model != null)
-            {
-                foreach (var item in Model)
-                {
-                <tr>
-                    <td>
-                        @Html.ActionLink(Html.DisplayFor(modelItem => item.Titre).ToString(), "Details", new { id = item.Id })
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Jeu)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Jour)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.HeureDebut)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateDebut)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>
-                </tr>
-            }
-        }
-    </table>
-</div>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NbrMembreMin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NbrMembreMax)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Jour)*@
+                    @{ 
+                        if (item.Jour == 1)
+                        {
+                            <p>Lundi</p>
+                        }else if (item.Jour == 2)
+                        {
+                            <p>Mardi</p>
+                        }else if (item.Jour == 3)
+                        {
+                            <p>Mercredi</p>
+                        }else if (item.Jour == 4)
+                        {
+                            <p>Jeudi</p>
+                        }else if (item.Jour == 5)
+                        {
+                            <p>Vendredi</p>
+                        }else if (item.Jour == 6)
+                        {
+                            <p>Samedi</p>
+                        }else if (item.Jour == 7)
+                        {
+                            <p>Dimanche</p>
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeureDebut)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateDebut.Day)/@Html.DisplayFor(modelItem => item.DateDebut.Month)/@Html.DisplayFor(modelItem => item.DateDebut.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NbrRepetion)
+                </td>
+                <td>
+                    @if (item.Accepte == false)
+                    {
+                        <img src="~/Content/icon_false.png" style="height:20px;" />}
+                    else
+                    {
+                        <img src="~/Content/icon_true.png" style="height:20px;" />}
+                </td>
 
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdActiviteJeu)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
+                    @Html.ActionLink("Détails", "Details", new { id = item.Id })
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                </td>
+            </tr>
+        }
+    }
+
+    </table>

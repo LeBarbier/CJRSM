@@ -20,12 +20,10 @@ namespace CJRSM.Models.DAL
         public int NbrJoueurMin { get; set; }
         public int NbrJoueurMax { get; set; }
         public int TempsMin { get; set; }
-        public Nullable<int> TempsMax { get; set; }
+        public int TempsMax { get; set; }
         public System.DateTime DateAjout { get; set; }
-        public int IdTypesJeu { get; set; }
         public Nullable<int> IdLocationJeu { get; set; }
     
         public virtual LocationJeu LocationJeu { get; set; }
-        public virtual TypesJeu TypesJeu { get; set; }
     }
 }

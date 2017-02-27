@@ -25,31 +25,99 @@ namespace CJRSM.Controllers
             repo = contexte.Document;
         }
 
-        public ActionResult Index(string ChercherTitre)
+        //public ActionResult Index(string ChercherTitre)
+        //{
+        //    if (ChercherTitre == null)
+        //        ChercherTitre = "";
+        //    IEnumerable<Document> listeDocument = repo.Get(j => j.Titre.Contains(ChercherTitre)).Select(j => j);
+        //    return View(listeDocument);
+        //}
+
+        public ActionResult Index(string ChercherTitre,
+                            string Auteur)
         {
-            if (ChercherTitre == null)
-                ChercherTitre = "";
-            IEnumerable<Document> listeDocument = repo.Get(j => j.Titre.Contains(ChercherTitre)).Select(j => j);
-            return View(listeDocument);
+            // Création du dictionnaire
+            Dictionary<int, Document> dictionnaireDocument = new Dictionary<int, Document>();
+            IEnumerable<Document> iEnumDocument = repo.Get(j => j.Titre.Contains(""));
+            List<Document> listeDocument = new List<Document>();
+            listeDocument = iEnumDocument.ToList();
+
+            // Attribution de toutes les valeurs ainsi que des clefs au dicitonnaire
+            for (int i = 0; i < iEnumDocument.Count(); i++)
+            {
+                dictionnaireDocument.Add(i, listeDocument[i]);
+            }
+
+            // Trie du dictionnaire selon l'utilisateur
+            if (ChercherTitre != "" && ChercherTitre != null)
+            {
+                for (int i = 0; i < dictionnaireDocument.Count(); i++)
+                {
+                    if (!dictionnaireDocument[i].Titre.Contains(ChercherTitre))
+                    {
+                        dictionnaireDocument.Remove(i);
+                    }
+                }
+            }
+            listeDocument = dictionnaireDocument.Values.ToList();
+            dictionnaireDocument = new Dictionary<int, Document>();
+            for (int i = 0; i < listeDocument.Count(); i++)
+            {
+                dictionnaireDocument.Add(i, listeDocument[i]);
+            }
+            if (Auteur != "" && Auteur != null)
+            {
+                for (int i = 0; i < dictionnaireDocument.Count(); i++)
+                {
+                    if (!dictionnaireDocument[i].Auteur.Contains(Auteur))
+                    {
+                        dictionnaireDocument.Remove(i);
+                    }
+                }
+            }
+
+            // Retour du dictionnaire a un IEnumerable pour le retour a la page HTML
+            iEnumDocument = dictionnaireDocument.Values;
+            return View(iEnumDocument);
         }
 
-        //public ActionResult Ajout()
-        //{
-        //    return View();
-        //}
+        public ActionResult Modifier(int id)
+        {
+            document = contexte.Document.Find(id);
+            return View(document);
+        }
 
-        //[HttpPost]
-        //public ActionResult Ajout(Document nouveauDocument)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        document = new Document();
-        //        document.Titre = nouveauDocument.Titre;
-        //        document.Auteur = nouveauDocument.Auteur;
-        //        document.DateAjout = DateTime.Today;
-        //        document.
-        //    }
-        //    return View();
-        //}
+        [HttpPost]
+        public ActionResult Modifier(Document documentModifier)
+        {
+            if (ModelState.IsValid)
+            {
+                document = new Document();
+                document.Id = documentModifier.Id;
+                document.Titre = documentModifier.Titre;
+                document.Auteur = documentModifier.Auteur;
+                document.Modifier(document, contexte);
+                return RedirectToAction("Index", "Document");
+            }
+            else
+                return View(document);
+        }
+
+        public ActionResult Supprimer(int id)
+        {
+            document = contexte.Document.Find(id);
+            return View(document);
+        }
+
+        [HttpPost]
+        public ActionResult Supprimer(Document documentSupprimer)
+        {
+            if (ModelState.IsValid)
+            {
+                documentSupprimer.Supprimer(documentSupprimer, contexte);
+                return RedirectToAction("Index", "Document");
+            }else
+                return View(documentSupprimer);
+        }
     }
 }

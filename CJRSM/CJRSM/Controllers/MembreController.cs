@@ -34,35 +34,35 @@ namespace CJRSM.Controllers
             membre = new Membre();
             membre = membre.TrouverExecutif("Bibliothecaire", contexte);
             if (membre != null)
-                listeExecutif.Add(membre.Prenom+", "+membre.Nom);
+                listeExecutif.Add(membre.Nom+", "+membre.Prenom);
             else
                 listeExecutif.Add("Aucun bibliothécaire.");
 
             membre = new Membre();
             membre = membre.TrouverExecutif("Externe", contexte);
             if (membre != null)
-                listeExecutif.Add(membre.Prenom + ", " + membre.Nom);
+                listeExecutif.Add(membre.Nom + ", " + membre.Prenom);
             else
                 listeExecutif.Add("Aucun externe.");
 
             membre = new Membre();
             membre = membre.TrouverExecutif("Interne", contexte);
             if (membre != null)
-                listeExecutif.Add(membre.Prenom + ", " + membre.Nom);
+                listeExecutif.Add(membre.Nom + ", " + membre.Prenom);
             else
                 listeExecutif.Add("Aucun interne.");
 
             membre = new Membre();
             membre = membre.TrouverExecutif("Publiciste", contexte);
             if (membre != null)
-                listeExecutif.Add(membre.Prenom + ", " + membre.Nom);
+                listeExecutif.Add(membre.Nom + ", " + membre.Prenom);
             else
                 listeExecutif.Add("Aucun publiciste.");
 
             membre = new Membre();
             membre = membre.TrouverExecutif("Tresorier", contexte);
             if (membre != null)
-                listeExecutif.Add(membre.Prenom + ", " + membre.Nom);
+                listeExecutif.Add(membre.Nom + ", " + membre.Prenom);
             else
                 listeExecutif.Add("Aucun trésorier.");
 
@@ -154,8 +154,6 @@ namespace CJRSM.Controllers
             membreModifier.Nom = membre.Nom;
             membreModifier.Role = membre.Role;
             membreModifier.MDP = membre.MDP;
-            //membre = FabriqueMembre.RetourneMembre(User.Identity.Name);
-            //membre = membre.Trouver(User.Identity.Name, contexte);
             return membreModifier;
         }
 
@@ -281,6 +279,23 @@ namespace CJRSM.Controllers
             {
                 membre = new Membre();
                 return View("JeuAjoute", membre.AjouterJeu(nouveauJeu, contexte));
+            }
+            else
+                return View();
+        }
+
+        public ActionResult AjoutType()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AjoutType(Models.DAL.Type nouveauType)
+        {
+            if (ModelState.IsValid)
+            {
+                membre = new Membre();
+                return View("TypeAjoute", membre.AjouterType(nouveauType, contexte));
             }
             else
                 return View();

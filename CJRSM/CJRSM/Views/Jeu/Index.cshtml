@@ -36,6 +36,29 @@
                     <th>@Html.DropDownList("Difficulte", listeDifficulte)</th>
                 </tr>
                 <tr>
+                    <th>Trouver un jeu par son nombre minimal de joueur</th>
+                    <th>@Html.TextBox("NbrJoueurMin", "", new { onKeyup = "showResult(this.value)" })</th>
+                </tr>
+                <tr>
+                    <th>Trouver un jeu par son nombre maximal de joueur</th>
+                    <th>@Html.TextBox("NbrJoueurMax", "", new { onKeyup = "showResult(this.value)" })</th>
+                </tr>
+                <tr>
+                    <th>Trouver un jeu par sa durée minimal</th>
+                    <th>@Html.TextBox("TempsMin", "", new { onKeyup = "showResult(this.value)" })</th>
+                </tr>
+                <tr>
+                    <th>Trouver un jeu par sa durée maximal</th>
+                    <th>@Html.TextBox("TempsMax", "", new { onKeyup = "showResult(this.value)" })</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>
+                        <input type="reset" value="Vider les champs de recherche" />
+                    </th>
+                </tr>
+                <tr>
                     <th></th>
                     <th></th>
                     <th>
@@ -48,6 +71,10 @@
 
 
     <h2>Listes des Jeux</h2>
+    @if (User.Identity.Name != "")
+    {
+        <h3>@Html.ActionLink("Ajouter un type", "Ajout", "TypesJeu")</h3>
+    }
     <div class="table_transition">
         <table class="table_Liste sortable">
             <tr>
@@ -90,14 +117,28 @@
                             @Html.DisplayFor(modelItem => item.TempsMax) minute-s
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.DateAjout)
+                            @Html.DisplayFor(modelItem => item.DateAjout.Day)/@Html.DisplayFor(modelItem => item.DateAjout.Month)/@Html.DisplayFor(modelItem => item.DateAjout.Year)
                         </td>
                         <td>
-                            @{
-                                //CJRSM.Models.DAL.TypesJeu.
-                            }
+                            <div class="div_type">
+                                @{
+                                    IEnumerable<CJRSM.Models.DAL.TypesJeu> TypesJeu = contexte.TypesJeu.Get();
+                                    IEnumerable<CJRSM.Models.DAL.Type> Type = contexte.Types.Get();
+                                    foreach (var tj in TypesJeu){
+                                        if (tj.IdJeu == item.Id){
+                                            foreach (var t in Type){
+                                                if (tj.IdTypes == t.Id){
+                                                    <div class="type_tag">
+                                                        @Html.DisplayFor(modelItem => t.Nom)
+                                                    </div>
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            </div>
                         </td>
-                        <td>
+                        <td class="div_disponible">
                             @if (item.LocationJeu != null)
                             {
                                 <img src="~/Content/icon_false.png" style="height:20px;" />}
@@ -108,7 +149,8 @@
                         @if (membre.Role != "Membre" && User.Identity.Name != "")
                         {
                             <td>
-                                @Html.ActionLink("Supprimer", "Delete", new { id = item.Id })
+                                @Html.ActionLink("Modifier", "Modifier", new { id = item.Id })
+                                @Html.ActionLink("Supprimer", "Supprimer", new { id = item.Id })
                             </td>
                         }
                     </tr>

@@ -16,7 +16,5 @@ namespace CJRSM.Models.DAL
     {
         public int Id { get; set; }
         public string Nom { get; set; }
-        public string IdTypesJeu { get; set; }
-        public Nullable<int> TypesJeu_Id { get; set; }
     }
 }

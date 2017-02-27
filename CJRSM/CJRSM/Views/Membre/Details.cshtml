@@ -1,11 +1,11 @@
 ﻿@model CJRSM.Models.DAL.Membre
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Détails";
 }
 
 <div class="conteneur_Unique">
-    <h2>Details</h2>
+    <h2>Détails du membre</h2>
     <ul>
         <li class="listeDetailMembre">
             @Html.DisplayNameFor(model => model.NoDossier)&nbsp;
@@ -30,15 +30,9 @@
 
             <strong>@Html.DisplayFor(model => model.Role)</strong>
         </li>
-
         <li class="listeDetailMembre">
-            @Html.DisplayNameFor(model => model.MDP)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-            @Html.ActionLink("Modifier le mot de passe", "ModifierMotDePasse", "Membre", new { @class = "lienCommeBouton" })
+            @Html.ActionLink("Modifier le mot de passe", "ModifierMotDePasse", "Membre", new { @class = "lienCommeBouton" }) <br />
+            @Html.ActionLink("Modifier les informations", "Modifier", new { id = Model.Id }, new { @class = "lienCommeBouton" })
         </li>
     </ul>
-    <p>
-        @Html.ActionLink("Modifier les informations", "Modifier", new { id = Model.Id }, new { @class = "lienCommeBouton" } )
-        @*@Html.ActionLink("Back to List", "Index")*@
-    </p>
 </div>

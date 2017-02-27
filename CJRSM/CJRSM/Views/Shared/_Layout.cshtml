@@ -2,12 +2,14 @@
 <html>
 <head>
     @Styles.Render("~/Content/css/Site.css")
+    @Styles.Render("~/Content/css/font-awesome.css")
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="icon" href="@Url.Content("~/Content/logo.png")" />
     <link rel="stylesheet" type="text/css" href="http"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - CJRSM</title>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
     <script src="~/Content/js/trieDirect.js"></script>
     <script src="~/Content/js/sorttable.js"></script>
 </head>
@@ -21,7 +23,7 @@
     <nav name="navigation_principal" class="navbar navbar-inverse navbar-fixed-top principal">
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navPrincipal">
-                <li><h1>@Html.ActionLink("Acceuil", "Index", "Home")</h1></li>
+                <li><h1>@Html.ActionLink("Accueil", "Index", "Home")</h1></li>
                 <li><h1>@Html.ActionLink("Activité", "Index", "Activite")</h1></li>
                 <li><h1>@Html.ActionLink("Jeux", "Index", "Jeu")</h1></li>
                 <li><h1>@Html.ActionLink("Document", "Index", "Document")</h1></li>
