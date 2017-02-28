@@ -77,5 +77,29 @@ namespace CJRSM.Models.DAL
             contexte.Activite.Save();
             return activite;
         }
+
+        public void Modifier(IActivite activite, IUnitOfWork contexte)
+        {
+            Activite modifier = contexte.Activite.Find(activite.Id);
+            modifier.Id = activite.Id;
+            modifier.Titre = activite.Titre;
+            modifier.Description = activite.Description;
+            modifier.NbrMembreMin = activite.NbrMembreMin;
+            modifier.NbrMembreMax = activite.NbrMembreMax;
+            modifier.Jour = activite.Jour;
+            modifier.HeureDebut = activite.HeureDebut;
+            modifier.DateDebut = activite.DateDebut;
+            modifier.NbrRepetion = activite.NbrRepetion;
+            modifier.Accepte = activite.Accepte;
+            contexte.Activite.Update(modifier);
+            contexte.Activite.Save();
+        }
+
+        public void Supprimer(IActivite activite, IUnitOfWork contexte)
+        {
+            Activite supprimer = contexte.Activite.Find(activite.Id);
+            contexte.Activite.Delete(supprimer.Id);
+            contexte.Activite.Save();
+        }
     }
 }

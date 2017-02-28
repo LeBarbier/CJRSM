@@ -22,5 +22,7 @@ namespace CJRSM.Models.DAL
         string IdActiviteJeu { get; set; }
 
         Activite Ajout(Activite nouvelleActivite, IUnitOfWork contexte);
+        void Modifier(IActivite activite, IUnitOfWork contexte);
+        void Supprimer(IActivite activite, IUnitOfWork contexte);
     }
 }

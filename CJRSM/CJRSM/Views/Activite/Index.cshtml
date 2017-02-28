@@ -59,74 +59,82 @@
     {
         foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Titre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NbrMembreMin)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NbrMembreMax)
-                </td>
-                <td>
-                    @*@Html.DisplayFor(modelItem => item.Jour)*@
-                    @{ 
-                        if (item.Jour == 1)
-                        {
-                            <p>Lundi</p>
-                        }else if (item.Jour == 2)
-                        {
-                            <p>Mardi</p>
-                        }else if (item.Jour == 3)
-                        {
-                            <p>Mercredi</p>
-                        }else if (item.Jour == 4)
-                        {
-                            <p>Jeudi</p>
-                        }else if (item.Jour == 5)
-                        {
-                            <p>Vendredi</p>
-                        }else if (item.Jour == 6)
-                        {
-                            <p>Samedi</p>
-                        }else if (item.Jour == 7)
-                        {
-                            <p>Dimanche</p>
+            if (item.Accepte == true)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Titre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NbrMembreMin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NbrMembreMax)
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Jour)*@
+                        @{
+                            if (item.Jour == 1)
+                            {
+                                <p>Lundi</p>
+                            }
+                            else if (item.Jour == 2)
+                            {
+                                <p>Mardi</p>
+                            }
+                            else if (item.Jour == 3)
+                            {
+                                <p>Mercredi</p>
+                            }
+                            else if (item.Jour == 4)
+                            {
+                                <p>Jeudi</p>
+                            }
+                            else if (item.Jour == 5)
+                            {
+                                <p>Vendredi</p>
+                            }
+                            else if (item.Jour == 6)
+                            {
+                                <p>Samedi</p>
+                            }
+                            else if (item.Jour == 7)
+                            {
+                                <p>Dimanche</p>
+                            }
                         }
-                    }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HeureDebut)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateDebut.Day)/@Html.DisplayFor(modelItem => item.DateDebut.Month)/@Html.DisplayFor(modelItem => item.DateDebut.Year)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NbrRepetion)
-                </td>
-                <td>
-                    @if (item.Accepte == false)
-                    {
-                        <img src="~/Content/icon_false.png" style="height:20px;" />}
-                    else
-                    {
-                        <img src="~/Content/icon_true.png" style="height:20px;" />}
-                </td>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HeureDebut)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateDebut.Day)/@Html.DisplayFor(modelItem => item.DateDebut.Month)/@Html.DisplayFor(modelItem => item.DateDebut.Year)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NbrRepetion)
+                    </td>
+                    <td>
+                        @if (item.Accepte == false)
+                        {
+                            <img src="~/Content/icon_false.png" style="height:20px;" />}
+                        else
+                        {
+                            <img src="~/Content/icon_true.png" style="height:20px;" />}
+                    </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdActiviteJeu)
-                </td>
-                <td>
-                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
-                    @Html.ActionLink("Détails", "Details", new { id = item.Id })
-                    @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
-                </td>
-            </tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdActiviteJeu)
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
+                        @Html.ActionLink("Détails", "Details", new { id = item.Id })
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                    </td>
+                </tr>
+                }
+            }
         }
-    }
-
     </table>

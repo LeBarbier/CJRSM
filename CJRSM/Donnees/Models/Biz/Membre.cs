@@ -40,6 +40,16 @@ namespace CJRSM.Models.DAL
         }
 
         [Authorize(Roles = "Trésorier, Interne, Externe, Bibliothécaire, Publiciste")]
+        public Membre AjouterMembre(Membre nouveauMembre, IUnitOfWork contexte)
+        {
+            Membre membre = new Membre();
+            membre.NoDossier = nouveauMembre.NoDossier;
+            contexte.Membre.Add(membre);
+            contexte.Membre.Save();
+            return membre;
+        }
+
+        [Authorize(Roles = "Trésorier, Interne, Externe, Bibliothécaire, Publiciste")]
         public Type AjouterType(Type nouveauType, IUnitOfWork contexte)
         {
             Type type = new Type();

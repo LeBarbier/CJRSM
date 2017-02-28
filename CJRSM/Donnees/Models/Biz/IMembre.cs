@@ -21,5 +21,7 @@ namespace CJRSM.Models.DAL
         Jeu AjouterJeu(Jeu nouveauJeu, IUnitOfWork contexte);
         [Authorize(Roles = "Trésorier, Interne, Externe, Bibliothécaire, Publiciste")]
         Type AjouterType(Type nouveauType, IUnitOfWork contexte);
+        [Authorize(Roles = "Trésorier, Interne, Externe, Bibliothécaire, Publiciste")]
+        Membre AjouterMembre(Membre nouveauMembre, IUnitOfWork contexte);
     }
 }

@@ -71,7 +71,9 @@ namespace CJRSM.Controllers
 
         public ActionResult Executif()
         {
-            return View();
+            IEnumerable<Activite> listeActivite;
+            listeActivite = contexte.Activite.Get(a => a.Titre.Contains(""));
+            return View(listeActivite);
         }
 
         public ActionResult PremiereConnexion()
@@ -196,10 +198,10 @@ namespace CJRSM.Controllers
             }
         }
 
-        public ActionResult Deconnexion()
+        public ActionResult Deconnexion(string returnUrl)
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            return Redirect(returnUrl);
         }
 
         private string FaireHashage(string MDP, int num)
@@ -249,6 +251,24 @@ namespace CJRSM.Controllers
             {
                 return false;
             }
+        }
+
+        public ActionResult AjoutMembre()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AjoutMembre(Membre nouveauMembre)
+        {
+            if (ModelState.IsValid)
+            {
+                membre = new Membre();
+                membre.AjouterMembre(nouveauMembre, contexte);
+                return View("AjoutMembre");
+            }
+            else
+                return View(true);
         }
 
         public ActionResult AjoutDocument()

@@ -41,12 +41,12 @@
                 {
                     <li>
                         <h1><a href="/Membre/Details">@User.Identity.Name</a>&nbsp; | &nbsp;
-                        @Html.ActionLink("Déconnexion", "Deconnexion", "Membre")</h1>
+                        @Html.ActionLink("Déconnexion", "Deconnexion", "Membre",  new  { @returnUrl = Request.Url.AbsolutePath }, null)</h1>
                     </li>
                 }
                 else
                 {
-                    <li><h1>@Html.ActionLink("Connexion", "Connexion", "Membre")</h1></li>
+                    <li><h1>@Html.ActionLink("Connexion", "Connexion", "Membre", new { @returnUrl = Request.Url.AbsolutePath }, null)</h1></li>
                 }
             </ul>
         </div>
