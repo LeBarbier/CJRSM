@@ -31,13 +31,17 @@ namespace CJRSM.Controllers
                                     int NbrJoueurMin = 0,
                                     int NbrJoueurMax = 0,
                                     int TempsMin = 0,
-                                    int TempsMax = 0)
+                                    int TempsMax = 0,
+                                    int TypesId = 0)
         {
             // Création du dictionnaire
             Dictionary<int, Jeu> dictionnaireJeu = new Dictionary<int, Jeu>();
             IEnumerable<Jeu> iEnumJeu = repo.Get(j => j.Titre.Contains(""));
+            IEnumerable<TypesJeu> iEnumTypesJeu = contexte.TypesJeu.Get(tj => tj.Id.ToString().Contains(""));
             List<Jeu> listeJeu = new List<Jeu>();
+            List<TypesJeu> listeTypesJeu = new List<TypesJeu>();
             listeJeu = iEnumJeu.ToList();
+            listeTypesJeu = iEnumTypesJeu.ToList();
 
             // Attribution de toutes les valeurs ainsi que des clefs au dicitonnaire
             for (int i = 0; i < iEnumJeu.Count(); i++)
@@ -130,11 +134,39 @@ namespace CJRSM.Controllers
             {
                 for (int i = 0; i < dictionnaireJeu.Count(); i++)
                 {
-                    if (dictionnaireJeu[i].TempsMax > TempsMax)
+                    if (dictionnaireJeu[i].TempsMax < TempsMax)
                     {
                         dictionnaireJeu.Remove(i);
                     }
                 }
+            }
+            listeJeu = dictionnaireJeu.Values.ToList();
+            dictionnaireJeu = new Dictionary<int, Jeu>();
+            for (int i = 0; i < listeJeu.Count(); i++)
+            {
+                dictionnaireJeu.Add(i, listeJeu[i]);
+            }
+            if (TypesId != 0)
+            {
+                listeJeu = new List<Jeu>();
+                for (int i = 0; i < listeTypesJeu.Count(); i++)
+                {
+                    if (TypesId == listeTypesJeu[i].IdTypes)
+                    {
+                        for (int j = 0; j < dictionnaireJeu.Count(); j++)
+                        {
+                            if (listeTypesJeu[i].IdJeu == dictionnaireJeu[j].Id)
+                            {
+                                listeJeu.Add(dictionnaireJeu[j]);
+                            }
+                        }
+                    }
+                }
+            }
+            dictionnaireJeu = new Dictionary<int, Jeu>();
+            for (int i = 0; i < listeJeu.Count(); i++)
+            {
+                dictionnaireJeu.Add(i, listeJeu[i]);
             }
 
             // Retour du dictionnaire a un IEnumerable pour le retour a la page HTML

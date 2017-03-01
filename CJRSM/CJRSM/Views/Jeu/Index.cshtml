@@ -52,6 +52,21 @@
                     <th>@Html.TextBox("TempsMax", "", new { onKeyup = "showResult(this.value)" })</th>
                 </tr>
                 <tr>
+                    <th>Trouver un jeu par ses types</th>
+                    <th>
+                        <input name="TypesId" list="types" id="TypesId"/>
+                        <datalist id="types">
+                            @foreach (var i in contexte.Types.Get())
+                            {
+                                //SelectListItem nouvelItem = new SelectListItem { Text = i.Nom, Value = i.Id.ToString() };
+                                //listeTypes.Add(nouvelItem);
+                                <option value="@i.Id">@i.Nom</option>
+                            }
+                        </datalist>
+
+                    </th>
+                </tr>
+                <tr>
                     <th></th>
                     <th></th>
                     <th>
