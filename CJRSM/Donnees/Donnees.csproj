@@ -146,11 +146,13 @@
     <Compile Include="Models\Biz\IDocument.cs" />
     <Compile Include="Models\Biz\IEntite.cs" />
     <Compile Include="Models\Biz\IJeu.cs" />
+    <Compile Include="Models\Biz\IParticipant.cs" />
     <Compile Include="Models\Biz\IPublication.cs" />
     <Compile Include="Models\Biz\ITypesJeu.cs" />
     <Compile Include="Models\Biz\Jeu.cs" />
     <Compile Include="Models\Biz\IMembre.cs" />
     <Compile Include="Models\Biz\Membre.cs" />
+    <Compile Include="Models\Biz\Participant.cs" />
     <Compile Include="Models\Biz\Publication.cs" />
     <Compile Include="Models\Biz\TypesJeu.cs" />
     <Compile Include="Models\DAL\Activite.cs">

@@ -7,48 +7,67 @@
 <div class="conteneur_Unique">
     <h2>Détails de l'activité</h2>
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Titre)
-        </dt>
+        <dd>
+            <h3 style="font-style:italic;">@Html.DisplayFor(model => model.Titre)</h3>
+        </dd>
 
         <dd>
-            @Html.DisplayFor(model => model.Titre)
+            <label>@Html.DisplayFor(model => model.Description)</label>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            <label>Nombre de Participant requis</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            <label>@Html.DisplayFor(model => model.NbrMembreMin)</label>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NbrMembreMin)
+            <label>Nombre de Participant maximum</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NbrMembreMin)
+            <label>@Html.DisplayFor(model => model.NbrMembreMax)</label>
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NbrMembreMax)
+            <label>Jour de la semaine</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NbrMembreMax)
+            @if ((Html.DisplayFor(model => model.Jour)).ToString() == "1")
+            {
+                <p>Lundi</p>
+            }
+            else if ((Html.DisplayFor(model => model.Jour)).ToString() == "2")
+            {
+                <p>Mardi</p>
+            }
+            else if ((Html.DisplayFor(model => model.Jour)).ToString() == "3")
+            {
+                <p>Mercredi</p>
+            }
+            else if ((Html.DisplayFor(model => model.Jour)).ToString() == "4")
+            {
+                <p>Jeudi</p>
+            }
+            else if ((Html.DisplayFor(model => model.Jour)).ToString() == "5")
+            {
+                <p>Vendredi</p>
+            }
+            else if ((Html.DisplayFor(model => model.Jour)).ToString() == "6")
+            {
+                <p>Samedi</p>
+            }
+            else if ((Html.DisplayFor(model => model.Jour)).ToString() == "7")
+            {
+                <p>Dimanche</p>
+            }
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Jour)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Jour)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HeureDebut)
+            <label>Heuredu début de l'activité</label>
         </dt>
 
         <dd>
@@ -56,7 +75,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DateDebut)
+            <label>Date du début de l'activité</label>
         </dt>
 
         <dd>
@@ -64,7 +83,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NbrRepetion)
+            <label>Nombre de semaine consécutive</label>
         </dt>
 
         <dd>
@@ -72,24 +91,13 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Accepte)
+            <label>Jeu proposé</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Accepte)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IdActiviteJeu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdActiviteJeu)
+            <label>@Html.DisplayFor(model => model.IdActiviteJeu)</label>
         </dd>
 
     </dl>
+    @Html.ActionLink("Retourner a la liste", "Index")
 </div>
-@*<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@

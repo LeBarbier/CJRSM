@@ -33,8 +33,7 @@ namespace CJRSM.Controllers
         //    return View(listeDocument);
         //}
 
-        public ActionResult Index(string ChercherTitre,
-                            string Auteur)
+        public ActionResult Index(string ChercherTitre, string Auteur, int id = 0)
         {
             // Création du dictionnaire
             Dictionary<int, Document> dictionnaireDocument = new Dictionary<int, Document>();
@@ -58,6 +57,18 @@ namespace CJRSM.Controllers
                         dictionnaireDocument.Remove(i);
                     }
                 }
+            }
+            listeDocument = dictionnaireDocument.Values.ToList();
+            dictionnaireDocument = new Dictionary<int, Document>();
+            for (int i = 0; i < listeDocument.Count(); i++)
+            {
+                dictionnaireDocument.Add(i, listeDocument[i]);
+            }
+            if (id != 0)
+            {
+                dictionnaireDocument = new Dictionary<int, Document>();
+                document = contexte.Document.Find(id);
+                dictionnaireDocument.Add(1, document);
             }
             listeDocument = dictionnaireDocument.Values.ToList();
             dictionnaireDocument = new Dictionary<int, Document>();

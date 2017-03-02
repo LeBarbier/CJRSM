@@ -1,0 +1,41 @@
+﻿@model CJRSM.Models.DAL.Participant
+
+@{
+    ViewBag.Title = "Inscriptions";
+    CJRSM.Models.DAL.IMembre membre = new CJRSM.Models.DAL.Membre();
+    CJRSM.Models.DAL.IUnitOfWork contexte = new CJRSM.Models.DAL.UnitOfWork();
+    membre = membre.Trouver(User.Identity.Name, contexte);
+}
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="conteneur_Unique">
+        <h2>Voulez-vous vous inscrire a cet activité?</h2>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.IdMembre, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IdMembre, new { htmlAttributes = new { @style = "display:none;", @class = "form-control", @Value = membre.Id } })
+                @Html.ValidationMessageFor(model => model.IdMembre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.IdActivite, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IdActivite, new { htmlAttributes = new { @style = "display:none;", @class = "form-control", @Value = Request.Params["activiteId"] } })
+                @Html.ValidationMessageFor(model => model.IdActivite, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Oui, je veut m'inscrire!" class="btn btn-default" />
+            </div>
+        </div><br />
+        @Html.ActionLink("Non, je veux retourner a la liste", "Index")
+    </div>
+}

@@ -11,7 +11,7 @@ namespace CJRSM.Models.DAL
         IGenericRepository<LocationDocument> LocationDocument { get; }
         IGenericRepository<LocationJeu> LocationJeu { get; }
         IGenericRepository<Membre> Membre { get; }
-        IGenericRepository<Participant> Participants { get; }
+        IGenericRepository<Participant> Participant { get; }
         IGenericRepository<Publication> Publication { get; }
         IGenericRepository<Type> Types { get; }
         IGenericRepository<TypesJeu> TypesJeu { get; }

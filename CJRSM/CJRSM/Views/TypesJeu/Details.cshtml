@@ -4,13 +4,11 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>TypesJeu</h4>
-    <hr />
+<div class="conteneur_Unique">
+    <h2>Le types a bel et bien été ajouté!</h2>
     <dl class="dl-horizontal">
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.IdTypes)
         </dt>
 
@@ -24,11 +22,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.IdJeu)
-        </dd>
-
+        </dd>*@
+        @Html.ActionLink("Retourner a la liste de jeu", "Index", "Jeu", null, null)
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

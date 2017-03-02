@@ -20,6 +20,10 @@
                 </th>
             </tr>
             <tr>
+                <th>Trouver un jeu par son numéro d'identification :</th>
+                <th>@Html.TextBox("id", "")</th>
+            </tr>
+            <tr>
                 <th>Trouver un document par son titre :</th>
                 <th>@Html.TextBox("ChercherTitre", "", new { onKeyup = "showResult(this.value)" })</th>
             </tr>

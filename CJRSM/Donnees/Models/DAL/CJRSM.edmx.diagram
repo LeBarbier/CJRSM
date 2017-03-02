@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="920d0f195e404780b0a031ddfcbdc174" Name="Diagram1">
+      <Diagram DiagramId="02d2789b413a450ebd128bc80b9cfc6f" Name="Diagram1">
         <EntityTypeShape EntityType="D75E5Model.Activite" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="D75E5Model.ActiviteJeu" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="D75E5Model.Document" Width="1.5" PointX="8" PointY="5.125" IsExpanded="true" />
@@ -16,10 +16,10 @@
         <EntityTypeShape EntityType="D75E5Model.Publication" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="D75E5Model.Type" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="D75E5Model.TypesJeu" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
-        <AssociationConnector Association="D75E5Model.FK_ParticipantsActivite" ManuallyRouted="false" />
+        <AssociationConnector Association="D75E5Model.FK_ParticipantActivite" ManuallyRouted="false" />
         <AssociationConnector Association="D75E5Model.FK_DocumentLocationDocument" ManuallyRouted="false" />
         <AssociationConnector Association="D75E5Model.FK_JeuLocationJeu" ManuallyRouted="false" />
-        <AssociationConnector Association="D75E5Model.FK_ParticipantsMembre" ManuallyRouted="false" />
+        <AssociationConnector Association="D75E5Model.FK_ParticipantMembre" ManuallyRouted="false" />
         <AssociationConnector Association="D75E5Model.FK_PublicationMembre" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

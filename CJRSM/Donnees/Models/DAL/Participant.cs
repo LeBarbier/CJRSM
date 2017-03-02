@@ -15,7 +15,7 @@ namespace CJRSM.Models.DAL
     public partial class Participant
     {
         public int Id { get; set; }
-        public int NoDossier { get; set; }
+        public int IdMembre { get; set; }
         public int IdActivite { get; set; }
     
         public virtual Activite Activite { get; set; }

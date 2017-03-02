@@ -103,8 +103,7 @@ ul, li{
 .table_Recherche{
     margin-left: -45px;
     padding:7px;
-    border:4px #151515;
-    border-radius: 3px;
+    border-radius: 25px;
     background-color:rgb(63, 86, 107);
     width:104%;
     text-align:left;
@@ -112,7 +111,10 @@ ul, li{
 }
 
 .table_Recherche th{
-    padding:5px;
+    font-style:italic;
+    padding-top:10px;
+    padding-left:80px;
+    color:#d3d3d3;
 }
 
 .table_Role tr td:first-child {
@@ -178,16 +180,6 @@ header {
     border:ridge grey;
     padding-left:35px;
     padding-bottom:50px;
-}
-
-.conteneur_Deux{
-    background-color:rgba(255, 255, 255, 0.70);
-    border-radius:6px;
-    margin-top:7px;
-    margin-bottom:10px;
-    margin-left:162px;
-    min-height:450px;
-    border:ridge grey;
 }
 
 .Alignement-Connexion{
@@ -314,7 +306,7 @@ label, .listeDetailMembre{
     font-weight:400;
 }
 
-input[type=text], input[type=password], input[type=number], input[type=date], input[type=time], select[id=ListeJour], select{
+input, input[type=text], input[type=password], input[type=number], input[type=date], input[type=time], select[id=ListeJour], select{
     border: 0.5px black solid;
     border-radius: 3px;
     padding: 3px;
@@ -322,7 +314,7 @@ input[type=text], input[type=password], input[type=number], input[type=date], in
     box-shadow: 5px 5px 10px 0 #3b3b3b;
 }
 
-input[type=submit], input[type=button]{
+input[type=submit], input[type=button], input[type=reset]{
     margin:5px;
     margin-top:15px;
     cursor:pointer;
@@ -330,7 +322,7 @@ input[type=submit], input[type=button]{
     box-shadow: 5px 5px 10px 0 #3b3b3b;
 }
 
-input[type=submit]:hover, input[type=button]:hover, .lienModifierMDP:hover{
+input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover{
     transform: scale(1.08);
 }
 
@@ -380,15 +372,17 @@ a{
 
 main .section_Blog{
     width:100%;
-    padding-left:-20px;
+    margin-left:-10px;
     padding:10px;
     display:inline-block;
+    align-content:center;
 }
 
 .conteneurNouvelleSimple{
     margin:5px;
-    padding:10px;
+    padding:8px;
     width:47%;
+    height:75px;
     border:3px rgba(154, 0, 0, 0.63) solid;
     border-radius:15px;
     display:block;

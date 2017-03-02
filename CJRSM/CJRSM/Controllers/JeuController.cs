@@ -27,6 +27,7 @@ namespace CJRSM.Controllers
         }
 
         public ActionResult Index(string ChercherTitre,
+                                    int id = 0,
                                     int Difficulte = 0,
                                     int NbrJoueurMin = 0,
                                     int NbrJoueurMax = 0,
@@ -59,6 +60,18 @@ namespace CJRSM.Controllers
                         dictionnaireJeu.Remove(i);
                     }
                 }
+            }
+            listeJeu = dictionnaireJeu.Values.ToList();
+            dictionnaireJeu = new Dictionary<int, Jeu>();
+            for (int i = 0; i < listeJeu.Count(); i++)
+            {
+                dictionnaireJeu.Add(i, listeJeu[i]);
+            }
+            if (id != 0)
+            {
+                dictionnaireJeu = new Dictionary<int, Jeu>();
+                jeu = contexte.Jeu.Find(id);
+                dictionnaireJeu.Add(1, jeu);
             }
             listeJeu = dictionnaireJeu.Values.ToList();
             dictionnaireJeu = new Dictionary<int, Jeu>();

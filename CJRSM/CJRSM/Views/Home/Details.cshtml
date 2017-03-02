@@ -2,35 +2,27 @@
 
 @{
     ViewBag.Title = "Détails";
+    CJRSM.Models.DAL.IMembre membre = new CJRSM.Models.DAL.Membre();
+    CJRSM.Models.DAL.IUnitOfWork contexte = new CJRSM.Models.DAL.UnitOfWork();
+    string noDossier = contexte.Membre.Find(Model.IdMembre.Value).NoDossier;
+    membre = membre.Trouver(noDossier, contexte);
 }
 
 <div class="conteneur_Unique">
     <h2>Détails de la publication</h2>
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Titre)
-        </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.Titre)
+            <h3 style="font-style:italic;">@Html.DisplayFor(model => model.Titre)</h3>
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Contenu)
-        </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.Contenu)
+            <p style="text-align: justify; padding-right:70px;">@Html.DisplayFor(model => model.Contenu)</p>
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IdMembre)
-        </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.IdMembre)
+            <br />
+            <strong style="padding-left:250px; padding-top:50px;">@membre.Nom, @membre.Prenom</strong>
         </dd>
 
     </dl>
-    @Html.ActionLink("Retourner a la liste", "Index")
+    @Html.ActionLink("Retourner a la page d'accueil", "Index")
 </div>

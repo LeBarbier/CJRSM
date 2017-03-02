@@ -23,9 +23,13 @@
         {
             <table class="table_Recherche">
                 <tr>
-                    <th>
+                    <th style="padding-top:20px;">
                         <h2>Rechercher un jeu</h2>
                     </th>
+                </tr>
+                <tr>
+                    <th>Trouver un jeu par son numéro d'identification :</th>
+                    <th>@Html.TextBox("id", "")</th>
                 </tr>
                 <tr>
                     <th>Trouver un jeu par son titre :</th>
@@ -58,8 +62,6 @@
                         <datalist id="types">
                             @foreach (var i in contexte.Types.Get())
                             {
-                                //SelectListItem nouvelItem = new SelectListItem { Text = i.Nom, Value = i.Id.ToString() };
-                                //listeTypes.Add(nouvelItem);
                                 <option value="@i.Id">@i.Nom</option>
                             }
                         </datalist>

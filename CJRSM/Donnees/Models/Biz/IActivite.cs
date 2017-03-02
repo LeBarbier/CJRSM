@@ -20,7 +20,8 @@ namespace CJRSM.Models.DAL
         Nullable<int> NbrRepetion { get; set; }
         bool Accepte { get; set; }
         string IdActiviteJeu { get; set; }
-
+        
+        Participant AjouterParticipant(Participant nouveauParticipant, IUnitOfWork contexte);
         Activite Ajout(Activite nouvelleActivite, IUnitOfWork contexte);
         void Modifier(IActivite activite, IUnitOfWork contexte);
         void Supprimer(IActivite activite, IUnitOfWork contexte);

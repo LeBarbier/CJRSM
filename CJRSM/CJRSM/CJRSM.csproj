@@ -169,6 +169,7 @@
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\JeuController.cs" />
     <Compile Include="Controllers\MembreController.cs" />
+    <Compile Include="Controllers\ParticipantsController.cs" />
     <Compile Include="Controllers\TypesJeuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -312,6 +313,9 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Activite\Modifier.cshtml" />
     <Content Include="Views\Membre\AjoutMembre.cshtml" />
+    <Content Include="Views\Participants\Inscriptions.cshtml" />
+    <Content Include="Views\Activite\AjouterParticipant.cshtml" />
+    <Content Include="Views\Participants\Details.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

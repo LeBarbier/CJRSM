@@ -16,7 +16,7 @@ namespace CJRSM.Models.DAL
         private GenericRepository<LocationDocument> locationDocument;
         private GenericRepository<LocationJeu> locationJeu;
         private GenericRepository<Membre> membre;
-        private GenericRepository<Participant> participants;
+        private GenericRepository<Participant> participant;
         private GenericRepository<Publication> publication;
         private GenericRepository<Type> types;
         private GenericRepository<TypesJeu> typesJeu;
@@ -119,16 +119,16 @@ namespace CJRSM.Models.DAL
             }
         }
 
-        public IGenericRepository<Participant> Participants
+        public IGenericRepository<Participant> Participant
         {
             get
             {
 
-                if (participants == null)
+                if (participant == null)
                 {
-                    participants = new GenericRepository<Participant>(contexte);
+                    participant = new GenericRepository<Participant>(contexte);
                 }
-                return participants;
+                return participant;
             }
 
         }

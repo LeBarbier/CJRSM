@@ -101,5 +101,15 @@ namespace CJRSM.Models.DAL
             contexte.Activite.Delete(supprimer.Id);
             contexte.Activite.Save();
         }
+
+        public Participant AjouterParticipant(Participant nouveauParticipant, IUnitOfWork contexte)
+        {
+            Participant participant = new Participant();
+            participant.IdActivite = nouveauParticipant.IdActivite;
+            participant.IdMembre = nouveauParticipant.IdMembre;
+            contexte.Participant.Add(participant);
+            contexte.Participant.Save();
+            return participant;
+        }
     }
 }

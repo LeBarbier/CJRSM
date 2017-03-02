@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Liste des activité";
     CJRSM.Models.DAL.IMembre membre = new CJRSM.Models.DAL.Membre();
+    CJRSM.Controllers.ActiviteController activiteController = new CJRSM.Controllers.ActiviteController();
+    CJRSM.Models.DAL.Participant participant = new CJRSM.Models.DAL.Participant();
 }
 
 <div class="conteneur_Unique">
@@ -14,19 +16,35 @@
             <table class="table_Recherche">
                 <tr>
                     <th>
-                        <h2>Rechercher un jeu</h2>
+                        <h2>Rechercher une activité</h2>
                     </th>
                 </tr>
                 <tr>
-                    <th>Trouver un document par son titre :</th>
-                    <th>@Html.TextBox("ChercherTitre", "", new { onKeyup = "showResult(this.value)" })</th>
+                    <th>Trouver une activité par son titre :</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Trouver une activité le nombre de place restante :</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Trouver une activité sa journée :</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Trouver une activité par son heure de début:</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Afficher seulement les activités répétitives :</th>
+                    <th></th>
                 </tr>
                 <tr></tr>
                 <tr>
                     <th></th>
                     <th></th>
                     <th>
-                        <input type="submit" value="Trouver un Jeu" />
+                        <input type="submit" value="Trouver une activité" />
                     </th>
                 </tr>
             </table>
@@ -46,19 +64,30 @@
             <th>Description</th>
             <th>Nombre de membre minimal</th>
             <th>Nombre de membre maximal</th>
+            <th>Nombre de place-s restante-s</th>
             <th>Journée</th>
             <th>Heure de début</th>
             <th>Date de début</th>
             <th>Nombre de semaine consécutive</th>
             <th>Accepté</th>
             <th></th>
-            @*@if (membre.Role != "Membre" && User.Identity.Name != "")*@
+            @if (membre.Role != "Membre" && User.Identity.Name != "")
+            {
                 <th></th>
+            }
         </tr>
     @if (Model != null)
     {
         foreach (var item in Model)
         {
+            int nbrPlaceRestante = item.NbrMembreMax.Value;
+            for (int i = 0; i < item.NbrMembreMax.Value; i++)
+            {
+                if (participant.IdActivite == item.Id)
+                {
+                    nbrPlaceRestante--;
+                }
+            }
             if (item.Accepte == true)
             {
                 <tr>
@@ -75,36 +104,36 @@
                         @Html.DisplayFor(modelItem => item.NbrMembreMax)
                     </td>
                     <td>
-                        @*@Html.DisplayFor(modelItem => item.Jour)*@
-                        @{
-                            if (item.Jour == 1)
-                            {
-                                <p>Lundi</p>
-                            }
-                            else if (item.Jour == 2)
-                            {
-                                <p>Mardi</p>
-                            }
-                            else if (item.Jour == 3)
-                            {
-                                <p>Mercredi</p>
-                            }
-                            else if (item.Jour == 4)
-                            {
-                                <p>Jeudi</p>
-                            }
-                            else if (item.Jour == 5)
-                            {
-                                <p>Vendredi</p>
-                            }
-                            else if (item.Jour == 6)
-                            {
-                                <p>Samedi</p>
-                            }
-                            else if (item.Jour == 7)
-                            {
-                                <p>Dimanche</p>
-                            }
+                        @nbrPlaceRestante
+                    </td>
+                    <td>
+                        @if (item.Jour == 1)
+                        {
+                            <p>Lundi</p>
+                        }
+                        else if (item.Jour == 2)
+                        {
+                            <p>Mardi</p>
+                        }
+                        else if (item.Jour == 3)
+                        {
+                            <p>Mercredi</p>
+                        }
+                        else if (item.Jour == 4)
+                        {
+                            <p>Jeudi</p>
+                        }
+                        else if (item.Jour == 5)
+                        {
+                            <p>Vendredi</p>
+                        }
+                        else if (item.Jour == 6)
+                        {
+                            <p>Samedi</p>
+                        }
+                        else if (item.Jour == 7)
+                        {
+                            <p>Dimanche</p>
                         }
                     </td>
                     <td>
@@ -124,17 +153,22 @@
                         {
                             <img src="~/Content/icon_true.png" style="height:20px;" />}
                     </td>
-
-                    <td>
+                    @if (membre.Role != "Membre" && User.Identity.Name != "")
+                    {
+                        <td>
+                            @*<button id="@item.Id" onclick="@activiteController.Inscriptions(item.Id)">S'inscrire a l'activité</button>*@
+                            @Html.ActionLink("Inscriptions", "AjouterParticipant", "Activite", new { activiteId = item.Id }, null)
+                        </td>
+                    }
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.IdActiviteJeu)
-                    </td>
+                    </td>*@
                     <td>
-                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
                         @Html.ActionLink("Détails", "Details", new { id = item.Id })
-                        @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
                     </td>
                 </tr>
                 }
             }
         }
     </table>
+</div>
