@@ -67,17 +67,7 @@ namespace CJRSM.Controllers
         {
             if (ModelState.IsValid)
             {
-                //activite = new Activite();
-                //activite.Id = activiteModifier.Id;
-                //activite.Titre = activiteModifier.Titre;
-                //activite.Description = activiteModifier.Description;
-                //activite.NbrMembreMin = activiteModifier.NbrMembreMin;
-                //activite.NbrMembreMax = activiteModifier.NbrMembreMax;
-                //activite.Jour = activiteModifier.Jour;
-                //activite.HeureDebut = activiteModifier.HeureDebut;
-                //activite.DateDebut = activiteModifier.DateDebut;
-                //activite.NbrRepetion = activiteModifier.NbrRepetion;
-                //activite.Accepte = activiteModifier.Accepte;
+                activite = new Activite();
                 activite.Modifier(activiteModifier, contexte);
                 return RedirectToAction("Index", "Activite");
             }

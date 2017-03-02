@@ -24,5 +24,15 @@
         </dd>
 
     </dl>
-    @Html.ActionLink("Retourner a la page d'accueil", "Index")
+
+        @Html.ActionLink("Retourner a la page d'accueil", "Index")<br />
+        @{
+            membre = membre.Trouver(User.Identity.Name, contexte);
+            if ((membre.Role != "Membre" && User.Identity.Name != "") || membre.Id == Model.IdMembre.Value)
+            {
+                @Html.ActionLink("Modifier la publication", "Modifier", new { id = Model.Id })<br />
+                @Html.ActionLink("Supprimer la publication", "Supprimer", new { id = Model.Id })<br />
+            }
+        }
+
 </div>

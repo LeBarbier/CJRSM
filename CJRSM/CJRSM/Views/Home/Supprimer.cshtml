@@ -1,0 +1,37 @@
+﻿@model CJRSM.Models.DAL.Publication
+
+@{
+    ViewBag.Title = "Supprimer";
+}
+
+
+<div class="conteneur_Unique">
+    <h2>Voulez-vous supprimer la publication?</h2>
+    <dl class="dl-horizontal">
+        <dt>
+            <label>Titre</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titre)
+        </dd>
+
+        <dt>
+            <label>Description</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contenu)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Oui, supprimer la publication" class="btn btn-default" /><br /><br />
+            @Html.ActionLink("Non, retourner a la liste", "Index")
+        </div>
+    }
+</div>

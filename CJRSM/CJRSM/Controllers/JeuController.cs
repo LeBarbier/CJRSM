@@ -53,7 +53,7 @@ namespace CJRSM.Controllers
             // Trie du dictionnaire selon l'utilisateur
             if (ChercherTitre != "" && ChercherTitre != null)
             {
-                for (int i = 0; i < dictionnaireJeu.Count(); i++)
+                for (int i = 0; i <= dictionnaireJeu.Count(); i++)
                 {
                     if (!dictionnaireJeu[i].Titre.Contains(ChercherTitre))
                     {
@@ -81,7 +81,7 @@ namespace CJRSM.Controllers
             }
             if (Difficulte != 0)
             {
-                for (int i = 0; i < dictionnaireJeu.Count(); i++)
+                for (int i = 0; i <= dictionnaireJeu.Count(); i++)
                 {
                     if (dictionnaireJeu[i].Difficulte != Difficulte)
                     {
@@ -97,7 +97,7 @@ namespace CJRSM.Controllers
             }
             if (NbrJoueurMin != 0)
             {
-                for (int i = 0; i < dictionnaireJeu.Count(); i++)
+                for (int i = 0; i <= dictionnaireJeu.Count(); i++)
                 {
                     if (dictionnaireJeu[i].NbrJoueurMin < NbrJoueurMin)
                     {
@@ -129,7 +129,7 @@ namespace CJRSM.Controllers
             }
             if (TempsMin != 0)
             {
-                for (int i = 0; i < dictionnaireJeu.Count(); i++)
+                for (int i = 0; i <= dictionnaireJeu.Count(); i++)
                 {
                     if (dictionnaireJeu[i].TempsMin < TempsMin)
                     {
@@ -145,9 +145,9 @@ namespace CJRSM.Controllers
             }
             if (TempsMax != 0)
             {
-                for (int i = 0; i < dictionnaireJeu.Count(); i++)
+                for (int i = 0; i <= dictionnaireJeu.Count(); i++)
                 {
-                    if (dictionnaireJeu[i].TempsMax < TempsMax)
+                    if (dictionnaireJeu[i].TempsMax > TempsMax)
                     {
                         dictionnaireJeu.Remove(i);
                     }
@@ -162,7 +162,7 @@ namespace CJRSM.Controllers
             if (TypesId != 0)
             {
                 listeJeu = new List<Jeu>();
-                for (int i = 0; i < listeTypesJeu.Count(); i++)
+                for (int i = 0; i <= listeTypesJeu.Count(); i++)
                 {
                     if (TypesId == listeTypesJeu[i].IdTypes)
                     {
@@ -193,31 +193,12 @@ namespace CJRSM.Controllers
             return View(jeu);
         }
 
-        //private Membre InfoDocumentModifier()
-        //{
-        //    document = new Document();
-        //    document = document.Trouver(User.Identity.Name, contexte);
-        //    Membre membreModifier = new Membre();
-        //    membreModifier.Prenom = membre.Prenom;
-        //    membreModifier.Nom = membre.Nom;
-        //    membreModifier.Role = membre.Role;
-        //    membreModifier.MDP = membre.MDP;
-        //    return membreModifier;
-        //}
-
         [HttpPost]
         public ActionResult Modifier(Jeu jeuModifier)
         {
             if (ModelState.IsValid)
             {
                 jeu = new Jeu();
-                jeu.Id = jeuModifier.Id;
-                jeu.Titre = jeuModifier.Titre;
-                jeu.Difficulte = jeuModifier.Difficulte;
-                jeu.NbrJoueurMin = jeuModifier.NbrJoueurMin;
-                jeu.NbrJoueurMax = jeuModifier.NbrJoueurMax;
-                jeu.TempsMin = jeuModifier.TempsMin;
-                jeu.TempsMax = jeuModifier.TempsMax;
                 jeu.Modifier(jeu, contexte);
                 return RedirectToAction("Index", "Jeu");
             }

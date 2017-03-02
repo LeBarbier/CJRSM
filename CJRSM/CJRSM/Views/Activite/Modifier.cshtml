@@ -11,6 +11,9 @@
     new SelectListItem { Text = "Samedi", Value = "6" },
     new SelectListItem { Text = "Dimanche", Value = "7" }
     };
+    CJRSM.Models.DAL.IActivite activite = new CJRSM.Models.DAL.Activite();
+    CJRSM.Models.DAL.IUnitOfWork contexte = new CJRSM.Models.DAL.UnitOfWork();
+    activite = contexte.Activite.Find(Model.Id);
 }
 
 @using (Html.BeginForm())
@@ -73,7 +76,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DateDebut, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.DateDebut, new { htmlAttributes = new { @class = "form-control" }, type = "date" })
+                @Html.TextBoxFor(model => model.DateDebut, new { htmlAttributes = new { @class = "form-control"}, @Value = activite.DateDebut.Year + "-" + activite.DateDebut.Month.ToString("d2") + "-" + activite.DateDebut.Day, type = "date" })
                 @Html.ValidationMessageFor(model => model.DateDebut, "", new { @class = "text-danger" })
             </div>
         </div>

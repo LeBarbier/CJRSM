@@ -37,6 +37,44 @@ namespace CJRSM.Controllers
             return View(publication);
         }
 
+        public ActionResult Modifier(int id)
+        {
+            publication = contexte.Publication.Find(id);
+            return View(publication);
+        }
+
+        [HttpPost]
+        public ActionResult Modifier(Publication publicationModifier)
+        {
+            if (ModelState.IsValid)
+            {
+                publication = new Publication();
+                publication.Modifier(publicationModifier, contexte);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+                return View(publication);
+        }
+
+        public ActionResult Supprimer(int id)
+        {
+            publication = contexte.Publication.Find(id);
+            return View(publication);
+        }
+
+        [HttpPost]
+        public ActionResult Supprimer(Publication publicationSupprimer)
+        {
+            if (ModelState.IsValid)
+            {
+                publicationSupprimer.Supprimer(publicationSupprimer, contexte);
+
+                return RedirectToAction("Index", "Home");
+            }
+            else
+                return View(publicationSupprimer);
+        }
+
         public ActionResult AjoutPublication()
         {
             return View();

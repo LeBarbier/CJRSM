@@ -2,9 +2,16 @@
 
 @{
     ViewBag.Title = "Liste des activité";
+
+    CJRSM.Models.DAL.IGenericRepository<CJRSM.Models.DAL.Participant> repo;
+    CJRSM.Models.DAL.IUnitOfWork contexte;
+    contexte = new CJRSM.Models.DAL.UnitOfWork();
+    repo = contexte.Participant;
     CJRSM.Models.DAL.IMembre membre = new CJRSM.Models.DAL.Membre();
     CJRSM.Controllers.ActiviteController activiteController = new CJRSM.Controllers.ActiviteController();
     CJRSM.Models.DAL.Participant participant = new CJRSM.Models.DAL.Participant();
+    IEnumerable<CJRSM.Models.DAL.Participant> iEnumParticipant = repo.Get(j => j.Id.ToString().Contains(""));
+    List<CJRSM.Models.DAL.Participant> listeParticipant = iEnumParticipant.ToList();
 }
 
 <div class="conteneur_Unique">
@@ -81,9 +88,9 @@
         foreach (var item in Model)
         {
             int nbrPlaceRestante = item.NbrMembreMax.Value;
-            for (int i = 0; i < item.NbrMembreMax.Value; i++)
+            for (int i = 0; i < listeParticipant.Count(); i++)
             {
-                if (participant.IdActivite == item.Id)
+                if (listeParticipant[i].IdActivite == item.Id)
                 {
                     nbrPlaceRestante--;
                 }

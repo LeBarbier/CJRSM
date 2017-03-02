@@ -248,7 +248,13 @@
     <Content Include="Content\scss\_screen-reader.scss" />
     <Content Include="Content\scss\_stacked.scss" />
     <Content Include="Content\scss\_variables.scss" />
+    <Content Include="obj\Debug\CJRSM.csprojResolveAssemblyReference.cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="Properties\PublishProfiles\Barbier.pubxml" />
+    <Content Include="obj\Debug\CJRSM.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\CJRSM.dll" />
+    <Content Include="obj\Debug\CJRSM.pdb" />
     <Content Include="PublishSettings\D75E5.PublishSettings" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
@@ -316,6 +322,8 @@
     <Content Include="Views\Participants\Inscriptions.cshtml" />
     <Content Include="Views\Activite\AjouterParticipant.cshtml" />
     <Content Include="Views\Participants\Details.cshtml" />
+    <Content Include="Views\Home\Modifier.cshtml" />
+    <Content Include="Views\Home\Supprimer.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -326,6 +334,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="obj\Release\TempPE\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
