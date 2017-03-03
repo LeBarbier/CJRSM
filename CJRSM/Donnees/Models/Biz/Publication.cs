@@ -2,6 +2,7 @@
 {
     public partial class Publication : IPublication
     {
+        // Ajoute la nouvelle publication proposé par un membre à la base de donnée
         public Publication AjouterPublication(Publication nouvellePublication, IUnitOfWork contexte)
         {
             Publication publication = new Publication();
@@ -15,6 +16,7 @@
             return publication;
         }
 
+        // Modifie une publication selon un utilisateur dans la base de donnée
         public void Modifier(Publication publication, IUnitOfWork contexte)
         {
             Publication modifier = contexte.Publication.Find(publication.Id);
@@ -26,6 +28,7 @@
             contexte.Publication.Save();
         }
 
+        // Supprime une publication sélectionné par utilisateur de la base de donnée
         public void Supprimer(Publication publication, IUnitOfWork contexte)
         {
             Publication supprimer = contexte.Publication.Find(publication.Id);

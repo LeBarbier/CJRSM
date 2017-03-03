@@ -12,9 +12,7 @@ namespace CJRSM.Models.DAL
         int Id { get; set; }
         int IdTypes { get; set; }
         int IdJeu { get; set; }
-
-        void Modifier(ITypesJeu document, IUnitOfWork contexte);
-        void Supprimer(ITypesJeu document, IUnitOfWork contexte);
+        
         ITypesJeu AjouterLienTypes(TypesJeu typesJeu, IUnitOfWork contexte);
     }
 }

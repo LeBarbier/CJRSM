@@ -13,7 +13,7 @@ namespace CJRSM.Controllers
         private IGenericRepository<Activite> repo;
         private IUnitOfWork contexte;
         Activite activite;
-
+        
         public ActiviteController()
         {
             contexte = new UnitOfWork();
@@ -26,6 +26,7 @@ namespace CJRSM.Controllers
             repo = contexte.Activite;
         }
 
+        // Retourne la vue Index
         public ActionResult Index(string chercherTitre = "")
         {
             if (chercherTitre == null)
@@ -34,6 +35,7 @@ namespace CJRSM.Controllers
             return View(listeActivite);
         }
 
+        // Retourne la vue Index trier selon les parametres passé par l'utilisateur
         [HttpPost]
         public ActionResult Index(DateTime? heure = null,
                                 int id = 0,
@@ -157,17 +159,20 @@ namespace CJRSM.Controllers
             return View(iEnumActivite);
         }
 
+        // Retourne la vue détails avec l'activité selectionné par l'utilisateur selon son ID
         public ActionResult Details(int id)
         {
             activite = contexte.Activite.Find(id);
             return View(activite);
         }
 
+        // Retourne la vue Ajout
         public ActionResult Ajout()
         {
             return View();
         }
 
+        // Retourne la vue ajout avec l'activité nouvellement créer par l'utilisateur
         [HttpPost]
         public ActionResult Ajout(Activite nouvelleActivite)
         {
@@ -179,12 +184,14 @@ namespace CJRSM.Controllers
                 return View();
         }
 
+        // Retourne la vue modifier avec l'activité selectionné par l'utilisateur selon son ID
         public ActionResult Modifier(int id)
         {
             activite = contexte.Activite.Find(id);
             return View(activite);
         }
 
+        // Retourne la vue modifier avec l'activité nouvellement modifier par l'utilisateur
         [HttpPost]
         public ActionResult Modifier(Activite activiteModifier)
         {
@@ -198,11 +205,13 @@ namespace CJRSM.Controllers
                 return View(activite);
         }
 
+        // Retourne la vue participant
         public ActionResult AjouterParticipant()
         {
             return View();
         }
 
+        // Retourne la vue details avec le nouveau participant ajouté a l'activité
         [HttpPost]
         public ActionResult AjouterParticipant(Participant nouveauParticipant)
         {

@@ -25,24 +25,28 @@ namespace CJRSM.Controllers
             repo = contexte.Publication;
         }
 
+        // Retourne la vue Index
         public ActionResult Index()
         {
             IEnumerable<Publication> listePublication = repo.Get(p => p.Titre.Contains(""));
             return View(listePublication);
         }
 
+        // Retourne la vue détails avec la publication selectionné par l'utilisateur selon son ID
         public ActionResult Details(int id)
         {
             publication = contexte.Publication.Find(id);
             return View(publication);
         }
 
+        // Retourne la vue modifier avec la publication selectionné par l'utilisateur selon son ID
         public ActionResult Modifier(int id)
         {
             publication = contexte.Publication.Find(id);
             return View(publication);
         }
 
+        // Retourne la vue modifier avec la publication nouvellement modifié par l'utilisateur
         [HttpPost]
         public ActionResult Modifier(Publication publicationModifier)
         {
@@ -56,12 +60,14 @@ namespace CJRSM.Controllers
                 return View(publication);
         }
 
+        // Retourne la vue supprimer avec la publication selectionné par l'utilisateur selon son ID
         public ActionResult Supprimer(int id)
         {
             publication = contexte.Publication.Find(id);
             return View(publication);
         }
 
+        // Retourne l'utilisateur a la liste de publication avec cette dernière nouvellement supprimé par l'utilisateur
         [HttpPost]
         public ActionResult Supprimer(Publication publicationSupprimer)
         {
@@ -75,11 +81,13 @@ namespace CJRSM.Controllers
                 return View(publicationSupprimer);
         }
 
+        // Retourne la vue AjoutPublication
         public ActionResult AjoutPublication()
         {
             return View();
         }
 
+        // Retourne la vue Details décrivant la nouvelle publication dont l'utlisateur a ajouté
         [HttpPost]
         public ActionResult AjoutPublication(Publication nouvellePublication)
         {

@@ -17,6 +17,7 @@ namespace CJRSM.Models.DAL
             }
         }
 
+        // Modifie un document selon un utilisateur dans la base de donnée
         public void Modifier(IDocument document, IUnitOfWork contexte)
         {
             Document modifier = contexte.Document.Find(document.Id);
@@ -26,6 +27,7 @@ namespace CJRSM.Models.DAL
             contexte.Document.Save();
         }
 
+        // Supprime un document sélectionné par utilisateur de la base de donnée
         public void Supprimer(IDocument document, IUnitOfWork contexte)
         {
             Document supprimer = contexte.Document.Find(document.Id);

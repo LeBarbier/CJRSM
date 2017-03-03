@@ -21,16 +21,19 @@ namespace CJRSM.Controllers
             repo = contexte.Participant;
         }
 
+        // Retourne la vu details avec les informations du particpant selectionnées
         public ActionResult Details(Participant participantDetails)
         {
             return View(participantDetails);
         }
 
+        // Retourne la vue inscriptions
         public ActionResult Inscriptions()
         {
             return View();
         }
 
+        // Retourne la vue details après avoir ajouté un membre à une activité comme participant
         [HttpPost]
         public ActionResult Inscriptions(Participant participantInscription)
         {

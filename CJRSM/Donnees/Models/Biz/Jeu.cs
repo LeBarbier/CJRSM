@@ -30,6 +30,7 @@ namespace CJRSM.Models.DAL
             }
         }
 
+        // Modifie un jeu selon un utilisateur dans la base de donnée
         public void Modifier(IJeu jeu, IUnitOfWork contexte)
         {
             Jeu modifier = contexte.Jeu.Find(jeu.Id);
@@ -43,6 +44,7 @@ namespace CJRSM.Models.DAL
             contexte.Jeu.Save();
         }
 
+        // Supprime un jeu sélectionné par utilisateur de la base de donnée
         public void Supprimer(IJeu jeu, IUnitOfWork contexte)
         {
             Jeu supprimer = contexte.Jeu.Find(jeu.Id);

@@ -2,6 +2,7 @@
 {
     public partial class Participant : IParticipant
     {
+        // Ajoute un participnt à une activité avant de la sauvegarder dans la base de donnée
         public IParticipant Inscription(IParticipant participant, IUnitOfWork contexte)
         {
             Participant participantModifier = new Participant();

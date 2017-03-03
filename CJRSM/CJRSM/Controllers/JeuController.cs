@@ -26,6 +26,8 @@ namespace CJRSM.Controllers
             repo = contexte.Jeu;
         }
 
+        // Retourne la vue Index, si les paramètres passés ne sont pas nul,
+        //      un trie sera effectué et la liste des jeux restant sera retourné
         public ActionResult Index(string ChercherTitre,
                                     int id = 0,
                                     int Difficulte = 0,
@@ -187,12 +189,14 @@ namespace CJRSM.Controllers
             return View(iEnumJeu);
         }
 
+        // Retourne la vue modifier avec le jeu selectionné par l'utilisateur selon son ID
         public ActionResult Modifier(int id)
         {
             jeu = contexte.Jeu.Find(id);
             return View(jeu);
         }
 
+        // Retourne la vue modifier avec le jeu nouvellement modifié par l'utilisateur
         [HttpPost]
         public ActionResult Modifier(Jeu jeuModifier)
         {
@@ -206,12 +210,14 @@ namespace CJRSM.Controllers
                 return View(jeu);
         }
 
+        // Retourne la vue supprimer avec le jeu selectionné par l'utilisateur selon son ID
         public ActionResult Supprimer(int id)
         {
             jeu = contexte.Jeu.Find(id);
             return View(jeu);
         }
 
+        // Retourne l'utilisateur a la liste de jeu avec ce dernier nouvellement supprimé par l'utilisateur
         [HttpPost]
         public ActionResult Supprimer(Jeu jeuSupprimer)
         {

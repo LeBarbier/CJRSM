@@ -28,6 +28,9 @@ namespace CJRSM.Controllers
             repo = contexte.Membre;
         }
 
+        // Retourne une ArrayList de tout les membres de l'exécutif
+        //      c'est-à-dire la liste de tout les Membres dans la base de donné dont le rôle
+        //      est différent de membre ou qui correspond au rôle précis.
         public ArrayList TrouverExecutif()
         {
             ArrayList listeExecutif = new ArrayList();
@@ -69,6 +72,7 @@ namespace CJRSM.Controllers
             return listeExecutif;
         }
 
+        // Retourne la vue Executif
         public ActionResult Executif()
         {
             IEnumerable<Activite> listeActivite;
@@ -76,11 +80,14 @@ namespace CJRSM.Controllers
             return View(listeActivite);
         }
 
+        // Retourne la vue PremiereConnexion
         public ActionResult PremiereConnexion()
         {
             return View();
         }
 
+        // Retourne la vue index ou le dernier url, après avoir ajouté
+        //      l'utilisateur qui vient de se créer un compte à la base de donnée.
         [HttpPost]
         public ActionResult PremiereConnexion(PremiereConnexion NewMembre, string returnUrl)
         {
@@ -111,11 +118,14 @@ namespace CJRSM.Controllers
             }
         }
 
+        // Retourne la vue Connexion
         public ActionResult Connexion()
         {
             return View();
         }
 
+        // Retourne la vue index ou le dernier url, après avoir confirmer
+        //      les informations de l'utilisateur et de l'avoir connecté.
         [HttpPost]
         public ActionResult Connexion(Connexion modele, string returnUrl)
         {
@@ -137,16 +147,19 @@ namespace CJRSM.Controllers
             return View(modele);
         }
 
+        // Retourne la vue details
         public ActionResult Details()
         {
             return View(InfoMembreModifier());
         }
 
+        // Retourne la vue Modifier
         public ActionResult Modifier()
         {
             return View(InfoMembreModifier());
         }
 
+        // Cette méthode permet de retrouver un membre connecté pour ensuite le modifier et le retourner
         private Membre InfoMembreModifier()
         {
             membre = FabriqueMembre.RetourneMembre(User.Identity.Name);
@@ -159,6 +172,7 @@ namespace CJRSM.Controllers
             return membreModifier;
         }
 
+        // Retourne la vue modifier avec le membre nouvellement modifié par ce dernier
         [HttpPost]
         public ActionResult Modifier(Membre membreModifier)
         {
@@ -175,11 +189,13 @@ namespace CJRSM.Controllers
                 return View(membre);
         }
         
+        // Retourne la vue modifierMotDePasse
         public ActionResult ModifierMotDePasse()
         {
             return View();
         }
 
+        // Retourne la vue modifierMotDePasse avec le mot de passe nouvellement modifié par ce l'utilisateur
         [HttpPost]
         public ActionResult ModifierMotDePasse(ModifierMotDePasse mdp)
         {
@@ -197,12 +213,14 @@ namespace CJRSM.Controllers
             }
         }
 
+        // Déconnecte l'utilisateur et le retourne a l'index ou le dernier url connu
         public ActionResult Deconnexion(string returnUrl)
         {
             FormsAuthentication.SignOut();
             return Redirect(returnUrl);
         }
 
+        // Méthode faisant le hashage du mot de passe
         private string FaireHashage(string MDP, int num)
         {
             ScryptEncoder encoder = new ScryptEncoder();
@@ -211,6 +229,7 @@ namespace CJRSM.Controllers
             return MDPSaleHacher;
         }
 
+        // Méthode pour avoir le salage du mot de passe
         private string getSalage(int num)
         {
             var random = new RNGCryptoServiceProvider();
@@ -219,6 +238,7 @@ namespace CJRSM.Controllers
             return Convert.ToBase64String(salt);
         }
 
+        // Méthode servant a vérifier l'identité de l'utilisateur connecté par rapport a la base donnée
         public bool identiteValide(string p1, string p2)
         {
             try
@@ -236,6 +256,8 @@ namespace CJRSM.Controllers
             }
         }
 
+        // Méthode servant a la comparaison du mot de passe entre le mot de passe
+        //      fournit par l'utilisateur et celui présent dans la base de donné qui correspond au même utilisateur.
         private bool CompareMDP(string mdP, string p2)
         {
             ScryptEncoder encoder = new ScryptEncoder();
@@ -252,11 +274,13 @@ namespace CJRSM.Controllers
             }
         }
 
+        // Retourne la vue AjoutMembre
         public ActionResult AjoutMembre()
         {
             return View();
         }
 
+        // Retourne la vue AjoutMembre après avoir ajouté le nouveau membre à la base de donnée
         [HttpPost]
         public ActionResult AjoutMembre(Membre nouveauMembre)
         {
@@ -270,11 +294,13 @@ namespace CJRSM.Controllers
                 return View(true);
         }
 
+        // Retourne la vue ajoutDocument
         public ActionResult AjoutDocument()
         {
             return View();
         }
 
+        // Retourne la vue ajoutDocument après avoir ajouté le nouveau document à la base de donnée
         [HttpPost]
         public ActionResult AjoutDocument(Document nouveauDocument)
         {
@@ -286,11 +312,13 @@ namespace CJRSM.Controllers
                 return View();
         }
 
+        // Retourne la vue AjoutJeu
         public ActionResult AjoutJeu()
         {
             return View();
         }
 
+        // Retourne la vue AjoutJeu après avoir ajouté le nouveau jeu à la base de donnée
         [HttpPost]
         public ActionResult AjoutJeu(Jeu nouveauJeu)
         {
@@ -303,11 +331,13 @@ namespace CJRSM.Controllers
                 return View();
         }
 
+        // Retourne la vue AjoutType
         public ActionResult AjoutType()
         {
             return View();
         }
 
+        // Retourne la vue AjoutType après avoir ajouté le nouveau type à la base de donnée
         [HttpPost]
         public ActionResult AjoutType(Models.DAL.Type nouveauType)
         {

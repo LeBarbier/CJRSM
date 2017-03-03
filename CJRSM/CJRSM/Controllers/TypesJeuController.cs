@@ -21,11 +21,14 @@ namespace CJRSM.Controllers
             repo = contexte.TypesJeu;
         }
 
+        // Retourne la vue Ajout
         public ActionResult Ajout()
         {
             return View();
         }
 
+        // Retourne la vue details après avoir créer le nouveau lien de
+        //      TypesJeu entre le jeu et le type sélectionné
         [HttpPost]
         public ActionResult Ajout(TypesJeu nouveaulien)
         {

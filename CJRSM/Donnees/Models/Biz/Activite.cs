@@ -16,6 +16,7 @@ namespace CJRSM.Models.DAL
             }
         }
 
+        // Ajoute la nouvelle activité proposé par un membre à la base de donnée
         public Activite Ajout(Activite nouvelleActivite, IUnitOfWork contexte)
         {
             Activite activite = new Activite();
@@ -34,6 +35,7 @@ namespace CJRSM.Models.DAL
             return activite;
         }
 
+        // Modifie un activite selon un utilisateur dans la base de donnée
         public void Modifier(IActivite activite, IUnitOfWork contexte)
         {
             Activite modifier = contexte.Activite.Find(activite.Id);
@@ -51,6 +53,7 @@ namespace CJRSM.Models.DAL
             contexte.Activite.Save();
         }
 
+        // Supprime une activité sélectionné par utilisateur de la base de donnée
         public void Supprimer(IActivite activite, IUnitOfWork contexte)
         {
             Activite supprimer = contexte.Activite.Find(activite.Id);
@@ -58,6 +61,7 @@ namespace CJRSM.Models.DAL
             contexte.Activite.Save();
         }
 
+        // Ajoute un participant a une activité dans la base de donnée
         public Participant AjouterParticipant(Participant nouveauParticipant, IUnitOfWork contexte)
         {
             Participant participant = new Participant();

@@ -25,6 +25,8 @@ namespace CJRSM.Controllers
             repo = contexte.Document;
         }
 
+        // Retourne la vue Index, si les paramètres passés ne sont pas nul,
+        //      un trie sera effectué et la liste des documents restant sera retourné
         public ActionResult Index(string ChercherTitre, string Auteur, int id = 0)
         {
             // Création du dictionnaire
@@ -84,12 +86,14 @@ namespace CJRSM.Controllers
             return View(iEnumDocument);
         }
 
+        // Retourne la vue modifier avec le document selectionné par l'utilisateur selon son ID
         public ActionResult Modifier(int id)
         {
             document = contexte.Document.Find(id);
             return View(document);
         }
 
+        // Retourne la vue modifier avec le document nouvellement modifié par l'utilisateur
         [HttpPost]
         public ActionResult Modifier(Document documentModifier)
         {
@@ -106,12 +110,14 @@ namespace CJRSM.Controllers
                 return View(document);
         }
 
+        // Retourne la vue supprimer avec le document selectionné par l'utilisateur selon son ID
         public ActionResult Supprimer(int id)
         {
             document = contexte.Document.Find(id);
             return View(document);
         }
 
+        // Retourne l'utilisateur a la liste de document avec ce dernier nouvellement supprimé par l'utilisateur
         [HttpPost]
         public ActionResult Supprimer(Document documentSupprimer)
         {

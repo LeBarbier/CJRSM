@@ -6,6 +6,7 @@ namespace CJRSM.Models.DAL
 {
     public partial class Membre : IMembre
     {
+        // Ajoute un document entré par un membre de l'exécutif à la base de donnée
         [Authorize(Roles = "Trésorier, Interne, Externe, Bibliothécaire, Publiciste")]
         public Document AjouterDocument(Document nouveauDocument, IUnitOfWork contexte)
         {
@@ -19,6 +20,7 @@ namespace CJRSM.Models.DAL
             return document;
         }
 
+        // Ajoute un jeu entré par un membre de l'exécutif à la base de donnée
         [Authorize(Roles = "Trésorier, Interne, Externe, Bibliothécaire, Publiciste")]
         public Jeu AjouterJeu(Jeu nouveauJeu, IUnitOfWork contexte)
         {
@@ -36,6 +38,7 @@ namespace CJRSM.Models.DAL
             return jeu;
         }
 
+        // Ajoute un membre entré par un membre de l'exécutif à la base de donnée
         [Authorize(Roles = "Trésorier, Interne, Externe, Bibliothécaire, Publiciste")]
         public Membre AjouterMembre(Membre nouveauMembre, IUnitOfWork contexte)
         {
@@ -46,6 +49,7 @@ namespace CJRSM.Models.DAL
             return membre;
         }
 
+        // Ajoute un type entré par un membre de l'exécutif à la base de donnée
         [Authorize(Roles = "Trésorier, Interne, Externe, Bibliothécaire, Publiciste")]
         public Type AjouterType(Type nouveauType, IUnitOfWork contexte)
         {
@@ -56,6 +60,7 @@ namespace CJRSM.Models.DAL
             return type;
         }
 
+        // Modifie un membre selon ce dernier dans la base de donnée
         public void Modifier(IMembre membre, IUnitOfWork contexte)
         {
             Membre modifier = contexte.Membre.Find(membre.Id);
@@ -67,15 +72,13 @@ namespace CJRSM.Models.DAL
             contexte.Membre.Save();
         }
 
-        public void ModifierPremiereConnexion(IMembre membre, IUnitOfWork contexte)
-        {
-            throw new NotImplementedException();
-        }
-
+        // Trouve et retourne un membre rechercher par son numéro de dossier
         public IMembre Trouver(string noDossier, IUnitOfWork contexte)
         {
             return contexte.Membre.Get(e => e.NoDossier.Contains(noDossier)).First();
         }
+
+        // Trouve et retourne un membre de l'exécutif rechercher par son rôle
         public IMembre TrouverExecutif(string role, IUnitOfWork contexte)
         {
             try
