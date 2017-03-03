@@ -134,6 +134,9 @@
       <DependentUpon>CJRSM.edmx</DependentUpon>
       <LastGenOutput>CJRSM.cs</LastGenOutput>
     </Content>
+    <Content Include="obj\Release\Donnees.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\Donnees.dll" />
+    <Content Include="obj\Release\Donnees.pdb" />
     <Content Include="packages.config" />
     <Content Include="App.config" />
     <Content Include="Scripts\bootstrap.js" />
@@ -237,6 +240,12 @@
     <Content Include="Models\DAL\CJRSM.edmx.diagram">
       <DependentUpon>CJRSM.edmx</DependentUpon>
     </Content>
+    <Content Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Release\Donnees.csprojResolveAssemblyReference - Copier.cache" />
+    <Content Include="obj\Release\Donnees.csprojResolveAssemblyReference.cache" />
+    <Content Include="obj\Release\edmxResourcesToEmbed\Models\DAL\CJRSM.csdl" />
+    <Content Include="obj\Release\edmxResourcesToEmbed\Models\DAL\CJRSM.msl" />
+    <Content Include="obj\Release\edmxResourcesToEmbed\Models\DAL\CJRSM.ssdl" />
     <None Include="Properties\PublishProfiles\Default Settings %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <Content Include="web.config" />

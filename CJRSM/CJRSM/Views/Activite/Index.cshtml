@@ -12,6 +12,16 @@
     CJRSM.Models.DAL.Participant participant = new CJRSM.Models.DAL.Participant();
     IEnumerable<CJRSM.Models.DAL.Participant> iEnumParticipant = repo.Get(j => j.Id.ToString().Contains(""));
     List<CJRSM.Models.DAL.Participant> listeParticipant = iEnumParticipant.ToList();
+
+    var listeJour = new List<SelectListItem>{
+        new SelectListItem { Text = "Lundi", Value = "0" },
+        new SelectListItem { Text = "Mardi", Value = "1" },
+        new SelectListItem { Text = "Mercredi", Value = "2" },
+        new SelectListItem { Text = "Jeudi", Value = "3" },
+        new SelectListItem { Text = "Vendredi", Value = "4" },
+        new SelectListItem { Text = "Samedi", Value = "5" },
+        new SelectListItem { Text = "Dimance", Value = "6" }
+    };
 }
 
 <div class="conteneur_Unique">
@@ -27,24 +37,28 @@
                     </th>
                 </tr>
                 <tr>
+                    <th>Trouver une activité par son numéro d'identification :</th>
+                    <th>@Html.TextBox("id", "")</th>
+                </tr>
+                <tr>
                     <th>Trouver une activité par son titre :</th>
-                    <th></th>
+                    <th>@Html.TextBox("ChercherTitre", "")</th>
                 </tr>
                 <tr>
                     <th>Trouver une activité le nombre de place restante :</th>
-                    <th></th>
+                    <th>@Html.TextBox("nbrPlaceRestante", "")</th>
                 </tr>
                 <tr>
                     <th>Trouver une activité sa journée :</th>
-                    <th></th>
+                    <th>@Html.DropDownList("jour", listeJour)</th>
                 </tr>
                 <tr>
                     <th>Trouver une activité par son heure de début:</th>
-                    <th></th>
+                    <th>@Html.TextBox("heure", "", new { type = "time" })</th>
                 </tr>
                 <tr>
                     <th>Afficher seulement les activités répétitives :</th>
-                    <th></th>
+                    <th>@Html.TextBox("recursif", "")</th>
                 </tr>
                 <tr></tr>
                 <tr>
