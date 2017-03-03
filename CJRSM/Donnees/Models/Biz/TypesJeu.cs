@@ -32,7 +32,6 @@ namespace CJRSM.Models.DAL
 
         public IEnumerable<Jeu> retourEnumerableJeu()
         {
-            
             return null;
         }
     }

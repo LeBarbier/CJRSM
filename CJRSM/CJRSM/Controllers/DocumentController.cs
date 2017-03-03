@@ -25,14 +25,6 @@ namespace CJRSM.Controllers
             repo = contexte.Document;
         }
 
-        //public ActionResult Index(string ChercherTitre)
-        //{
-        //    if (ChercherTitre == null)
-        //        ChercherTitre = "";
-        //    IEnumerable<Document> listeDocument = repo.Get(j => j.Titre.Contains(ChercherTitre)).Select(j => j);
-        //    return View(listeDocument);
-        //}
-
         public ActionResult Index(string ChercherTitre, string Auteur, int id = 0)
         {
             // Création du dictionnaire

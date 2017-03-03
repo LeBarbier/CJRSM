@@ -1,7 +1,4 @@
-﻿using System;
-using CJRSM.Models.DAL;
-
-namespace CJRSM.Models.DAL
+﻿namespace CJRSM.Models.DAL
 {
     public partial class Publication : IPublication
     {

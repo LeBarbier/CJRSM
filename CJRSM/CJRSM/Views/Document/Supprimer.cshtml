@@ -38,13 +38,11 @@
         <dd>
             @Html.DisplayFor(model => model.IdLocationDocument)
         </dd>
-
     </dl>
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-
         <div class="form-actions no-color">
             <input type="submit" value="Supprimer le jeu" class="btn btn-default" /> |
             @Html.ActionLink("Retourner a la liste des documents", "Index")

@@ -58,21 +58,6 @@
                     <input type="submit" value="Créer un compte" class="btn btn-default" />
                 </div>
             </div>
-
-            @*@{
-            List<SelectListItem> langues = new List<SelectListItem>();
-            foreach (string langue in PremiereConnexion.Langues)
-            {
-                langues.Add(new SelectListItem { Text = langue, Value = langue });
-            }
-            }
-            <div class="form-group">
-                @Html.LabelFor(model => model.Langue, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.Langue, langues, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Langue, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
         </div>
     </div>
 }

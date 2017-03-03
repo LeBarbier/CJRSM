@@ -4,7 +4,6 @@
     ViewBag.Title = "Inscriptions2";
 }
 
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -33,6 +32,6 @@
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Retourner à la liste", "Index", "Activite")
     </div>
 }

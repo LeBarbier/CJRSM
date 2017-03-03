@@ -2,11 +2,9 @@
 @{
     CJRSM.Controllers.MembreController membreController = new CJRSM.Controllers.MembreController();
     CJRSM.Controllers.ActiviteController activiteController = new CJRSM.Controllers.ActiviteController();
-
     System.Collections.ArrayList listeMembreExecutif = membreController.TrouverExecutif();
     ViewBag.Title = "Exécutif";
 }
-
 
 <div class="conteneur_Unique">
     <h2>Executif</h2>
@@ -17,7 +15,6 @@
         @Html.ActionLink("Ajouter un type de jeu a la base de donnée", "AjoutType", "Membre")<br />
         @Html.ActionLink("Ajouter un membre du CJRSM", "AjoutMembre", "Membre")
     </div>
-
 
     <h3>Activité non accepté proposé par les membres</h3>
     <table class="table_Liste sortable">
@@ -54,7 +51,6 @@
                             @Html.DisplayFor(modelItem => item.NbrMembreMax)
                         </td>
                         <td>
-                            @*@Html.DisplayFor(modelItem => item.Jour)*@
                             @{
                                 if (item.Jour == 1)
                                 {
@@ -108,14 +104,12 @@
                             @Html.DisplayFor(modelItem => item.IdActiviteJeu)
                         </td>
                         <td>
-                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
                             @Html.ActionLink("Modifier", "Modifier", "Activite", new { id = item.Id }, null)
-                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
                         </td>
                     </tr>
-                                        }
-                                    }
-                                }
+                }
+            }
+        }
     </table>
 
     <h3>Modifier le rôle d'un membre</h3>
@@ -156,5 +150,4 @@
             <th><a href="#">Modifier</a></th>
         </tr>
     </table>
-
 </div>

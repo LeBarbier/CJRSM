@@ -168,7 +168,6 @@ namespace CJRSM.Controllers
             {
                 membre.Nom = membreModifier.Nom;
                 membre.Prenom = membreModifier.Prenom;
-                //membre.MDP = membreModifier.MDP;
                 membre.Modifier(membre, contexte);
                 return RedirectToAction("Details", "Membre");
             }

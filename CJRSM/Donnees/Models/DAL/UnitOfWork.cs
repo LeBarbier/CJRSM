@@ -1,8 +1,4 @@
-﻿using CJRSM.Models.DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System;
 
 namespace CJRSM.Models.DAL
 {
@@ -31,28 +27,24 @@ namespace CJRSM.Models.DAL
         {
             get
             {
-
                 if (activite == null)
                 {
                     activite = new GenericRepository<Activite>(contexte);
                 }
                 return activite;
             }
-
         }
 
         public IGenericRepository<ActiviteJeu> ActiviteJeu
         {
             get
             {
-
                 if (activiteJeu == null)
                 {
                     activiteJeu = new GenericRepository<ActiviteJeu>(contexte);
                 }
                 return activiteJeu;
             }
-
         }
 
         public IGenericRepository<Document> Document
@@ -83,28 +75,24 @@ namespace CJRSM.Models.DAL
         {
             get
             {
-
                 if (locationDocument == null)
                 {
                     locationDocument = new GenericRepository<LocationDocument>(contexte);
                 }
                 return locationDocument;
             }
-
         }
 
         public IGenericRepository<LocationJeu> LocationJeu
         {
             get
             {
-
                 if (LocationJeu == null)
                 {
                     locationJeu = new GenericRepository<LocationJeu>(contexte);
                 }
                 return locationJeu;
             }
-
         }
 
         public IGenericRepository<Membre> Membre
@@ -123,14 +111,12 @@ namespace CJRSM.Models.DAL
         {
             get
             {
-
                 if (participant == null)
                 {
                     participant = new GenericRepository<Participant>(contexte);
                 }
                 return participant;
             }
-
         }
 
         public IGenericRepository<Publication> Publication
@@ -149,7 +135,6 @@ namespace CJRSM.Models.DAL
         {
             get
             {
-
                 if (types == null)
                 {
                     types = new GenericRepository<Type>(contexte);
@@ -163,14 +148,12 @@ namespace CJRSM.Models.DAL
         {
             get
             {
-
                 if (typesJeu == null)
                 {
                     typesJeu = new GenericRepository<TypesJeu>(contexte);
                 }
                 return typesJeu;
             }
-
         }
 
         public int Save()

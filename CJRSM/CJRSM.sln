@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CJRSM", "CJRSM\CJRSM.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Donnees", "Donnees\Donnees.csproj", "{F3011BFA-7301-4EE2-AB24-0B07107AF88F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CJRSMTest", "CJRSMTest\CJRSMTest.csproj", "{A3CE3D69-F661-4973-AF13-64988C023C43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F3011BFA-7301-4EE2-AB24-0B07107AF88F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3011BFA-7301-4EE2-AB24-0B07107AF88F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3011BFA-7301-4EE2-AB24-0B07107AF88F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3CE3D69-F661-4973-AF13-64988C023C43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3CE3D69-F661-4973-AF13-64988C023C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3CE3D69-F661-4973-AF13-64988C023C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3CE3D69-F661-4973-AF13-64988C023C43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

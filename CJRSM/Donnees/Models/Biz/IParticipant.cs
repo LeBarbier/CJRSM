@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CJRSM.Models.DAL
+﻿namespace CJRSM.Models.DAL
 {
     public interface IParticipant : IEntite
     {

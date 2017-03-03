@@ -14,7 +14,6 @@
         <dd>
             <h3 style="font-style:italic;">@Html.DisplayFor(model => model.Titre)</h3>
         </dd>
-
         <dd>
             <p style="text-align: justify; padding-right:70px;">@Html.DisplayFor(model => model.Contenu)</p>
         </dd>
@@ -22,9 +21,7 @@
             <br />
             <strong style="padding-left:250px; padding-top:50px;">@membre.Nom, @membre.Prenom</strong>
         </dd>
-
     </dl>
-
         @Html.ActionLink("Retourner a la page d'accueil", "Index")<br />
         @{
             membre = membre.Trouver(User.Identity.Name, contexte);
@@ -34,5 +31,4 @@
                 @Html.ActionLink("Supprimer la publication", "Supprimer", new { id = Model.Id })<br />
             }
         }
-
 </div>

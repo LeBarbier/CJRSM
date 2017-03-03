@@ -16,7 +16,6 @@
         <h2>Voulez-vous vous inscrire a cet activité?</h2>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @*@Html.LabelFor(model => model.IdMembre, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.IdMembre, new { htmlAttributes = new { @style = "display:none;", @class = "form-control", @Value = membre.Id } })
                 @Html.ValidationMessageFor(model => model.IdMembre, "", new { @class = "text-danger" })
@@ -24,7 +23,6 @@
         </div>
 
         <div class="form-group">
-            @*@Html.LabelFor(model => model.IdActivite, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.IdActivite, new { htmlAttributes = new { @style = "display:none;", @class = "form-control", @Value = Request.Params["activiteId"] } })
                 @Html.ValidationMessageFor(model => model.IdActivite, "", new { @class = "text-danger" })

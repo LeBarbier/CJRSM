@@ -4,7 +4,6 @@
     ViewBag.Title = "Publier";
 }
 
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -33,9 +32,6 @@
                 <input type="submit" value="Ajouter la publication" class="btn btn-default" />
             </div>
         </div>
+        @Html.ActionLink("Retourner a la page d'accueil", "Index")
     </div>
 }
-
-<div>
-    @Html.ActionLink("Retourner a la page d'accueil", "Index")
-</div>
